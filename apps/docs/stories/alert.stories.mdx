@@ -1,0 +1,24 @@
+import { Meta, Story, Preview, Props } from "@storybook/addon-docs";
+import {Alert} from "ui";
+
+<Meta title="Components/Alert" component={Alert} />
+
+## Alert
+
+## Props
+
+<Props of={Alert}/>
+
+## Examples
+
+<Preview>
+  <Story name="Success">
+    <Alert message="User Profile Updated!" type="success"></Alert>
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name="Danger">
+    <Alert message="Please provide all values!" type="danger"></Alert>
+  </Story>
+</Preview>

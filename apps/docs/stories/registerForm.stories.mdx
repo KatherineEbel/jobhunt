@@ -1,0 +1,21 @@
+import { Meta, Preview, Props, Story } from "@storybook/addon-docs/blocks";
+import { RegisterForm } from "ui";
+
+<Meta title="Components/RegisterForm" component={RegisterForm} />
+
+# Register Form
+
+## Props
+
+<Props of={RegisterForm} />
+
+## Examples
+
+<Preview>
+  <Story name="Default">
+    <RegisterForm isMember={false}
+                  toggleIsMember={() => {}}
+                  onSubmit={() => {}}
+    />
+  </Story>
+</Preview>
