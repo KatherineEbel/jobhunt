@@ -1,13 +1,14 @@
-import * as React from "react";
-import styled from "styled-components";
-import { Form, Formik, FormikHelpers } from "formik";
-import * as Yup from "yup";
-import { ButtonBlock} from './styled'
-import { Logo, Input} from './index'
+import { useEffect, useState } from 'react'
+import * as React from 'react'
+import styled from 'styled-components'
+import { Form, Formik, FormikHelpers, FormikState } from 'formik'
+import * as Yup from 'yup'
+import { ButtonBlock } from './styled'
+import { Logo, Input } from './index'
 
 const SignInButton = styled(ButtonBlock)`
   padding: 0.7rem 0;
-`;
+`
 
 const MemberButton = styled.button`
   text-decoration: none;
@@ -16,7 +17,7 @@ const MemberButton = styled.button`
   color: var(--primary-500);
   cursor: pointer;
   letter-spacing: var(--letterSpacing);
-`;
+`
 
 const Wrapper = styled(Form)`
   align-items: center;
@@ -28,64 +29,91 @@ const Wrapper = styled(Form)`
   flex-direction: column;
   gap: 1rem;
   padding: 2rem;
-  min-width: 320px;
-  max-height: 600px;
+  max-width: 90vw;
+  width: 400px;
+  max-height: 650px;
+`
 
-`;
-
-interface Values {
-  name: string;
-  email: string;
-  password: string;
+export interface Values {
+  firstName: string
+  lastName: string
+  email: string
+  password: string
 }
 
 export interface RegisterFormProps {
-  isMember: boolean;
-  toggleIsMember: () => void;
-  onSubmit: (values: Values) => void;
+  isMember: boolean
+  reset: boolean
+  toggleIsMember: () => void
+  submitting: boolean
+  onSubmit: (values: Values) => void
 }
 
+export const RegisterForm = ({
+  isMember = false,
+  onSubmit,
+  reset,
+  toggleIsMember,
+}: RegisterFormProps) => {
+  const [resetFormHandle, setResetFormHandle] =
+    useState<(nextState?: Partial<FormikState<Values>> | undefined) => void>()
 
-export const RegisterForm = ({ isMember = false, onSubmit, toggleIsMember }: RegisterFormProps) => {
+  const handleSubmit = async (
+    values: Values,
+    { setSubmitting, resetForm }: FormikHelpers<Values>
+  ) => {
+    setResetFormHandle(resetForm)
+    setSubmitting(true)
+    onSubmit(values)
+  }
 
-  const handleSubmit = async (values: Values, { setSubmitting }: FormikHelpers<Values>) => {
-    setSubmitting(true);
-    onSubmit(values);
-  };
+  useEffect(() => {
+    if (!reset) return
+    resetFormHandle && resetFormHandle()
+  }, [reset])
 
   return (
     <Formik
-      initialValues={{ name: "", email: "", password: "" }}
+      initialValues={{ firstName: '', lastName: '', email: '', password: '' }}
       validationSchema={Yup.object({
         isMember: Yup.boolean().default(isMember),
-        name: Yup.string().required("Name is required"),
-        email: Yup.string().email("Please provide a valid email").required("Email is required"),
-        password: Yup.string().when("isMember", {
+        firstName: Yup.string().required('first name is required'),
+        lastName: Yup.string().required('last name is required'),
+        email: Yup.string()
+          .email('Please provide a valid email')
+          .required('Email is required'),
+        password: Yup.string().when('isMember', {
           is: false,
-          then: Yup.string().required("Password is required")
-        })
+          then: Yup.string().required('Password is required'),
+        }),
       })}
       onSubmit={handleSubmit}
     >
       {({ isSubmitting }) => (
         <Wrapper>
           <Logo />
-          <h3>{isMember ? "Login" : "Register"}</h3>
-          <Input label="Name" type="text" name="name" />
+          <h3>{isMember ? 'Login' : 'Register'}</h3>
+          <Input label="First Name" type="text" name="firstName" />
+          <Input label="Last Name" type="text" name="lastName" />
           <Input label="Email" type="text" name="email" />
-          {!isMember &&
-            <Input label="Password" type="password" name="password" />}
+          {!isMember && (
+            <Input label="Password" type="password" name="password" />
+          )}
           <SignInButton type="submit" disabled={isSubmitting}>
             Submit
           </SignInButton>
-          <p>{isMember ? "Don't have an account?" : "Already a member?"} <MemberButton type="button"
+          <p>
+            {isMember ? "Don't have an account?" : 'Already a member?'}{' '}
+            <MemberButton
+              type="button"
               className="member-btn"
               onClick={toggleIsMember}
-          >
-            {isMember ? "Register" : "Login"}
-          </MemberButton></p>
+            >
+              {isMember ? 'Register' : 'Login'}
+            </MemberButton>
+          </p>
         </Wrapper>
       )}
     </Formik>
-  );
-};
+  )
+}

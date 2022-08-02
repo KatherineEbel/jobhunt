@@ -1,16 +1,14 @@
-import React from "react";
-import {ReactComponent as NotFound} from 'assets/images/not-found.svg'
-import {ErrorPageWrapper, Link} from 'ui'
+import React from 'react'
+import { ReactComponent as NotFound } from 'assets/images/not-found.svg'
+import { ErrorPageWrapper, ButtonLink } from 'ui'
 
 const Error = () => {
   return (
     <ErrorPageWrapper>
-      <NotFound/>
+      <NotFound />
       <h3>Oops!</h3>
       <p>Not what you were looking for?</p>
-      <Link to='/'>
-        back Home
-      </Link>
+      <ButtonLink to="/">back Home</ButtonLink>
     </ErrorPageWrapper>
   )
 }

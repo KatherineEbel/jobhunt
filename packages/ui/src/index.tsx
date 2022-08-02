@@ -4,7 +4,6 @@ import './index.css'
 
 export * from './Alert'
 export * from './Logo'
-export * from './Link'
 export * from './Input'
 export * from './Nav'
 export * from './RegisterForm'

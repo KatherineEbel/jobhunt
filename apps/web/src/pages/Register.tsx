@@ -1,7 +1,9 @@
-import { RegisterForm } from 'ui'
+import { useAppContext } from 'context/appContext'
+import { useNavigate } from 'react-router-dom'
+import { RegisterForm, Values } from 'ui'
 
 import styled from 'styled-components'
-import {useCallback, useState} from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
 const Wrapper = styled.section`
   display: grid;
@@ -16,10 +18,33 @@ const Wrapper = styled.section`
 
 const Register = () => {
   const [isMember, setIsMember] = useState(false)
-  const toggleIsMember = useCallback(() => setIsMember(prevState => !prevState), [])
+  const navigate = useNavigate()
+  const toggleIsMember = useCallback(
+    () => setIsMember((prevState) => !prevState),
+    []
+  )
+  const { registerUser, loading, user } = useAppContext()
+
+  useEffect(() => {
+    if (user === null) return
+    if (user.token) navigate('/')
+    setIsMember(true)
+  }, [user])
+
+  const onSubmit = async (values: Values) => {
+    if (!isMember) {
+      await registerUser(values)
+    }
+  }
   return (
     <Wrapper>
-      <RegisterForm onSubmit={() => console.log('submit!')} isMember={isMember} toggleIsMember={toggleIsMember} />
+      <RegisterForm
+        reset={user !== null}
+        onSubmit={onSubmit}
+        isMember={isMember}
+        submitting={loading}
+        toggleIsMember={toggleIsMember}
+      />
     </Wrapper>
   )
 }

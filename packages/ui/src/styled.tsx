@@ -1,5 +1,5 @@
-import {Link} from 'react-router-dom'
-import styled, {css} from 'styled-components'
+import { Link } from 'react-router-dom'
+import styled, { css } from 'styled-components'
 
 export const button = css`
   cursor: pointer;
@@ -37,7 +37,6 @@ export const ButtonPrimary = styled(Button)`
 export const ButtonBlock = styled(Button)`
   width: 100%;
 `
-
 
 export const hero = css`
   font-size: 1.25rem;

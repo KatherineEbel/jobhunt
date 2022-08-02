@@ -4,25 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1732b3e4-0a88-4a80-8a64-76d35cc2c355" name="Changes" comment="stub auth, user, and job routes">
-      <change afterPath="$PROJECT_DIR$/apps/api/src/__tests__/User.test.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/api/src/config/testDb.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/api/src/errors/APIError.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/api/src/errors/DBError.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/api/src/middleware/validatorMiddleware.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/api/src/models/User.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/api/src/services/user.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/api/src/types.ts" afterDir="false" />
+    <list default="true" id="1732b3e4-0a88-4a80-8a64-76d35cc2c355" name="Changes" comment="implement register/login api">
+      <change afterPath="$PROJECT_DIR$/apps/web/src/services/auth.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/testUtils.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/src/__tests__/server.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/__tests__/server.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/src/config/environment.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/config/environment.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/src/controllers/auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/controllers/auth.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/src/controllers/users.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/controllers/users.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/src/middleware/errorMiddleware.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/middleware/errorMiddleware.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/src/routes/auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/routes/auth.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/src/server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/server.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/App.test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/App.test.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/Layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/Layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/RegisterForm.test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/RegisterForm.test.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/context/appContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/context/appContext.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/context/appReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/context/appReducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/pages/Dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/pages/Dashboard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/pages/Error.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/pages/Error.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/pages/Register.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/pages/Register.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/ui/src/Alert.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/ui/src/Alert.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/ui/src/Link.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/ui/src/RegisterForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/ui/src/RegisterForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/ui/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/ui/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/ui/src/styled.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/ui/src/styled.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -35,9 +36,9 @@
       <list>
         <option value="JavaScript File" />
         <option value="CSS File" />
-        <option value="TypeScript JSX File" />
         <option value="HTTP Request" />
         <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
@@ -64,7 +65,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/katherine/Developer/WebstormProjects/jobhunt/apps/docs/stories",
+    "last_opened_file_path": "/Users/katherine/Developer/WebstormProjects/jobhunt/apps/web/src",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.standard": "true",
@@ -72,7 +73,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.standard": "",
     "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs.jest.jest_package": "/Users/katherine/Developer/WebstormProjects/jobhunt/node_modules/jest",
+    "nodejs.jest.jest_package": "/Users/katherine/Developer/WebstormProjects/jobhunt/node_modules/react-scripts",
     "nodejs_package_manager_path": "npm",
     "prettierjs.PrettierConfiguration.Package": "/Users/katherine/Developer/WebstormProjects/turbo-repo-cra-express-template/node_modules/prettier",
     "settings.editor.selected.configurable": "settings.javascript.linters.eslint",
@@ -87,9 +88,9 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/apps/web/src" />
       <recent name="$PROJECT_DIR$/apps/docs/stories" />
       <recent name="$PROJECT_DIR$/packages/ui/src" />
-      <recent name="$PROJECT_DIR$/apps/web/src" />
       <recent name="$PROJECT_DIR$/apps/web/src/context" />
       <recent name="$PROJECT_DIR$/apps/web/src/pages" />
     </key>
@@ -114,35 +115,70 @@
       <command value="yarn workspace api add @types/jsonwebtoken --dev" />
       <command value="yarn workspace api add jsonwebtoken --dev" />
       <command value="yarn workspace api add mongodb-memory-server --dev" />
+      <command value="yarn test --filter=web" />
+      <command value="yarn workspace web add axios" />
+      <command value="yarn workspace web remove axios" />
+      <command value="yarn workspace web add use-http" />
+      <command value="yarn run dev" />
     </option>
   </component>
-  <component name="RunManager" selected="Jest.UserModel.saving.should throw error if saved without passwordHash">
-    <configuration name="UserModel.saving.should throw error if saved without passwordHash" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JavaScript Debug.DebugApp">
+    <configuration name="RegisterForm" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
-      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
-      <working-dir value="$PROJECT_DIR$/apps/api" />
+      <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
+      <working-dir value="$PROJECT_DIR$/apps/web" />
       <envs />
-      <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/apps/api/src/__tests__/User.test.ts" />
+      <scope-kind value="SUITE" />
+      <test-file value="$PROJECT_DIR$/apps/web/src/RegisterForm.test.tsx" />
       <test-names>
-        <test-name value="UserModel" />
-        <test-name value="saving" />
-        <test-name value="should throw error if saved without passwordHash" />
+        <test-name value="RegisterForm" />
       </test-names>
       <method v="2" />
     </configuration>
-    <configuration name="UserModel.should be invalid if fields are empty" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+    <configuration name="RegisterForm.invalid input.invalid email displays error message" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
-      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
-      <working-dir value="$PROJECT_DIR$/apps/api" />
+      <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
+      <working-dir value="$PROJECT_DIR$/apps/web" />
       <envs />
       <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/apps/api/src/__tests__/User.test.ts" />
+      <test-file value="$PROJECT_DIR$/apps/web/src/RegisterForm.test.tsx" />
       <test-names>
-        <test-name value="UserModel" />
-        <test-name value="should be invalid if fields are empty" />
+        <test-name value="RegisterForm" />
+        <test-name value="invalid input" />
+        <test-name value="invalid email displays error message" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="RegisterForm.invalid input.when registering.error messages displayed" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
+      <working-dir value="$PROJECT_DIR$/apps/web" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/apps/web/src/RegisterForm.test.tsx" />
+      <test-names>
+        <test-name value="RegisterForm" />
+        <test-name value="invalid input" />
+        <test-name value="when registering" />
+        <test-name value="error messages displayed" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="RegisterForm.valid input.form is submitted with correct values" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
+      <working-dir value="$PROJECT_DIR$/apps/web" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/apps/web/src/RegisterForm.test.tsx" />
+      <test-names>
+        <test-name value="RegisterForm" />
+        <test-name value="valid input" />
+        <test-name value="form is submitted with correct values" />
       </test-names>
       <method v="2" />
     </configuration>
@@ -157,19 +193,6 @@
       <test-names>
         <test-name value="UserModel" />
         <test-name value="should be invalid if firstName is empty" />
-      </test-names>
-      <method v="2" />
-    </configuration>
-    <configuration name="server" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
-      <node-interpreter value="project" />
-      <node-options value="" />
-      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
-      <working-dir value="$PROJECT_DIR$/apps/api" />
-      <envs />
-      <scope-kind value="SUITE" />
-      <test-file value="$PROJECT_DIR$/apps/api/src/__tests__/server.test.ts" />
-      <test-names>
-        <test-name value="server" />
       </test-names>
       <method v="2" />
     </configuration>
@@ -218,36 +241,6 @@
       </test-names>
       <method v="2" />
     </configuration>
-    <configuration name="server.auth routes.register returns 422 with invalid request" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
-      <node-interpreter value="project" />
-      <node-options value="" />
-      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
-      <working-dir value="$PROJECT_DIR$/apps/api" />
-      <envs />
-      <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/apps/api/src/__tests__/server.test.ts" />
-      <test-names>
-        <test-name value="server" />
-        <test-name value="auth routes" />
-        <test-name value="register returns 422 with invalid request" />
-      </test-names>
-      <method v="2" />
-    </configuration>
-    <configuration name="server.auth routes.register route returns 200 when request valid" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
-      <node-interpreter value="project" />
-      <node-options value="" />
-      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
-      <working-dir value="$PROJECT_DIR$/apps/api" />
-      <envs />
-      <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/apps/api/src/__tests__/server.test.ts" />
-      <test-names>
-        <test-name value="server" />
-        <test-name value="auth routes" />
-        <test-name value="register route returns 200 when request valid" />
-      </test-names>
-      <method v="2" />
-    </configuration>
     <configuration name="server.auth routes.register route returns 201 when request valid" type="JavaScriptTestRunnerJest" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
@@ -263,25 +256,40 @@
       </test-names>
       <method v="2" />
     </configuration>
+    <configuration name="DebugApp" type="JavascriptDebugType" uri="http://localhost:3000" useFirstLineBreakpoints="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/../turbo-repo-cra-express-template/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <package-manager value="yarn" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <list>
+      <item itemvalue="JavaScript Debug.DebugApp" />
       <item itemvalue="Jest.UserModel.should be invalid if firstName is empty" />
       <item itemvalue="Jest.server.auth routes.emails must be unique" />
       <item itemvalue="Jest.server.auth routes.login route returns 200" />
       <item itemvalue="Jest.server.auth routes.login route returns 401 with invalid password" />
       <item itemvalue="Jest.server.auth routes.register route returns 201 when request valid" />
-      <item itemvalue="Jest.UserModel.saving.should throw error if saved without passwordHash" />
-      <item itemvalue="Jest.UserModel.should be invalid if fields are empty" />
-      <item itemvalue="Jest.server" />
-      <item itemvalue="Jest.server.auth routes.register route returns 200 when request valid" />
-      <item itemvalue="Jest.server.auth routes.register returns 422 with invalid request" />
+      <item itemvalue="Jest.RegisterForm" />
+      <item itemvalue="Jest.RegisterForm.invalid input.invalid email displays error message" />
+      <item itemvalue="Jest.RegisterForm.invalid input.when registering.error messages displayed" />
+      <item itemvalue="Jest.RegisterForm.valid input.form is submitted with correct values" />
+      <item itemvalue="npm.dev" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Jest.UserModel.saving.should throw error if saved without passwordHash" />
-        <item itemvalue="Jest.UserModel.should be invalid if fields are empty" />
-        <item itemvalue="Jest.server" />
-        <item itemvalue="Jest.server.auth routes.register route returns 200 when request valid" />
-        <item itemvalue="Jest.server.auth routes.register returns 422 with invalid request" />
+        <item itemvalue="npm.dev" />
+        <item itemvalue="Jest.RegisterForm.invalid input.invalid email displays error message" />
+        <item itemvalue="Jest.RegisterForm" />
+        <item itemvalue="Jest.RegisterForm.valid input.form is submitted with correct values" />
+        <item itemvalue="Jest.RegisterForm.invalid input.when registering.error messages displayed" />
       </list>
     </recent_temporary>
   </component>
@@ -385,26 +393,58 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/apps/api/src/__tests__/server.test.ts</url>
           <line>111</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/apps/api/src/middleware/errorMiddleware.ts</url>
           <line>7</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="21" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/apps/api/src/config/testDb.ts</url>
           <line>21</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="22" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/apps/api/src/config/testDb.ts</url>
           <line>14</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="24" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/packages/ui/src/RegisterForm.tsx</url>
+          <line>65</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="25" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/apps/web/src/context/appContext.tsx</url>
+          <line>47</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="27" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/apps/web/src/context/appReducer.ts</url>
+          <line>74</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/apps/web/src/pages/Register.tsx</url>
+          <line>28</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="29" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/apps/web/src/context/appContext.tsx</url>
+          <line>36</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="30" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/apps/web/src/context/appContext.tsx</url>
+          <line>38</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="31" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

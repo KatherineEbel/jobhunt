@@ -1,11 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 
-export interface AlertProps {
+interface AlertProps {
   message: string
   type: 'danger' | 'success'
 }
-
 
 const StyledAlert = styled.p`
   border-radius: var(--borderRadius);
@@ -24,7 +23,5 @@ const AlertSuccess = styled(StyledAlert)`
 
 export const Alert = ({ message, type }: AlertProps) => {
   const Component = type === 'success' ? AlertSuccess : AlertDanger
-  return (
-    <Component>{message}</Component>
-  )
+  return <Component className="alert">{message}</Component>
 }
