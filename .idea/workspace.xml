@@ -5,7 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1732b3e4-0a88-4a80-8a64-76d35cc2c355" name="Changes" comment="stub auth, user, and job routes">
-      <change beforePath="$PROJECT_DIR$/.husky/pre-commit" beforeDir="false" afterPath="$PROJECT_DIR$/.husky/pre-commit" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/api/src/__tests__/User.test.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/api/src/config/testDb.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/api/src/errors/APIError.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/api/src/errors/DBError.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/api/src/middleware/validatorMiddleware.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/api/src/models/User.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/api/src/services/user.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/api/src/types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api/src/__tests__/server.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/__tests__/server.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api/src/config/environment.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/config/environment.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api/src/controllers/auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/controllers/auth.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api/src/controllers/users.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/controllers/users.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api/src/middleware/errorMiddleware.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/middleware/errorMiddleware.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api/src/routes/auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/routes/auth.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api/src/server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/server.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,8 +36,8 @@
         <option value="JavaScript File" />
         <option value="CSS File" />
         <option value="TypeScript JSX File" />
-        <option value="TypeScript File" />
         <option value="HTTP Request" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -40,33 +58,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Project.color&quot;: &quot;203150&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/katherine/Developer/WebstormProjects/jobhunt/apps/docs/stories&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs.jest.jest_package&quot;: &quot;/Users/katherine/Developer/WebstormProjects/jobhunt/node_modules/react-scripts&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/Users/katherine/Developer/WebstormProjects/turbo-repo-cra-express-template/node_modules/prettier&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;settings.javascript.linters.eslint&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Users/katherine/Developer/WebstormProjects/jobhunt/node_modules/typescript/lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Project.color": "203150",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/Users/katherine/Developer/WebstormProjects/jobhunt/apps/docs/stories",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs.jest.jest_package": "/Users/katherine/Developer/WebstormProjects/jobhunt/node_modules/jest",
+    "nodejs_package_manager_path": "npm",
+    "prettierjs.PrettierConfiguration.Package": "/Users/katherine/Developer/WebstormProjects/turbo-repo-cra-express-template/node_modules/prettier",
+    "settings.editor.selected.configurable": "settings.javascript.linters.eslint",
+    "ts.external.directory.path": "/Users/katherine/Developer/WebstormProjects/jobhunt/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mongo&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mongo"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/apps/docs/stories" />
@@ -76,6 +94,7 @@
       <recent name="$PROJECT_DIR$/apps/web/src/pages" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/apps/api/src" />
       <recent name="$PROJECT_DIR$/apps/web/src" />
       <recent name="$PROJECT_DIR$/apps" />
     </key>
@@ -84,38 +103,185 @@
     <option name="myCommands">
       <command value="npm run clean" />
       <command value="touch .eslintignore" />
+      <command value="yarn workspace api add yup" />
+      <command value="yarn workspace api add express-async-handler" />
+      <command value="yarn workspace api add express-async-errors" />
+      <command value="yarn workspace api remove express-async-handler" />
+      <command value="yarn workspace api add http-status-codes" />
+      <command value="yarn workspace api add @types/http-status-codes --dev" />
+      <command value="yarn workspace api add bcryptjs" />
+      <command value="yarn workspace api add @types/bcryptjs --dev" />
+      <command value="yarn workspace api add @types/jsonwebtoken --dev" />
+      <command value="yarn workspace api add jsonwebtoken --dev" />
+      <command value="yarn workspace api add mongodb-memory-server --dev" />
     </option>
   </component>
-  <component name="RunManager" selected="npm.lint">
-    <configuration name="jobs | #2" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/apps/api/jobs.http" index="2" requestIdentifier="#2" runType="Run single request">
-      <method v="2" />
-    </configuration>
-    <configuration name="jobs | #3" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/apps/api/jobs.http" index="3" requestIdentifier="#3" runType="Run single request">
-      <method v="2" />
-    </configuration>
-    <configuration name="jobs | #4" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/apps/api/jobs.http" index="4" requestIdentifier="#4" runType="Run single request">
-      <method v="2" />
-    </configuration>
-    <configuration name="jobs | #5" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/apps/api/jobs.http" index="5" requestIdentifier="#5" runType="Run single request">
-      <method v="2" />
-    </configuration>
-    <configuration name="lint" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/apps/api/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="lint" />
-      </scripts>
+  <component name="RunManager" selected="Jest.UserModel.saving.should throw error if saved without passwordHash">
+    <configuration name="UserModel.saving.should throw error if saved without passwordHash" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$/apps/api" />
       <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/apps/api/src/__tests__/User.test.ts" />
+      <test-names>
+        <test-name value="UserModel" />
+        <test-name value="saving" />
+        <test-name value="should throw error if saved without passwordHash" />
+      </test-names>
       <method v="2" />
     </configuration>
+    <configuration name="UserModel.should be invalid if fields are empty" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$/apps/api" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/apps/api/src/__tests__/User.test.ts" />
+      <test-names>
+        <test-name value="UserModel" />
+        <test-name value="should be invalid if fields are empty" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="UserModel.should be invalid if firstName is empty" type="JavaScriptTestRunnerJest" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$/apps/api" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/apps/api/src/__tests__/User.test.ts" />
+      <test-names>
+        <test-name value="UserModel" />
+        <test-name value="should be invalid if firstName is empty" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="server" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$/apps/api" />
+      <envs />
+      <scope-kind value="SUITE" />
+      <test-file value="$PROJECT_DIR$/apps/api/src/__tests__/server.test.ts" />
+      <test-names>
+        <test-name value="server" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="server.auth routes.emails must be unique" type="JavaScriptTestRunnerJest" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$/apps/api" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/apps/api/src/__tests__/server.test.ts" />
+      <test-names>
+        <test-name value="server" />
+        <test-name value="auth routes" />
+        <test-name value="emails must be unique" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="server.auth routes.login route returns 200" type="JavaScriptTestRunnerJest" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$/apps/api" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/apps/api/src/__tests__/server.test.ts" />
+      <test-names>
+        <test-name value="server" />
+        <test-name value="auth routes" />
+        <test-name value="login route returns 200" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="server.auth routes.login route returns 401 with invalid password" type="JavaScriptTestRunnerJest" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$/apps/api" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/apps/api/src/__tests__/server.test.ts" />
+      <test-names>
+        <test-name value="server" />
+        <test-name value="auth routes" />
+        <test-name value="login route returns 401 with invalid password" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="server.auth routes.register returns 422 with invalid request" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$/apps/api" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/apps/api/src/__tests__/server.test.ts" />
+      <test-names>
+        <test-name value="server" />
+        <test-name value="auth routes" />
+        <test-name value="register returns 422 with invalid request" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="server.auth routes.register route returns 200 when request valid" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$/apps/api" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/apps/api/src/__tests__/server.test.ts" />
+      <test-names>
+        <test-name value="server" />
+        <test-name value="auth routes" />
+        <test-name value="register route returns 200 when request valid" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="server.auth routes.register route returns 201 when request valid" type="JavaScriptTestRunnerJest" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$/apps/api" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/apps/api/src/__tests__/server.test.ts" />
+      <test-names>
+        <test-name value="server" />
+        <test-name value="auth routes" />
+        <test-name value="register route returns 201 when request valid" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Jest.UserModel.should be invalid if firstName is empty" />
+      <item itemvalue="Jest.server.auth routes.emails must be unique" />
+      <item itemvalue="Jest.server.auth routes.login route returns 200" />
+      <item itemvalue="Jest.server.auth routes.login route returns 401 with invalid password" />
+      <item itemvalue="Jest.server.auth routes.register route returns 201 when request valid" />
+      <item itemvalue="Jest.UserModel.saving.should throw error if saved without passwordHash" />
+      <item itemvalue="Jest.UserModel.should be invalid if fields are empty" />
+      <item itemvalue="Jest.server" />
+      <item itemvalue="Jest.server.auth routes.register route returns 200 when request valid" />
+      <item itemvalue="Jest.server.auth routes.register returns 422 with invalid request" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.lint" />
-        <item itemvalue="HTTP Request.jobs | #5" />
-        <item itemvalue="HTTP Request.jobs | #4" />
-        <item itemvalue="HTTP Request.jobs | #3" />
-        <item itemvalue="HTTP Request.jobs | #2" />
+        <item itemvalue="Jest.UserModel.saving.should throw error if saved without passwordHash" />
+        <item itemvalue="Jest.UserModel.should be invalid if fields are empty" />
+        <item itemvalue="Jest.server" />
+        <item itemvalue="Jest.server.auth routes.register route returns 200 when request valid" />
+        <item itemvalue="Jest.server.auth routes.register returns 422 with invalid request" />
       </list>
     </recent_temporary>
   </component>
@@ -179,7 +345,14 @@
       <option name="project" value="LOCAL" />
       <updated>1659378656847</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="stub auth, user, and job routes">
+      <created>1659381531408</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1659381531408</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -205,5 +378,35 @@
     <MESSAGE value="Start building out ui components" />
     <MESSAGE value="stub auth, user, and job routes" />
     <option name="LAST_COMMIT_MESSAGE" value="stub auth, user, and job routes" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/apps/api/src/__tests__/server.test.ts</url>
+          <line>111</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/apps/api/src/middleware/errorMiddleware.ts</url>
+          <line>7</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/apps/api/src/config/testDb.ts</url>
+          <line>21</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/apps/api/src/config/testDb.ts</url>
+          <line>14</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="24" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
