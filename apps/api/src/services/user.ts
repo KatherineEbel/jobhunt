@@ -1,6 +1,7 @@
 import { StatusCodes } from 'http-status-codes'
+import {DBError} from '../errors/DBError'
 import { APIError } from '../errors/APIError'
-import { User, UserDoc } from '../models/User'
+import {IUser, User, UserDoc} from '../models/User'
 
 /**
  * Insert user into database
@@ -29,4 +30,26 @@ export const getOneByEmail = async (email: string): Promise<UserDoc> => {
   if (user === null)
     throw new APIError("user doesn't exist", StatusCodes.UNAUTHORIZED)
   return user
+}
+
+/**
+ * find a user by id
+ * @param id
+ */
+export const findById = async (id: string): Promise<UserDoc> => {
+  const user = await User.findById(id).exec()
+  if (user === null)
+    throw new APIError("user doesn't exist", StatusCodes.UNAUTHORIZED)
+  return user
+}
+
+export const updateUser = async (userId: string, attrs: Partial<IUser>): Promise<UserDoc> => {
+  const user = await findById(userId)
+  Object.assign(user, attrs)
+  try {
+    await user.save()
+    return user
+  } catch (e: unknown) {
+    throw new DBError((e as Error).message)
+  }
 }

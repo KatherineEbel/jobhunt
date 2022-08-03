@@ -12,6 +12,9 @@ import { db } from '../config'
 import { createServer } from '../server'
 
 const BASE_URL = `/api/v1`
+
+type AuthUser = {token: string, id: string}
+
 const validUser = {
   firstName: 'John',
   lastName: 'Snow',
@@ -19,11 +22,29 @@ const validUser = {
   password: 'password',
 }
 
+
 async function registerValidUser(app: Express) {
+  const url = `${BASE_URL}/auth/register`
+  console.log(url)
   await supertest(app)
-    .post(`${BASE_URL}/auth/register`)
+    .post(url)
     .send(validUser)
     .expect(201)
+}
+
+async function loginUser(app: Express, user: typeof validUser): Promise<AuthUser> {
+  const {email, password} = user
+  let authUser = {token: '', id: ''}
+  await supertest(app)
+    .post(`${BASE_URL}/auth/login`)
+    .send({email, password})
+    .expect(200)
+    .then(res => {
+      authUser.token = res.body.token
+      authUser.id = res.body.id
+    })
+  expect(Object.values(authUser).every(Boolean)).toBe(true)
+  return authUser
 }
 
 describe('server', () => {
@@ -216,45 +237,69 @@ describe('server', () => {
   })
 
   describe('user routes', () => {
-    beforeEach(async () => {
-      app = await createServer()
-    })
-
-    afterEach(async () => {
-      await db.connection.close()
-    })
-    test('updateUser route returns 200', async function () {
-      await supertest(app).patch('/api/v1/users/1').expect(200)
+    describe('when logged in', () => {
+      let authUser: AuthUser
+      beforeAll(async () => {
+        app = await createServer()
+        await registerValidUser(app)
+        authUser = await loginUser(app, validUser)
+      })
+      afterAll(async () => {
+        await db.connection.dropDatabase()
+        await db.connection.close()
+      })
+      test('updateUser route returns 200', async function () {
+        await supertest(app).patch(`/api/v1/users/${authUser.id}`)
+          .set('Authorization', `Bearer ${authUser.token}`)
+          .send({email: 'new@example.com', firstName: 'Newname'})
+          .expect(200)
+          .expect(res => {
+            expect(res.body.email).toBe('new@example.com')
+            expect(res.body.firstName).toBe('Newname')
+            expect(res.body.lastName).toBe(validUser.lastName)
+          })
+      })
     })
   })
 
   describe('job routes', () => {
-    beforeEach(async () => {
-      app = await createServer()
-    })
+    describe('when logged in', () => {
+      const baseUrl = '/api/v1/jobs'
+      let authUser: AuthUser
+      beforeAll(async () => {
+        app = await createServer()
+        await registerValidUser(app)
+        authUser = await loginUser(app, validUser)
+      })
 
-    afterEach(async () => {
-      await db.connection.close()
-    })
-    const baseUrl = '/api/v1/jobs'
-    test('"/" returns 200', async () => {
-      await supertest(app).get(baseUrl).expect(200)
-    })
+      afterAll(async () => {
+        await db.connection.dropDatabase()
+        await db.connection.close()
+      })
+      test('"/" returns 200', async () => {
+        expect(authUser).toBeDefined()
+        await supertest(app).get(baseUrl)
+          .set('Authorization', `Bearer ${authUser.token}`)
+          .expect(200)
+      })
 
-    test('stats returns 200', async () => {
-      await supertest(app).get(`${baseUrl}/stats`).expect(200)
-    })
+      test.skip('post returns 200', async () => {
+        await supertest(app).post(baseUrl)
+          .set('Authorization', `Bearer ${authUser.token}`)
+          .expect(200)
+      })
 
-    test.skip('post returns 200', async () => {
-      await supertest(app).post(baseUrl).expect(200)
-    })
+      test.skip('patch returns 200', async () => {
+        await supertest(app).patch(`${baseUrl}/1`)
+          .set('Authorization', `Bearer ${authUser.token}`)
+          .expect(200)
+      })
 
-    test.skip('patch returns 200', async () => {
-      await supertest(app).patch(`${baseUrl}/1`).expect(200)
-    })
-
-    test.skip('delete returns 200', async () => {
-      await supertest(app).delete(`${baseUrl}/1`).expect(200)
+      test.skip('delete returns 200', async () => {
+        await supertest(app).delete(`${baseUrl}/1`)
+          .set('Authorization', `Bearer ${authUser.token}`)
+          .expect(200)
+      })
     })
   })
 })

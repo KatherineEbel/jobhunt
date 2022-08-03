@@ -4,48 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b6d8152f-e918-46a7-a4e9-34c64c7b909e" name="Changes" comment="dashboard sidebars and stub dashboard pages">
-      <change afterPath="$PROJECT_DIR$/apps/web/src/Nav.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/hooks/useDropdown.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/hooks/useOnClickOutside.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/hooks/useToggle.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/links.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/pages/Dashboard/AddJob.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/pages/Dashboard/Dashboard.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/pages/Dashboard/Jobs.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/pages/Dashboard/Profile.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/pages/Dashboard/Stats.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/pages/Dashboard/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/pages/ProtectedRoute.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/ui/src/Dashboard/LargeSidebar.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/ui/src/Dashboard/NavLinks.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/ui/src/Dashboard/SmallSidebar.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/ui/src/Dashboard/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/ui/src/Dashboard/sidebar-icons.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/ui/src/Dashboard/styles.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/ui/src/Loader.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/ui/src/utils/links.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jsLinters/eslint.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/prettier.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/turbo-repo-cra-express-template.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jobhunt.iml" afterDir="false" />
+    <list default="true" id="b6d8152f-e918-46a7-a4e9-34c64c7b909e" name="Changes" comment="handle login user frontend">
+      <change afterPath="$PROJECT_DIR$/apps/api/src/middleware/requireAuthMiddleware.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/App.test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/App.test.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/Layout.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/context/appContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/context/appContext.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/pages/Dashboard.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/pages/Error.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/pages/Error.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/pages/Register.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/pages/Register.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/pages/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/ui/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/ui/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/ui/src/Landing/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/ui/src/Landing/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/ui/src/Logo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/ui/src/Logo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/ui/src/Nav.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/ui/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/packages/ui/src/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/ui/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/ui/src/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api/src/__tests__/server.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/__tests__/server.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api/src/controllers/auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/controllers/auth.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api/src/controllers/jobs.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/controllers/jobs.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api/src/controllers/users.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/controllers/users.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api/src/routes/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/routes/user.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api/src/server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/server.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api/src/services/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/services/user.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api/src/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/types.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,16 +25,30 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
+        <option value="HTTP Request" />
+        <option value="HTTP Public Environment File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HttpClientSelectedEnvironments">
+    <file url="file:///private/var/folders/dm/t1whf57n35qgtrj0n3bjphxh0000gn/T/whats-new.http.http" environment="test" />
+    <file url="jar://$APPLICATION_HOME_DIR$/plugins/restClient/lib/restClient.jar!/com/intellij/ws/rest/client/requests/collection/requests-with-authorization.http" environment="test" />
+    <file url="jar://$APPLICATION_HOME_DIR$/plugins/restClient/lib/restClient.jar!/com/intellij/ws/rest/client/requests/collection/requests-with-tests.http" environment="test" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2CpcqoFyItFNnEwVm0xnHsfiFYd" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -81,10 +64,15 @@
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs.jest.jest_package": "/Users/katherine/Developer/WebstormProjects/jobhunt/node_modules/react-scripts",
+    "nodejs.jest.jest_package": "/Users/katherine/Developer/WebstormProjects/jobhunt/node_modules/jest",
     "nodejs_package_manager_path": "yarn",
     "ts.external.directory.path": "/Users/katherine/Developer/WebstormProjects/jobhunt/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mongo"
+    ]
   }
 }]]></component>
   <component name="RecentsManager">
@@ -95,61 +83,60 @@
   <component name="RunAnythingCache">
     <option name="myCommands">
       <command value="yarn run dev" />
-      <command value="yarn test" />
       <command value="yarn test --filter=web" />
+      <command value="yarn test" />
     </option>
   </component>
-  <component name="RunManager" selected="Jest.directed to landing when no user">
-    <configuration name="directed to landing when no user" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
-      <node-interpreter value="project" />
-      <node-options value="" />
-      <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
-      <working-dir value="$PROJECT_DIR$/apps/web" />
-      <envs />
-      <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/apps/web/src/App.test.tsx" />
-      <test-names>
-        <test-name value="directed to landing when no user" />
-      </test-names>
+  <component name="RunManager" selected="Jest.server.job routes.when logged in">
+    <configuration name="auth | Authorization by token, part 1. Retrieve and save token." type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/apps/api/auth.http" requestIdentifier="Authorization by token, part 1. Retrieve and save token." runType="Run single request">
       <method v="2" />
     </configuration>
-    <configuration name="renders correct heading" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+    <configuration name="auth | Authorization by token, part 2. Use token to authorize." type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/apps/api/auth.http" index="2" requestIdentifier="Authorization by token, part 2. Use token to authorize." runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="auth | #3" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/apps/api/auth.http" index="3" requestIdentifier="#3" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="auth | #4" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/apps/api/auth.http" index="4" requestIdentifier="#4" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="jobs | get all jobs" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/apps/api/jobs.http" requestIdentifier="get all jobs" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="server.job routes.when logged in" type="JavaScriptTestRunnerJest" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
-      <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
-      <working-dir value="$PROJECT_DIR$/apps/web" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$/apps/api" />
       <envs />
-      <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/apps/web/src/App.test.tsx" />
+      <scope-kind value="SUITE" />
+      <test-file value="$PROJECT_DIR$/apps/api/src/__tests__/server.test.ts" />
       <test-names>
-        <test-name value="renders correct heading" />
+        <test-name value="server" />
+        <test-name value="job routes" />
+        <test-name value="when logged in" />
       </test-names>
       <method v="2" />
     </configuration>
     <configuration name="DebugClient" type="JavascriptDebugType" uri="http://localhost:3000" useFirstLineBreakpoints="true">
       <method v="2" />
     </configuration>
-    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="dev" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
     <list>
+      <item itemvalue="HTTP Request.auth | #3" />
+      <item itemvalue="HTTP Request.auth | #4" />
+      <item itemvalue="HTTP Request.auth | Authorization by token, part 1. Retrieve and save token." />
+      <item itemvalue="HTTP Request.auth | Authorization by token, part 2. Use token to authorize." />
+      <item itemvalue="HTTP Request.jobs | get all jobs" />
       <item itemvalue="JavaScript Debug.DebugClient" />
-      <item itemvalue="Jest.directed to landing when no user" />
-      <item itemvalue="Jest.renders correct heading" />
-      <item itemvalue="npm.dev" />
+      <item itemvalue="Jest.server.job routes.when logged in" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Jest.directed to landing when no user" />
-        <item itemvalue="Jest.renders correct heading" />
-        <item itemvalue="npm.dev" />
+        <item itemvalue="HTTP Request.auth | #3" />
+        <item itemvalue="HTTP Request.auth | #4" />
+        <item itemvalue="HTTP Request.auth | Authorization by token, part 2. Use token to authorize." />
+        <item itemvalue="HTTP Request.auth | Authorization by token, part 1. Retrieve and save token." />
+        <item itemvalue="HTTP Request.jobs | get all jobs" />
       </list>
     </recent_temporary>
   </component>
@@ -189,8 +176,37 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/apps/web/src/pages/ProtectedRoute.tsx</url>
           <line>13</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/apps/api/src/__tests__/server.test.ts</url>
+          <line>280</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="36" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/apps/api/src/__tests__/server.test.ts</url>
+          <line>271</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="37" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/apps/api/src/__tests__/server.test.ts</url>
+          <line>45</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="39" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/apps/api/src/__tests__/server.test.ts</url>
+          <line>42</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="40" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/apps/api/src/__tests__/server.test.ts</url>
+          <line>46</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="41" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

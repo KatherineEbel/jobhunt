@@ -33,5 +33,6 @@ export const loginHandler: RequestHandler = async (
     name: user.fullName(),
     token: await user.getToken(),
     email: user.email,
+    id: user._id
   })
 }

@@ -1,11 +1,12 @@
 import { RequestHandler } from 'express'
+import {AuthHandler} from '../middleware/requireAuthMiddleware'
 
 /**
  * create a job
  * @param req
  * @param res
  */
-export const create: RequestHandler = async (req, res) => {
+export const create: AuthHandler = async (req, res) => {
   res.sendStatus(200)
 }
 /**
