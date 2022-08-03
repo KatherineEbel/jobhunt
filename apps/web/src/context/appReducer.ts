@@ -5,6 +5,7 @@ export enum AppActionType {
   AuthLogout = 'app/authLogout',
   AuthUserStart = 'app/authUserStart',
   AuthUserSuccess = 'app/authUserSuccess',
+  AuthUserUpdateSuccess = 'app/authUserUpdateSuccess',
   AuthUserError = 'app/authUserError',
   SetAlert = 'app/setAlert',
   ClearAlert = 'app/removeAlert',
@@ -89,6 +90,14 @@ export function appReducer(
         ...state,
         alert: { message: payload as string, type: 'danger' },
         user: null,
+      }
+    case AppActionType.AuthUserUpdateSuccess:
+      user = payload as User
+      message = 'Profile Updated'
+      return {
+        ...state,
+        alert: { message, type: 'success' },
+        user: {...state.user, ...user},
       }
     case AppActionType.ClearAlert:
       return { ...state, alert: null }

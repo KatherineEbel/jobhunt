@@ -13,3 +13,7 @@ export type RegisterUser = Pick<User, 'email'> & {
 export type LoginUser = Pick<User, 'email'> & {
   password: string
 }
+
+export type UpdateUser = Omit<RegisterUser, 'password'> & {
+  email: string
+}

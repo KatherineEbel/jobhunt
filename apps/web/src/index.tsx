@@ -16,6 +16,7 @@ createRoot(root).render(
       <AppProvider>
         <App />
       </AppProvider>
+
     </BrowserRouter>
   </React.StrictMode>
 )

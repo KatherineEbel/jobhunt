@@ -250,6 +250,15 @@ export const NavbarWrapper = styled.nav`
 `
 
 export const SharedLayout = styled.div`
+  position: relative;
+  
+  .alert {
+    position: absolute;
+    z-index: 2;
+    top: 120px;
+    right: 2rem;
+  }
+  
   .dashboard {
     display: grid;
     grid-template-columns: 1fr;

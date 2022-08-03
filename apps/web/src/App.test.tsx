@@ -11,6 +11,7 @@ const value: AppContextType = {
   logout: jest.fn(),
   registerUser: jest.fn(),
   displayAlert: jest.fn(),
+  updateUser: jest.fn(),
   alert: null,
   user: null,
 }

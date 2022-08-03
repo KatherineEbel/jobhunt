@@ -3,7 +3,7 @@ import * as React from 'react'
 import styled from 'styled-components'
 import { Form, Formik, FormikHelpers, FormikState } from 'formik'
 import * as Yup from 'yup'
-import { ButtonBlock } from './styled'
+import { ButtonBlock } from 'styled'
 import { Logo, Input } from './index'
 
 const SignInButton = styled(ButtonBlock)`
@@ -121,6 +121,7 @@ export const RegisterForm = ({
           </p>
         </Wrapper>
       )}
+
     </Formik>
   )
 }
