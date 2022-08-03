@@ -5,9 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b6d8152f-e918-46a7-a4e9-34c64c7b909e" name="Changes" comment="don't close large sidebar when nav link clicked">
+      <change afterPath="$PROJECT_DIR$/packages/ui/src/Alert.test.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/ui/src/Dashboard/LargeSidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/ui/src/Dashboard/LargeSidebar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/ui/src/Dashboard/NavLinks.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/ui/src/Dashboard/NavLinks.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/ui/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/ui/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,10 +17,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript JSX File" />
         <option value="TypeScript File" />
         <option value="HTTP Request" />
         <option value="HTTP Public Environment File" />
+        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
@@ -46,29 +46,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Project.color&quot;: &quot;203150&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/katherine/Developer/WebstormProjects/jobhunt&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs.jest.jest_package&quot;: &quot;/Users/katherine/Developer/WebstormProjects/jobhunt/node_modules/jest&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Users/katherine/Developer/WebstormProjects/jobhunt/node_modules/typescript/lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Project.color": "203150",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/Users/katherine/Developer/WebstormProjects/jobhunt/packages/ui/src",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs.jest.jest_package": "/Users/katherine/Developer/WebstormProjects/jobhunt/node_modules/jest",
+    "nodejs_package_manager_path": "yarn",
+    "ts.external.directory.path": "/Users/katherine/Developer/WebstormProjects/jobhunt/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mongo&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mongo"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/packages/ui/src" />
+      <recent name="$PROJECT_DIR$/packages/jest-presets/jest" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/packages/ui/src/Dashboard" />
     </key>
@@ -78,9 +82,11 @@
       <command value="yarn run dev" />
       <command value="yarn test --filter=web" />
       <command value="yarn test" />
+      <command value="yarn" />
+      <command value="yarn test --filter=ui" />
     </option>
   </component>
-  <component name="RunManager" selected="Jest.server.job routes.when logged in">
+  <component name="RunManager" selected="Jest.Alert.render">
     <configuration name="auth | Authorization by token, part 1. Retrieve and save token." type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/apps/api/auth.http" requestIdentifier="Authorization by token, part 1. Retrieve and save token." runType="Run single request">
       <method v="2" />
     </configuration>
@@ -94,6 +100,20 @@
       <method v="2" />
     </configuration>
     <configuration name="jobs | get all jobs" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/apps/api/jobs.http" requestIdentifier="get all jobs" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="Alert.render" type="JavaScriptTestRunnerJest" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$/packages/ui" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/packages/ui/src/Alert.test.tsx" />
+      <test-names>
+        <test-name value="Alert" />
+        <test-name value="render" />
+      </test-names>
       <method v="2" />
     </configuration>
     <configuration name="server.job routes.when logged in" type="JavaScriptTestRunnerJest" nameIsGenerated="true">
@@ -121,6 +141,7 @@
       <item itemvalue="HTTP Request.auth | Authorization by token, part 2. Use token to authorize." />
       <item itemvalue="HTTP Request.jobs | get all jobs" />
       <item itemvalue="JavaScript Debug.DebugClient" />
+      <item itemvalue="Jest.Alert.render" />
       <item itemvalue="Jest.server.job routes.when logged in" />
     </list>
     <recent_temporary>
@@ -205,6 +226,12 @@
           <url>file://$PROJECT_DIR$/apps/api/src/__tests__/server.test.ts</url>
           <line>46</line>
           <option name="timeStamp" value="41" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/packages/ui/src/Alert.test.tsx</url>
+          <line>9</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="42" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
