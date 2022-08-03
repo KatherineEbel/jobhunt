@@ -4,18 +4,48 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1732b3e4-0a88-4a80-8a64-76d35cc2c355" name="Changes" comment="handle login user frontend">
+    <list default="true" id="b6d8152f-e918-46a7-a4e9-34c64c7b909e" name="Changes" comment="dashboard sidebars and stub dashboard pages">
+      <change afterPath="$PROJECT_DIR$/apps/web/src/Nav.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/hooks/useDropdown.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/hooks/useOnClickOutside.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/hooks/useToggle.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/links.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/pages/Dashboard/AddJob.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/pages/Dashboard/Dashboard.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/pages/Dashboard/Jobs.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/pages/Dashboard/Profile.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/pages/Dashboard/Stats.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/pages/Dashboard/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/pages/ProtectedRoute.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/ui/src/Dashboard/LargeSidebar.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/ui/src/Dashboard/NavLinks.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/ui/src/Dashboard/SmallSidebar.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/ui/src/Dashboard/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/ui/src/Dashboard/sidebar-icons.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/ui/src/Dashboard/styles.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/ui/src/Loader.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/ui/src/utils/links.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jsLinters/eslint.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/prettier.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/turbo-repo-cra-express-template.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jobhunt.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/src/controllers/auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/controllers/auth.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/src/models/User.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/models/User.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/web/src/App.test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/App.test.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/Layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/Layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/RegisterForm.test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/RegisterForm.test.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/Layout.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/web/src/context/appContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/context/appContext.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/context/appReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/context/appReducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/pages/Dashboard.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/pages/Error.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/pages/Error.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/web/src/pages/Register.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/pages/Register.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/ui/src/Nav.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/ui/src/Nav.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/ui/src/RegisterForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/ui/src/RegisterForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/pages/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/ui/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/ui/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/ui/src/Landing/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/ui/src/Landing/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/ui/src/Logo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/ui/src/Logo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/ui/src/Nav.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/ui/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/packages/ui/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/ui/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/ui/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,27 +55,17 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
-        <option value="CSS File" />
-        <option value="HTTP Request" />
-        <option value="TypeScript File" />
         <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="main" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2Cip0pxQVBhpPsTJ1fNpvcGTipW" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectId" id="2CpcqoFyItFNnEwVm0xnHsfiFYd" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -56,289 +76,93 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/katherine/Developer/WebstormProjects/jobhunt/apps/web/src",
-    "list.type.of.created.stylesheet": "CSS",
+    "last_opened_file_path": "/Users/katherine/Developer/WebstormProjects/jobhunt",
     "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.standard": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.standard": "",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs.jest.jest_package": "/Users/katherine/Developer/WebstormProjects/jobhunt/node_modules/react-scripts",
-    "nodejs_package_manager_path": "npm",
-    "prettierjs.PrettierConfiguration.Package": "/Users/katherine/Developer/WebstormProjects/turbo-repo-cra-express-template/node_modules/prettier",
-    "settings.editor.selected.configurable": "settings.javascript.linters.eslint",
+    "nodejs_package_manager_path": "yarn",
     "ts.external.directory.path": "/Users/katherine/Developer/WebstormProjects/jobhunt/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
-  },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mongo"
-    ]
   }
 }]]></component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/apps/web/src" />
-      <recent name="$PROJECT_DIR$/apps/docs/stories" />
-      <recent name="$PROJECT_DIR$/packages/ui/src" />
-      <recent name="$PROJECT_DIR$/apps/web/src/context" />
-      <recent name="$PROJECT_DIR$/apps/web/src/pages" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/apps/api/src" />
-      <recent name="$PROJECT_DIR$/apps/web/src" />
-      <recent name="$PROJECT_DIR$/apps" />
+      <recent name="$PROJECT_DIR$/packages/ui/src/Dashboard" />
     </key>
   </component>
   <component name="RunAnythingCache">
     <option name="myCommands">
-      <command value="npm run clean" />
-      <command value="touch .eslintignore" />
-      <command value="yarn workspace api add yup" />
-      <command value="yarn workspace api add express-async-handler" />
-      <command value="yarn workspace api add express-async-errors" />
-      <command value="yarn workspace api remove express-async-handler" />
-      <command value="yarn workspace api add http-status-codes" />
-      <command value="yarn workspace api add @types/http-status-codes --dev" />
-      <command value="yarn workspace api add bcryptjs" />
-      <command value="yarn workspace api add @types/bcryptjs --dev" />
-      <command value="yarn workspace api add @types/jsonwebtoken --dev" />
-      <command value="yarn workspace api add jsonwebtoken --dev" />
-      <command value="yarn workspace api add mongodb-memory-server --dev" />
-      <command value="yarn test --filter=web" />
-      <command value="yarn workspace web add axios" />
-      <command value="yarn workspace web remove axios" />
-      <command value="yarn workspace web add use-http" />
       <command value="yarn run dev" />
+      <command value="yarn test" />
+      <command value="yarn test --filter=web" />
     </option>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.DebugApp">
-    <configuration name="jobs | #6" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/apps/api/jobs.http" index="6" requestIdentifier="#6" runType="Run single request">
-      <method v="2" />
-    </configuration>
-    <configuration name="RegisterForm" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
-      <node-interpreter value="project" />
-      <node-options value="" />
-      <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
-      <working-dir value="$PROJECT_DIR$/apps/web" />
-      <envs />
-      <scope-kind value="SUITE" />
-      <test-file value="$PROJECT_DIR$/apps/web/src/RegisterForm.test.tsx" />
-      <test-names>
-        <test-name value="RegisterForm" />
-      </test-names>
-      <method v="2" />
-    </configuration>
-    <configuration name="RegisterForm.invalid input.invalid email displays error message" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Jest.directed to landing when no user">
+    <configuration name="directed to landing when no user" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
       <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
       <working-dir value="$PROJECT_DIR$/apps/web" />
       <envs />
       <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/apps/web/src/RegisterForm.test.tsx" />
+      <test-file value="$PROJECT_DIR$/apps/web/src/App.test.tsx" />
       <test-names>
-        <test-name value="RegisterForm" />
-        <test-name value="invalid input" />
-        <test-name value="invalid email displays error message" />
+        <test-name value="directed to landing when no user" />
       </test-names>
       <method v="2" />
     </configuration>
-    <configuration name="RegisterForm.valid input.form is submitted with correct values" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+    <configuration name="renders correct heading" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
       <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
       <working-dir value="$PROJECT_DIR$/apps/web" />
       <envs />
       <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/apps/web/src/RegisterForm.test.tsx" />
+      <test-file value="$PROJECT_DIR$/apps/web/src/App.test.tsx" />
       <test-names>
-        <test-name value="RegisterForm" />
-        <test-name value="valid input" />
-        <test-name value="form is submitted with correct values" />
+        <test-name value="renders correct heading" />
       </test-names>
       <method v="2" />
     </configuration>
-    <configuration name="UserModel.should be invalid if firstName is empty" type="JavaScriptTestRunnerJest" nameIsGenerated="true">
-      <node-interpreter value="project" />
-      <node-options value="" />
-      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
-      <working-dir value="$PROJECT_DIR$/apps/api" />
-      <envs />
-      <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/apps/api/src/__tests__/User.test.ts" />
-      <test-names>
-        <test-name value="UserModel" />
-        <test-name value="should be invalid if firstName is empty" />
-      </test-names>
-      <method v="2" />
-    </configuration>
-    <configuration name="server.auth routes.emails must be unique" type="JavaScriptTestRunnerJest" nameIsGenerated="true">
-      <node-interpreter value="project" />
-      <node-options value="" />
-      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
-      <working-dir value="$PROJECT_DIR$/apps/api" />
-      <envs />
-      <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/apps/api/src/__tests__/server.test.ts" />
-      <test-names>
-        <test-name value="server" />
-        <test-name value="auth routes" />
-        <test-name value="emails must be unique" />
-      </test-names>
-      <method v="2" />
-    </configuration>
-    <configuration name="server.auth routes.login route returns 200" type="JavaScriptTestRunnerJest" nameIsGenerated="true">
-      <node-interpreter value="project" />
-      <node-options value="" />
-      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
-      <working-dir value="$PROJECT_DIR$/apps/api" />
-      <envs />
-      <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/apps/api/src/__tests__/server.test.ts" />
-      <test-names>
-        <test-name value="server" />
-        <test-name value="auth routes" />
-        <test-name value="login route returns 200" />
-      </test-names>
-      <method v="2" />
-    </configuration>
-    <configuration name="server.auth routes.login route returns 401 with invalid password" type="JavaScriptTestRunnerJest" nameIsGenerated="true">
-      <node-interpreter value="project" />
-      <node-options value="" />
-      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
-      <working-dir value="$PROJECT_DIR$/apps/api" />
-      <envs />
-      <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/apps/api/src/__tests__/server.test.ts" />
-      <test-names>
-        <test-name value="server" />
-        <test-name value="auth routes" />
-        <test-name value="login route returns 401 with invalid password" />
-      </test-names>
-      <method v="2" />
-    </configuration>
-    <configuration name="server.auth routes.register route returns 201 when request valid" type="JavaScriptTestRunnerJest" nameIsGenerated="true">
-      <node-interpreter value="project" />
-      <node-options value="" />
-      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
-      <working-dir value="$PROJECT_DIR$/apps/api" />
-      <envs />
-      <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/apps/api/src/__tests__/server.test.ts" />
-      <test-names>
-        <test-name value="server" />
-        <test-name value="auth routes" />
-        <test-name value="register route returns 201 when request valid" />
-      </test-names>
-      <method v="2" />
-    </configuration>
-    <configuration name="DebugApp" type="JavascriptDebugType" uri="http://localhost:3000" useFirstLineBreakpoints="true">
+    <configuration name="DebugClient" type="JavascriptDebugType" uri="http://localhost:3000" useFirstLineBreakpoints="true">
       <method v="2" />
     </configuration>
     <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/../turbo-repo-cra-express-template/package.json" />
+      <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
       <scripts>
         <script value="dev" />
       </scripts>
       <node-interpreter value="project" />
-      <package-manager value="yarn" />
       <envs />
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="HTTP Request.jobs | #6" />
-      <item itemvalue="JavaScript Debug.DebugApp" />
-      <item itemvalue="Jest.UserModel.should be invalid if firstName is empty" />
-      <item itemvalue="Jest.server.auth routes.emails must be unique" />
-      <item itemvalue="Jest.server.auth routes.login route returns 200" />
-      <item itemvalue="Jest.server.auth routes.login route returns 401 with invalid password" />
-      <item itemvalue="Jest.server.auth routes.register route returns 201 when request valid" />
-      <item itemvalue="Jest.RegisterForm" />
-      <item itemvalue="Jest.RegisterForm.invalid input.invalid email displays error message" />
-      <item itemvalue="Jest.RegisterForm.valid input.form is submitted with correct values" />
+      <item itemvalue="JavaScript Debug.DebugClient" />
+      <item itemvalue="Jest.directed to landing when no user" />
+      <item itemvalue="Jest.renders correct heading" />
       <item itemvalue="npm.dev" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="HTTP Request.jobs | #6" />
+        <item itemvalue="Jest.directed to landing when no user" />
+        <item itemvalue="Jest.renders correct heading" />
         <item itemvalue="npm.dev" />
-        <item itemvalue="Jest.RegisterForm.invalid input.invalid email displays error message" />
-        <item itemvalue="Jest.RegisterForm" />
-        <item itemvalue="Jest.RegisterForm.valid input.form is submitted with correct values" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="1732b3e4-0a88-4a80-8a64-76d35cc2c355" name="Changes" comment="" />
-      <created>1659295038783</created>
+      <changelist id="b6d8152f-e918-46a7-a4e9-34c64c7b909e" name="Changes" comment="" />
+      <created>1659503161183</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1659295038783</updated>
-      <workItem from="1659295039849" duration="5843000" />
-      <workItem from="1659301447032" duration="8569000" />
+      <updated>1659503161183</updated>
+      <workItem from="1659503162855" duration="9534000" />
     </task>
-    <task id="LOCAL-00001" summary="remove assets from ui library. Start preparing to use as template">
-      <created>1659295669835</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1659295669835</updated>
-    </task>
-    <task id="LOCAL-00002" summary="add nginx config to web app">
-      <created>1659300212666</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1659300212666</updated>
-    </task>
-    <task id="LOCAL-00003" summary="working docker config">
-      <created>1659311288783</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1659311288783</updated>
-    </task>
-    <task id="LOCAL-00004" summary="update README">
-      <created>1659311363321</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1659311363321</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Initial commit">
-      <created>1659314189978</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1659314189978</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Start building out ui components">
-      <created>1659365241069</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1659365241069</updated>
-    </task>
-    <task id="LOCAL-00007" summary="stub auth, user, and job routes">
-      <created>1659378656847</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1659378656847</updated>
-    </task>
-    <task id="LOCAL-00008" summary="stub auth, user, and job routes">
-      <created>1659381531408</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1659381531408</updated>
-    </task>
-    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -356,81 +180,17 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="remove assets from ui library. Start preparing to use as template" />
-    <MESSAGE value="add nginx config to web app" />
-    <MESSAGE value="working docker config" />
-    <MESSAGE value="update README" />
-    <MESSAGE value="Initial commit" />
-    <MESSAGE value="Start building out ui components" />
-    <MESSAGE value="stub auth, user, and job routes" />
-    <MESSAGE value="handle register user frontend" />
-    <MESSAGE value="handle login user frontend" />
-    <option name="LAST_COMMIT_MESSAGE" value="handle login user frontend" />
+    <MESSAGE value="dashboard sidebars and stub dashboard pages" />
+    <option name="LAST_COMMIT_MESSAGE" value="dashboard sidebars and stub dashboard pages" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/apps/api/src/__tests__/server.test.ts</url>
-          <line>111</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/apps/api/src/middleware/errorMiddleware.ts</url>
-          <line>7</line>
-          <option name="timeStamp" value="21" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/apps/api/src/config/testDb.ts</url>
-          <line>21</line>
-          <option name="timeStamp" value="22" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/apps/api/src/config/testDb.ts</url>
-          <line>14</line>
-          <option name="timeStamp" value="24" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/apps/web/src/context/appContext.tsx</url>
-          <line>54</line>
+          <url>file://$PROJECT_DIR$/apps/web/src/pages/ProtectedRoute.tsx</url>
+          <line>13</line>
           <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="27" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/apps/web/src/context/appReducer.ts</url>
-          <line>81</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="28" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/apps/web/src/pages/Register.tsx</url>
-          <line>29</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="29" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/apps/web/src/context/appContext.tsx</url>
-          <line>73</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="32" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/apps/web/src/pages/Register.tsx</url>
-          <line>40</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="33" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/apps/web/src/pages/Register.tsx</url>
-          <line>37</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="34" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/packages/ui/src/RegisterForm.tsx</url>
-          <line>63</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="35" />
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

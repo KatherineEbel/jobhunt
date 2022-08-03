@@ -6,7 +6,6 @@ const LogoContainer = styled.h1`
   align-items: center;
   color: var(--white);
   gap: 0.5rem;
-  padding: 1rem 2rem;
 `
 const StyledLogo = styled.span`
   display: grid;

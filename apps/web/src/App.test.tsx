@@ -6,6 +6,7 @@ import { render } from '@testing-library/react'
 import App from './App'
 
 const value: AppContextType = {
+  authenticate: jest.fn(),
   loginUser: jest.fn(),
   logout: jest.fn(),
   registerUser: jest.fn(),
@@ -14,19 +15,19 @@ const value: AppContextType = {
   user: null,
 }
 
-test('renders correct heading', () => {
+test('renders correct heading', async () => {
+  (value.authenticate as jest.MockedFunction<() => Promise<boolean>>).mockReturnValueOnce(Promise.resolve(true))
   value.user = {
     name: 'Johnny Smith',
     email: 'johnny@example.com',
     token: 'foobar',
   }
   customRender(<App />, { value })
-  const heading = screen.getByText(/jobhunt/i)
-  expect(heading).toBeInTheDocument()
-  expect(screen.getByText(/johnny smith/i)).toBeInTheDocument()
+  expect(await screen.findByText(/johnny smith/i)).toBeInTheDocument()
 })
 
-test('directed to register when no user', () => {
+test('directed to landing when no user', async () => {
+  (value.authenticate as jest.MockedFunction<() => Promise<boolean>>).mockReturnValueOnce(Promise.resolve(false))
   value.user = null
   render(
     <MemoryRouter initialEntries={['/']}>
@@ -36,7 +37,7 @@ test('directed to register when no user', () => {
     </MemoryRouter>
   )
 
-  expect(screen.getByRole('heading', { name: /register/i })).toBeInTheDocument()
+  expect(await screen.findByRole('heading', { name: /job tracking app/i })).toBeInTheDocument()
 })
 
 test('directed to not found page if bad route', () => {

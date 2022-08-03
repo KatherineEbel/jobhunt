@@ -10,6 +10,7 @@ import { LoginUser, RegisterUser, User } from 'services/auth'
 import { useFetch } from 'use-http'
 
 export interface AppContextType {
+  authenticate: () => Promise<boolean>
   user: User | null
   alert: {
     message: string
@@ -42,10 +43,21 @@ const AppProvider = ({ children, value }: AppProviderProps) => {
   }, [state.alert])
 
   useEffect(() => {
-    const localUser = localStorage.getItem('authUser')
-    if (localUser)
+    const localUser = localStorage.getItem('jh-authUser')
+    if (localUser) {
       dispatch({ type: AppActionType.AuthInit, payload: JSON.parse(localUser) })
+    }
   }, [])
+
+  const authenticate = async () => {
+    if (state.user && state.user.token) return true
+    const localUser = localStorage.getItem('jh-authUser')
+    if (localUser) {
+      dispatch({ type: AppActionType.AuthInit, payload: JSON.parse(localUser) })
+      return Promise.resolve(true)
+    }
+    return false
+  }
 
   const displayAlert = (alert: Alert) => {
     dispatch({ type: AppActionType.SetAlert, payload: alert })
@@ -90,12 +102,13 @@ const AppProvider = ({ children, value }: AppProviderProps) => {
 
   const logout = () => {
     dispatch({ type: AppActionType.AuthLogout })
+    localStorage.removeItem('jh-authUser')
   }
 
   return (
     <AppContextProvider
       value={
-        value || { ...state, displayAlert, logout, loginUser, registerUser }
+        value || { ...state, authenticate: authenticate, displayAlert, logout, loginUser, registerUser }
       }
     >
       {children}

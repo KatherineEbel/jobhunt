@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/turbo-repo-cra-express-template.iml" filepath="$PROJECT_DIR$/.idea/turbo-repo-cra-express-template.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/jobhunt.iml" filepath="$PROJECT_DIR$/.idea/jobhunt.iml" />
     </modules>
   </component>
 </project>

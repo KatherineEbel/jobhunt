@@ -38,7 +38,6 @@ const Register = () => {
     if (!isMember) {
       await registerUser(values)
     } else {
-      console.log(values)
       await loginUser(values)
     }
   }

@@ -1,0 +1,5 @@
+export { IoBarChartSharp } from 'react-icons/io5'
+export { MdQueryStats } from 'react-icons/md'
+export { FaWpforms } from 'react-icons/fa'
+export { ImProfile } from 'react-icons/im'
+export { FaTimes } from 'react-icons/fa'

@@ -4,12 +4,12 @@ export const Wrapper = styled.div`
   display: grid;
   min-height: 100vh;
   place-items: center;
-  grid-template-rows: var(--nav-height) 1fr;
   padding: 2rem;
 
   .page {
     align-items: center;
     display: grid;
+    height: 100%;
   }
 
   .info p {
