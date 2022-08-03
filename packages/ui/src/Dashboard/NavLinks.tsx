@@ -2,10 +2,10 @@ import {NavLink} from 'react-router-dom'
 import {sidebarLinks} from '../utils/links'
 
 interface NavLinkProps {
-  onClose: () => void
+  onClose?: () => void
 }
 
-export const NavLinks = ({onClose}: NavLinkProps) => {
+export const NavLinks = ({onClose = () => undefined}: NavLinkProps) => {
   return (
     <div className="nav-links">
       {sidebarLinks.map(({ id, text, icon, to }) => (

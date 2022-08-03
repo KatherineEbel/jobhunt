@@ -2,7 +2,7 @@ import {NavLinks} from './NavLinks'
 import {Logo} from '../Logo'
 import { LargeSidebar as Wrapper} from './styles'
 
-export const LargeSidebar = ({ onClose, open }: { open: boolean, onClose: () => void }) => {
+export const LargeSidebar = ({ open }: { open: boolean, onClose: () => void }) => {
   return (
     <Wrapper>
       <div className={`sidebar-container${open ? ' show-sidebar' : ''}`}>
@@ -10,7 +10,7 @@ export const LargeSidebar = ({ onClose, open }: { open: boolean, onClose: () => 
           <header>
             <Logo />
           </header>
-          <NavLinks onClose={onClose}/>
+          <NavLinks/>
         </div>
       </div>
     </Wrapper>
