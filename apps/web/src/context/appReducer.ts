@@ -1,10 +1,11 @@
 import { User } from 'services/auth'
 
 export enum AppActionType {
+  AuthInit = 'app/authInit',
+  AuthLogout = 'app/authLogout',
   AuthUserStart = 'app/authUserStart',
   AuthUserSuccess = 'app/authUserSuccess',
   AuthUserError = 'app/authUserError',
-  SetLoading = 'app/setLoading',
   SetAlert = 'app/setAlert',
   ClearAlert = 'app/removeAlert',
 }
@@ -24,10 +25,6 @@ export interface AuthUserErrorAction extends Action {
   payload: string
 }
 
-export interface SetLoadingAction extends Action {
-  payload: boolean
-}
-
 export interface SetAlertAction extends Action {
   payload: Alert
 }
@@ -37,7 +34,6 @@ export interface ClearAlertAction extends Action {
 }
 
 export type AppAction =
-  | SetLoadingAction
   | SetAlertAction
   | ClearAlertAction
   | AuthUserErrorAction
@@ -51,13 +47,11 @@ export interface Alert {
 
 export interface AppState {
   user: User | null
-  loading: boolean
   alert: Alert | null
 }
 
 export const initialState: AppState = {
   user: null,
-  loading: false,
   alert: null,
 }
 
@@ -65,23 +59,34 @@ export function appReducer(
   state: AppState = initialState,
   { type, payload = null }: AppAction
 ): AppState {
+  let user: User
+  let message: string
   switch (type) {
+    case AppActionType.AuthInit:
+      return {
+        ...state,
+        user: payload as User,
+      }
+    case AppActionType.AuthLogout:
+      return {
+        ...state,
+        user: null,
+      }
     case AppActionType.AuthUserStart:
       return {
         ...state,
-        loading: true,
       }
     case AppActionType.AuthUserSuccess:
+      user = payload as User
+      message = user.token ? 'Welcome Back!' : 'Welcome to JobHunt!'
       return {
         ...state,
-        loading: false,
-        alert: { message: 'Welcome to JobHunt', type: 'success' },
-        user: payload as User,
+        alert: { message, type: 'success' },
+        user,
       }
     case AppActionType.AuthUserError:
       return {
         ...state,
-        loading: false,
         alert: { message: payload as string, type: 'danger' },
         user: null,
       }

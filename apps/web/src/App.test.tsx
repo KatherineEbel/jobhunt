@@ -6,9 +6,10 @@ import { render } from '@testing-library/react'
 import App from './App'
 
 const value: AppContextType = {
+  loginUser: jest.fn(),
+  logout: jest.fn(),
   registerUser: jest.fn(),
   displayAlert: jest.fn(),
-  loading: false,
   alert: null,
   user: null,
 }

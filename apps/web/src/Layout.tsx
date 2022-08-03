@@ -17,11 +17,11 @@ const LayoutWrapper = styled.div`
 `
 
 export const Layout = () => {
-  const { alert } = useAppContext()
+  const { alert, logout, user } = useAppContext()
 
   return (
     <LayoutWrapper>
-      <Nav />
+      <Nav onLogout={logout} authenticated={Boolean(user)} />
       {alert && <Alert message={alert.message} type={alert.type} />}
       <Outlet />
     </LayoutWrapper>

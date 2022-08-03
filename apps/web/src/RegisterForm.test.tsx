@@ -6,7 +6,6 @@ import { RegisterForm, RegisterFormProps } from 'ui'
 describe('RegisterForm', () => {
   const props: RegisterFormProps = {
     onSubmit: jest.fn(),
-    submitting: false,
     reset: false,
     toggleIsMember: jest.fn(),
     isMember: false,

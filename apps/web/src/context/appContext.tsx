@@ -10,7 +10,6 @@ import { LoginUser, RegisterUser, User } from 'services/auth'
 import { useFetch } from 'use-http'
 
 export interface AppContextType {
-  loading: boolean
   user: User | null
   alert: {
     message: string
@@ -18,6 +17,8 @@ export interface AppContextType {
   } | null
   displayAlert: (alert: Alert) => void
   registerUser: (request: RegisterUser) => void
+  loginUser: (request: LoginUser) => void
+  logout: () => void
 }
 
 const [useAppContext, AppContextProvider] = createCtx<AppContextType>()
@@ -40,6 +41,12 @@ const AppProvider = ({ children, value }: AppProviderProps) => {
     }, 5000)
   }, [state.alert])
 
+  useEffect(() => {
+    const localUser = localStorage.getItem('authUser')
+    if (localUser)
+      dispatch({ type: AppActionType.AuthInit, payload: JSON.parse(localUser) })
+  }, [])
+
   const displayAlert = (alert: Alert) => {
     dispatch({ type: AppActionType.SetAlert, payload: alert })
   }
@@ -52,7 +59,7 @@ const AppProvider = ({ children, value }: AppProviderProps) => {
         type: AppActionType.AuthUserSuccess,
         payload: user,
       })
-      localStorage.setItem('registeredUser', user)
+      localStorage.setItem('jh-registerUser', JSON.stringify(user))
     }
     if (error) {
       dispatch({
@@ -70,7 +77,8 @@ const AppProvider = ({ children, value }: AppProviderProps) => {
         type: AppActionType.AuthUserSuccess,
         payload: user,
       })
-      localStorage.setItem('registeredUser', user)
+      localStorage.removeItem('jh-registerUser')
+      localStorage.setItem('jh-authUser', JSON.stringify(user))
     }
     if (error) {
       dispatch({
@@ -80,9 +88,15 @@ const AppProvider = ({ children, value }: AppProviderProps) => {
     }
   }
 
+  const logout = () => {
+    dispatch({ type: AppActionType.AuthLogout })
+  }
+
   return (
     <AppContextProvider
-      value={value || { ...state, displayAlert, registerUser }}
+      value={
+        value || { ...state, displayAlert, logout, loginUser, registerUser }
+      }
     >
       {children}
     </AppContextProvider>

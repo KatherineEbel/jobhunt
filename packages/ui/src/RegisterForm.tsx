@@ -45,7 +45,6 @@ export interface RegisterFormProps {
   isMember: boolean
   reset: boolean
   toggleIsMember: () => void
-  submitting: boolean
   onSubmit: (values: Values) => void
 }
 
@@ -77,8 +76,14 @@ export const RegisterForm = ({
       initialValues={{ firstName: '', lastName: '', email: '', password: '' }}
       validationSchema={Yup.object({
         isMember: Yup.boolean().default(isMember),
-        firstName: Yup.string().required('first name is required'),
-        lastName: Yup.string().required('last name is required'),
+        firstName: Yup.string().when('isMember', {
+          is: false,
+          then: Yup.string().required('first name is required'),
+        }),
+        lastName: Yup.string().when('isMember', {
+          is: false,
+          then: Yup.string().required('last name is required'),
+        }),
         email: Yup.string()
           .email('Please provide a valid email')
           .required('Email is required'),
@@ -93,12 +98,14 @@ export const RegisterForm = ({
         <Wrapper>
           <Logo />
           <h3>{isMember ? 'Login' : 'Register'}</h3>
-          <Input label="First Name" type="text" name="firstName" />
-          <Input label="Last Name" type="text" name="lastName" />
-          <Input label="Email" type="text" name="email" />
           {!isMember && (
-            <Input label="Password" type="password" name="password" />
+            <>
+              <Input label="First Name" type="text" name="firstName" />
+              <Input label="Last Name" type="text" name="lastName" />
+            </>
           )}
+          <Input label="Email" type="text" name="email" />
+          <Input label="Password" type="password" name="password" />
           <SignInButton type="submit" disabled={isSubmitting}>
             Submit
           </SignInButton>

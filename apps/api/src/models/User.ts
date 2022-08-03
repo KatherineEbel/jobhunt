@@ -18,7 +18,7 @@ export interface IUserMethods {
   fullName(): string
   // eslint-disable-next-line no-unused-vars
   hashPassword(password: string): void
-  getToken(): string
+  getToken(): Promise<string>
   // eslint-disable-next-line no-unused-vars
   authenticate(password: string): Promise<boolean>
 }

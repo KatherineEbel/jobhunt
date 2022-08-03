@@ -18,31 +18,36 @@ const Wrapper = styled.section`
 
 const Register = () => {
   const [isMember, setIsMember] = useState(false)
+  const [reset, setReset] = useState(false)
   const navigate = useNavigate()
   const toggleIsMember = useCallback(
     () => setIsMember((prevState) => !prevState),
     []
   )
-  const { registerUser, loading, user } = useAppContext()
+  const { registerUser, loginUser, user } = useAppContext()
 
   useEffect(() => {
     if (user === null) return
     if (user.token) navigate('/')
     setIsMember(true)
+    setReset(true)
+    setTimeout(() => setReset(false), 100)
   }, [user])
 
   const onSubmit = async (values: Values) => {
     if (!isMember) {
       await registerUser(values)
+    } else {
+      console.log(values)
+      await loginUser(values)
     }
   }
   return (
     <Wrapper>
       <RegisterForm
-        reset={user !== null}
+        reset={reset}
         onSubmit={onSubmit}
         isMember={isMember}
-        submitting={loading}
         toggleIsMember={toggleIsMember}
       />
     </Wrapper>
