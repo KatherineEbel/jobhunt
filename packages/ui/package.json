@@ -12,7 +12,8 @@
     "clean": "rm -rf dist",
     "dev": "tsup src/index.tsx --watch --format esm,cjs --dts --external react --external react-router-dom",
     "lint": "eslint src/*.ts*",
-    "test": "jest --watchAll",
+    "pretest": "yarn run build",
+    "test": "jest --watch",
     "test:ci": "jest"
   },
   "devDependencies": {

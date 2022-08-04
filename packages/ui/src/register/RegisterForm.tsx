@@ -1,10 +1,11 @@
+import {Input} from 'Input'
+import {Logo} from 'Logo'
 import { useEffect, useState } from 'react'
 import * as React from 'react'
 import styled from 'styled-components'
 import { Form, Formik, FormikHelpers, FormikState } from 'formik'
 import * as Yup from 'yup'
 import { ButtonBlock } from 'styled'
-import { Logo, Input } from './index'
 
 const SignInButton = styled(ButtonBlock)`
   padding: 0.7rem 0;
@@ -97,7 +98,7 @@ export const RegisterForm = ({
       {({ isSubmitting }) => (
         <Wrapper>
           <Logo />
-          <h3>{isMember ? 'Login' : 'Register'}</h3>
+          <h3>{isMember ? 'Login' : 'register'}</h3>
           {!isMember && (
             <>
               <Input label="First Name" type="text" name="firstName" />
@@ -116,7 +117,7 @@ export const RegisterForm = ({
               className="member-btn"
               onClick={toggleIsMember}
             >
-              {isMember ? 'Register' : 'Login'}
+              {isMember ? 'register' : 'Login'}
             </MemberButton>
           </p>
         </Wrapper>

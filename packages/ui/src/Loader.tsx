@@ -25,7 +25,7 @@ const Wrapper = styled.div<{ size: number }>`
 `
 export const Loader = () => {
   return (
-    <Wrapper size={50}>
+    <Wrapper data-testid='loader' size={50}>
       <Rotate/>
     </Wrapper>
   )

@@ -29,7 +29,7 @@ export const Nav = ({ toggleSidebar }: NavProps) => {
         <div className="btn-container">
           <Button className="btn" onClick={toggleDropdown}>
             <FaUserCircle />
-            {user?.name}
+            {user?.firstName}
             <FaCaretDown />
           </Button>
           <div

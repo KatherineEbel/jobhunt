@@ -25,7 +25,6 @@ const validUser = {
 
 async function registerValidUser(app: Express) {
   const url = `${BASE_URL}/auth/register`
-  console.log(url)
   await supertest(app)
     .post(url)
     .send(validUser)

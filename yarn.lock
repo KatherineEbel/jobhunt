@@ -16100,10 +16100,10 @@ use-http@^1.0.26:
     use-ssr "^1.0.24"
     utility-types "^3.10.0"
 
-use-local-storage@^2.3.6:
-  version "2.3.6"
-  resolved "https://registry.yarnpkg.com/use-local-storage/-/use-local-storage-2.3.6.tgz#11058465143aa7537556af482b21c6b1f77a78a6"
-  integrity sha512-OJQHWYbH2M5mMaSY6uYIbfzOm7eVz1fBYFw1wqQurCR2+gQb+FjVt0KzzDAsgTOSEUNVAbaiJ0I4WcNjRn7u5w==
+use-local-storage-state@^18.1.0:
+  version "18.1.0"
+  resolved "https://registry.yarnpkg.com/use-local-storage-state/-/use-local-storage-state-18.1.0.tgz#65ac069eb9b7aa6fab8f7b4ca4b5b3ce7a0abca2"
+  integrity sha512-UY86uFHeQyh0oVMjKdco+lzDWok+rx2Fz4uBXVvLM1kfjd71tDmiOPtZY48SsAP3UAGndjUAS9tslQCxSQ4L7Q==
 
 use-ssr@^1.0.24:
   version "1.0.24"

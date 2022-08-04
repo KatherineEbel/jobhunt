@@ -1,12 +1,13 @@
 import {Alert, AppActionType, appReducer, initialState,} from 'context/appReducer'
 import {createCtx} from 'context/createCtx'
 import {ReactNode, useEffect, useReducer} from 'react'
-import {LoginUser, RegisterUser, UpdateUser, User} from 'services/auth'
+import {useNavigate} from 'react-router-dom'
+import {LoginUser, RegisterUser, UpdateUser, AuthUser} from 'services/auth'
 import {useFetch} from 'use-http'
 
 export interface AppContextType {
   authenticate: () => Promise<boolean>
-  user: User | null
+  user: AuthUser | null
   alert: {
     message: string
     type: 'success' | 'danger'
@@ -30,6 +31,7 @@ const BASE_URL = process.env.REACT_APP_API_URL
 const AppProvider = ({children, value}: AppProviderProps) => {
   const [state, dispatch] = useReducer(appReducer, initialState, undefined)
   const {patch, post, response, error} = useFetch(BASE_URL)
+  const navigate = useNavigate()
 
   useEffect(() => {
     if (state.alert === null) return
@@ -39,7 +41,7 @@ const AppProvider = ({children, value}: AppProviderProps) => {
   }, [state.alert])
 
   useEffect(() => {
-    const localUser = localStorage.getItem('jh-authUser')
+    const localUser = localStorage.getItem('jhUser')
     if (localUser) {
       dispatch({type: AppActionType.AuthInit, payload: JSON.parse(localUser)})
     }
@@ -47,7 +49,7 @@ const AppProvider = ({children, value}: AppProviderProps) => {
 
   const authenticate = async () => {
     if (state.user && state.user.token) return true
-    const localUser = localStorage.getItem('jh-authUser')
+    const localUser = localStorage.getItem('jhUser')
     if (localUser) {
       dispatch({type: AppActionType.AuthInit, payload: JSON.parse(localUser)})
       return Promise.resolve(true)
@@ -67,7 +69,7 @@ const AppProvider = ({children, value}: AppProviderProps) => {
         type: AppActionType.AuthUserSuccess,
         payload: user,
       })
-      localStorage.setItem('jh-registerUser', JSON.stringify(user))
+      localStorage.setItem('jhRegisterUser', JSON.stringify(user))
     }
     if (error) {
       dispatch({
@@ -85,8 +87,6 @@ const AppProvider = ({children, value}: AppProviderProps) => {
         type: AppActionType.AuthUserSuccess,
         payload: user,
       })
-      localStorage.removeItem('jh-registerUser')
-      localStorage.setItem('jh-authUser', JSON.stringify(user))
     }
     if (error) {
       dispatch({
@@ -98,18 +98,18 @@ const AppProvider = ({children, value}: AppProviderProps) => {
 
   const logout = () => {
     dispatch({type: AppActionType.AuthLogout})
-    localStorage.removeItem('jh-authUser')
+    localStorage.removeItem('jhUser')
+    navigate('/landing')
   }
 
   const updateUser = async (user: UpdateUser) => {
     dispatch({type: AppActionType.AuthUserStart,})
-    const updatedUser = await patch('/users', user)
+    const updatedUser = await patch(`/users/${state.user?.id}`, user)
     if (response.ok) {
       dispatch({
-        type: AppActionType.AuthUserSuccess,
+        type: AppActionType.AuthUserUpdateSuccess,
         payload: updatedUser,
       })
-      localStorage.setItem('jh-authUser', JSON.stringify(updatedUser))
     }
     if (error) {
       dispatch({

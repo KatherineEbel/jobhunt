@@ -1,6 +1,6 @@
-import { useAppContext } from 'context/appContext'
-import { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+// import { useAppContext } from 'context/appContext'
+// import { useEffect } from 'react'
+// import { useNavigate } from 'react-router-dom'
 
 const Stats = () => {
   // const { user } = useAppContext()

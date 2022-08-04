@@ -1,4 +1,4 @@
-import { User } from 'services/auth'
+import { AuthUser } from 'services/auth'
 
 export enum AppActionType {
   AuthInit = 'app/authInit',
@@ -19,7 +19,7 @@ export interface Action {
 type AuthUserStartAction = Action
 
 export interface AuthUserSuccessAction extends Action {
-  payload: User
+  payload: AuthUser
 }
 
 export interface AuthUserErrorAction extends Action {
@@ -47,7 +47,7 @@ export interface Alert {
 }
 
 export interface AppState {
-  user: User | null
+  user: AuthUser | null
   alert: Alert | null
 }
 
@@ -60,13 +60,13 @@ export function appReducer(
   state: AppState = initialState,
   { type, payload = null }: AppAction
 ): AppState {
-  let user: User
+  let user: AuthUser
   let message: string
   switch (type) {
     case AppActionType.AuthInit:
       return {
         ...state,
-        user: payload as User,
+        user: payload as AuthUser,
       }
     case AppActionType.AuthLogout:
       return {
@@ -78,7 +78,7 @@ export function appReducer(
         ...state,
       }
     case AppActionType.AuthUserSuccess:
-      user = payload as User
+      user = payload as AuthUser
       message = user.token ? 'Welcome Back!' : 'Welcome to JobHunt!'
       return {
         ...state,
@@ -92,7 +92,7 @@ export function appReducer(
         user: null,
       }
     case AppActionType.AuthUserUpdateSuccess:
-      user = payload as User
+      user = payload as AuthUser
       message = 'Profile Updated'
       return {
         ...state,

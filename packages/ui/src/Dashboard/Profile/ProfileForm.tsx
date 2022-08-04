@@ -1,4 +1,4 @@
-import {Formik, FormikHelpers} from 'formik'
+import {Form, Formik, FormikHelpers} from 'formik'
 import * as React from 'react'
 import {Input} from 'Input'
 import {ButtonBlock} from 'styled'
@@ -8,7 +8,7 @@ import * as yup from 'yup'
 const profileSchema = yup.object().shape({
   firstName: yup.string().required(),
   lastName: yup.string().required(),
-  email: yup.string().email(),
+  email: yup.string().email().required(),
 })
 
 
@@ -53,9 +53,8 @@ export const ProfileForm = ({onSubmit, user}:ProfileFormProps) => {
     }} onSubmit={handleSubmit}
             validationSchema={profileSchema}
     >
-
       {({isSubmitting}) => (
-        <>
+        <Form>
           <FormGroup>
             <Input label='First Name' type='text' name='firstName'/>
             <Input label="Last Name" type="text" name="lastName" />
@@ -63,12 +62,11 @@ export const ProfileForm = ({onSubmit, user}:ProfileFormProps) => {
           <FormGroup>
             <Input label="Email" type="text" name="email" />
             <ButtonBlock type="submit" disabled={isSubmitting}>
-              Submit
+              save changes
             </ButtonBlock>
           </FormGroup>
-        </>
+        </Form>
         )}
-
     </Formik>
   )
 }

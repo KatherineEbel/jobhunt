@@ -30,9 +30,7 @@ export const loginHandler: RequestHandler = async (
   if (!(await user.authenticate(password)))
     throw new APIError('invalid credentials', StatusCodes.UNAUTHORIZED)
   res.json({
-    name: user.fullName(),
+    ...user.toJSON(),
     token: await user.getToken(),
-    email: user.email,
-    id: user._id
   })
 }
