@@ -1,19 +1,12 @@
-import {
-  afterEach,
-  beforeEach,
-  describe,
-  expect,
-  it,
-  test,
-} from '@jest/globals'
-import { Express } from 'express'
+import {afterEach, beforeEach, describe, expect, it, test,} from '@jest/globals'
+import {Express} from 'express'
 import supertest from 'supertest'
-import { db } from '../config'
-import { createServer } from '../server'
+import {db} from '../config'
+import {createServer} from '../server'
 
 const BASE_URL = `/api/v1`
 
-type AuthUser = {token: string, id: string}
+type AuthUser = { token: string, id: string }
 
 const validUser = {
   firstName: 'John',
@@ -71,7 +64,7 @@ describe('server', () => {
         .get('/message/jared')
         .expect(200)
         .then((res) => {
-          expect(res.body).toEqual({ message: 'hello jared' })
+          expect(res.body).toEqual({message: 'hello jared'})
         })
     })
 
@@ -80,7 +73,7 @@ describe('server', () => {
         .get('/foobar')
         .expect(404)
         .then((res) => {
-          expect(res.body).toEqual({ error: 'route not found for /foobar' })
+          expect(res.body).toEqual({error: 'route not found for /foobar'})
         })
     })
   })
@@ -201,10 +194,10 @@ describe('server', () => {
 
     test('login route returns 200', async function () {
       await registerValidUser(app)
-      const { email, password } = validUser
+      const {email, password} = validUser
       await supertest(app)
         .post('/api/v1/auth/login')
-        .send({ email, password })
+        .send({email, password})
         .expect(200)
         .expect((res) => {
           expect(res.body).toHaveProperty('token')
@@ -213,21 +206,21 @@ describe('server', () => {
 
     test('login route returns 401 with invalid password', async function () {
       await registerValidUser(app)
-      const { email, password } = validUser
+      const {email, password} = validUser
       await supertest(app)
         .post('/api/v1/auth/login')
-        .send({ email, password: password.slice(1) })
+        .send({email, password: password.slice(1)})
         .expect(401)
         .expect((res) => {
           expect(res.body).toHaveProperty('error')
         })
     })
 
-    test("login route returns 401 when user doesn't exist", async function () {
-      const { password } = validUser
+    test('login route returns 401 when user doesn\'t exist', async function () {
+      const {password} = validUser
       await supertest(app)
         .post('/api/v1/auth/login')
-        .send({ email: 'wrong@example.com', password: password.slice(1) })
+        .send({email: 'wrong@example.com', password: password.slice(1)})
         .expect(401)
         .expect((res) => {
           expect(res.body).toHaveProperty('error')
@@ -235,69 +228,103 @@ describe('server', () => {
     })
   })
 
-  describe('user routes', () => {
-    describe('when logged in', () => {
-      let authUser: AuthUser
-      beforeAll(async () => {
-        app = await createServer()
-        await registerValidUser(app)
-        authUser = await loginUser(app, validUser)
-      })
-      afterAll(async () => {
-        await db.connection.dropDatabase()
-        await db.connection.close()
-      })
-      test('updateUser route returns 200', async function () {
-        await supertest(app).patch(`/api/v1/users/${authUser.id}`)
-          .set('Authorization', `Bearer ${authUser.token}`)
-          .send({email: 'new@example.com', firstName: 'Newname'})
-          .expect(200)
-          .expect(res => {
-            expect(res.body.email).toBe('new@example.com')
-            expect(res.body.firstName).toBe('Newname')
-            expect(res.body.lastName).toBe(validUser.lastName)
-          })
+  describe('auth routes', () => {
+    let authUser: AuthUser
+    beforeAll(async () => {
+      app = await createServer()
+      await registerValidUser(app)
+      authUser = await loginUser(app, validUser)
+    })
+    afterAll(async () => {
+      await db.connection.dropDatabase()
+      await db.connection.close()
+    })
+
+    describe('user routes', () => {
+      describe('when logged in', () => {
+        test('updateUser route returns 200', async function () {
+          await supertest(app).patch(`/api/v1/users/${authUser.id}`)
+            .set('Authorization', `Bearer ${authUser.token}`)
+            .send({email: 'new@example.com', firstName: 'Newname'})
+            .expect(200)
+            .expect(res => {
+              expect(res.body.email).toBe('new@example.com')
+              expect(res.body.firstName).toBe('Newname')
+              expect(res.body.lastName).toBe(validUser.lastName)
+            })
+        })
       })
     })
-  })
 
-  describe('job routes', () => {
-    describe('when logged in', () => {
-      const baseUrl = '/api/v1/jobs'
-      let authUser: AuthUser
-      beforeAll(async () => {
-        app = await createServer()
-        await registerValidUser(app)
-        authUser = await loginUser(app, validUser)
-      })
+    describe('job routes', () => {
+      describe('when logged in', () => {
+        const baseUrl = '/api/v1/jobs'
 
-      afterAll(async () => {
-        await db.connection.dropDatabase()
-        await db.connection.close()
-      })
-      test('"/" returns 200', async () => {
-        expect(authUser).toBeDefined()
-        await supertest(app).get(baseUrl)
-          .set('Authorization', `Bearer ${authUser.token}`)
-          .expect(200)
-      })
+        test('get "/" returns 200', async () => {
+          expect(authUser).toBeDefined()
+          await supertest(app).get(baseUrl)
+            .set('Authorization', `Bearer ${authUser.token}`)
+            .expect(200)
+        })
 
-      test.skip('post returns 200', async () => {
-        await supertest(app).post(baseUrl)
-          .set('Authorization', `Bearer ${authUser.token}`)
-          .expect(200)
-      })
+        test('post with valid values returns 201', async () => {
+          await supertest(app).post(baseUrl)
+            .send({
+              position: 'Software Engineer',
+              company: 'Mozilla',
+            })
+            .set('Authorization', `Bearer ${authUser.token}`)
+            .expect(201)
+            .expect(async res => {
+              const {job} = res.body
+              expect(job).toBeDefined()
+              expect(job.position).toBe('Software Engineer')
+              expect(job.company).toBe('Mozilla')
+              expect(job.contract).toBe('full-time')
+              expect(job.status).toBe('pending')
+              expect(job.createdBy).toBe(authUser.id)
+            })
+        })
 
-      test.skip('patch returns 200', async () => {
-        await supertest(app).patch(`${baseUrl}/1`)
-          .set('Authorization', `Bearer ${authUser.token}`)
-          .expect(200)
-      })
+        test('post without auth returns 401 values returns 201', async () => {
+          await supertest(app).post(baseUrl)
+            .set('Authorization', '')
+            .send({
+              position: 'Software Engineer',
+              company: 'Mozilla',
+            })
+            .expect(401)
+            .expect(async res => {
+              expect(res.body.error).toBeDefined()
+            })
+        })
 
-      test.skip('delete returns 200', async () => {
-        await supertest(app).delete(`${baseUrl}/1`)
-          .set('Authorization', `Bearer ${authUser.token}`)
-          .expect(200)
+        test('post with invalid values returns 400', async () => {
+          await supertest(app).post(baseUrl)
+            .send({
+              position: '',
+              company: '',
+            })
+            .set('Authorization', `Bearer ${authUser.token}`)
+            .expect(400)
+            .expect(async res => {
+              expect(res.body.error).toBeDefined()
+            })
+        })
+
+
+
+        test.skip('patch returns 200', async () => {
+          await supertest(app).patch(`${baseUrl}/1`)
+            .set('Authorization', `Bearer ${authUser.token}`)
+            .expect(200)
+        })
+
+        test.skip('delete returns 200', async () => {
+          await supertest(app).delete(`${baseUrl}/1`)
+            .set('Authorization', `Bearer ${authUser.token}`)
+            .expect(200)
+        })
       })
     })
   })
