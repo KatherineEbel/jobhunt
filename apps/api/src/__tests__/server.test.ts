@@ -33,8 +33,8 @@ async function loginUser(app: Express, user: typeof validUser): Promise<AuthUser
     .send({email, password})
     .expect(200)
     .then(res => {
-      authUser.token = res.body.token
-      authUser.id = res.body.id
+      const {user} = res.body
+      authUser = user
     })
   expect(Object.values(authUser).every(Boolean)).toBe(true)
   return authUser
@@ -124,12 +124,13 @@ describe('server', () => {
         })
         .expect(201)
         .then((res) => {
-          expect(res.body).toMatchObject({
+          expect(res.body).toHaveProperty('user')
+          expect(res.body.user).toEqual(expect.objectContaining({
             firstName: 'John',
             lastName: 'Doe',
             location: 'New York City',
             email: 'john@example.com',
-          })
+          }))
         })
     })
 
@@ -182,8 +183,9 @@ describe('server', () => {
         })
         .expect(201)
         .expect((res) => {
-          expect(res.body.passwordHash).not.toBeDefined()
-          expect(res.body.id).toBeDefined()
+          const { user } = res.body
+          expect(user.passwordHash).not.toBeDefined()
+          expect(user.id).toBeDefined()
         })
     })
 
@@ -208,7 +210,8 @@ describe('server', () => {
         .send({email, password})
         .expect(200)
         .expect((res) => {
-          expect(res.body).toHaveProperty('token')
+          const {user} = res.body
+          expect(user).toHaveProperty('token')
         })
     })
 

@@ -34,10 +34,10 @@ interface AppProviderProps {
 const BASE_URL = process.env.REACT_APP_API_URL
 
 const AppProvider = ({children, value}: AppProviderProps) => {
-  const [localUser] = useLocalStorageState<AuthUser | null>('jhUser', { defaultValue: value ? value.user : null})
-  const [state, dispatch] = useReducer(appReducer, value ? { user: value.user, jobs: value.jobs, alert: value.alert} : initialState, undefined)
+  const [localUser, setLocalUser] = useLocalStorageState<AuthUser | null>('jhUser', { defaultValue: value ? value.user : null})
+  const [state, dispatch] = useReducer(appReducer, value ? { user: value.user, jobs: value.jobs, alert: value.alert} : {...initialState, user: localUser}, undefined)
   const {jobs, addJob} = useJobs()
-  const {patch, post, response, error} = useFetch(BASE_URL)
+  const {patch, post, response, error} = useFetch<{user: AuthUser}>(BASE_URL)
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -46,12 +46,6 @@ const AppProvider = ({children, value}: AppProviderProps) => {
       dispatch({type: AppActionType.ClearAlert})
     }, 5000)
   }, [state.alert])
-
-  useEffect(() => {
-    if (localUser) {
-      dispatch({type: AppActionType.AuthInit, payload: localUser})
-    }
-  }, [])
 
   const displayAlert = (alert: Alert) => {
     dispatch({type: AppActionType.SetAlert, payload: alert})
@@ -77,11 +71,11 @@ const AppProvider = ({children, value}: AppProviderProps) => {
 
   const loginUser = async (request: LoginUser) => {
     dispatch({type: AppActionType.AuthUserStart})
-    const user = await post('/auth/login', request)
+    const data = await post('/auth/login', request)
     if (response.ok) {
       dispatch({
         type: AppActionType.AuthUserSuccess,
-        payload: user,
+        payload: data.user,
       })
     }
     if (error) {
@@ -94,17 +88,17 @@ const AppProvider = ({children, value}: AppProviderProps) => {
 
   const logout = () => {
     dispatch({type: AppActionType.AuthLogout})
-    localStorage.removeItem('jhUser')
+    setLocalUser(null)
     navigate('/landing')
   }
 
   const updateUser = async (user: UpdateUser) => {
     dispatch({type: AppActionType.AuthUserStart,})
-    const updatedUser = await patch(`/users/${state.user?.id}`, user)
+    const data = await patch(`/users/${state.user?.id}`, user)
     if (response.ok) {
       dispatch({
         type: AppActionType.AuthUserUpdateSuccess,
-        payload: updatedUser,
+        payload: data.user,
       })
     }
     if (error) {

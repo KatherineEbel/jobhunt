@@ -5,59 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b6d8152f-e918-46a7-a4e9-34c64c7b909e" name="Changes" comment="implement create job form, move common model code into lib package">
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/api/http-client.env.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/hooks/useJobs.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/lib/.eslintrc.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/lib/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/lib/src/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/lib/src/job/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/lib/src/job/model.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/lib/src/job/schema.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/lib/src/user/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/lib/src/user/model.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/lib/src/user/schema.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/lib/tsconfig.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/ui/src/Dashboard/AddJob/JobForm.test.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/ui/src/Dashboard/AddJob/JobForm.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/ui/src/Select.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.eslintignore" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/src/__tests__/User.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/__tests__/User.test.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/api/src/__tests__/server.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/__tests__/server.test.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/api/src/controllers/auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/controllers/auth.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/src/controllers/jobs.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/controllers/jobs.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/src/middleware/validatorMiddleware.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/middleware/validatorMiddleware.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/src/models/Job.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/models/Job.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/src/models/User.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/models/User.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/src/routes/auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/routes/auth.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/src/routes/jobs.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/routes/jobs.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/src/server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/server.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/src/services/job.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/services/job.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/src/services/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/services/user.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/App.test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/App.test.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/web/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/App.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/web/src/context/appContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/context/appContext.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/context/appReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/context/appReducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/hooks/useAuth.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/links.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/links.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/pages/Dashboard/AddJob.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/pages/Dashboard/AddJob.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/pages/Dashboard/Dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/pages/Dashboard/Dashboard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/pages/Dashboard/Stats.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/pages/Dashboard/Stats.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/pages/ProtectedRoute.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/pages/ProtectedRoute.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/services/auth.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/ui/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/ui/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/ui/src/Dashboard/NavLinks.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/ui/src/Dashboard/NavLinks.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/ui/src/Dashboard/Profile/ProfileForm.test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/ui/src/Dashboard/Profile/ProfileForm.test.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/ui/src/Dashboard/Profile/ProfileForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/ui/src/Dashboard/Profile/ProfileForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/ui/src/Dashboard/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/ui/src/Dashboard/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/ui/src/register/RegisterForm.test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/ui/src/register/RegisterForm.test.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/ui/src/register/RegisterForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/ui/src/register/RegisterForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/ui/src/styled.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/ui/src/styled.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/ui/src/utils/links.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/ui/src/utils/links.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/lib/src/user/model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/lib/src/user/model.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,7 +90,6 @@
       <command value="yarn workspace web add use-local-storage" />
       <command value="yarn workspace web remove use-local-storage" />
       <command value="yarn workspace web add use-local-storage-state" />
-      <command value="yarn run test" />
       <command value="yarn run test --filter=ui" />
       <command value="yarn run dev --filter=web" />
       <command value="yarn run dev --filter=api" />
@@ -156,12 +108,13 @@
       <command value="yarn run dev --filter=ui" />
       <command value="yarn run dev" />
       <command value="yarn run test:ci --filter=web" />
-      <command value="yarn run test --filter=web" />
-      <command value="yarn run test:ci" />
       <command value="yarn test --filter=ui" />
+      <command value="yarn run test" />
+      <command value="yarn run test:ci" />
+      <command value="yarn run test --filter=web" />
     </option>
   </component>
-  <component name="RunManager" selected="Jest.JobForm.valid input.onSubmit called">
+  <component name="RunManager" selected="JavaScript Debug.DebugClient">
     <configuration name="Alert.render" type="JavaScriptTestRunnerJest" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
@@ -214,20 +167,6 @@
       <test-names>
         <test-name value="App" />
         <test-name value="render with user" />
-      </test-names>
-      <method v="2" />
-    </configuration>
-    <configuration name="App.render without user" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
-      <node-interpreter value="project" />
-      <node-options value="" />
-      <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
-      <working-dir value="$PROJECT_DIR$/apps/web" />
-      <envs />
-      <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/apps/web/src/App.test.tsx" />
-      <test-names>
-        <test-name value="App" />
-        <test-name value="render without user" />
       </test-names>
       <method v="2" />
     </configuration>
@@ -359,6 +298,16 @@
       <envs />
       <method v="2" />
     </configuration>
+    <configuration name="test" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="test" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <configuration name="test:ci" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -383,17 +332,17 @@
       <item itemvalue="Jest.server.job routes.when logged in" />
       <item itemvalue="Jest.App" />
       <item itemvalue="Jest.App.render with user" />
-      <item itemvalue="Jest.App.render without user" />
+      <item itemvalue="npm.test" />
       <item itemvalue="npm.test --filter=web" />
       <item itemvalue="npm.test:ci" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.test:ci" />
-        <item itemvalue="Jest.App" />
         <item itemvalue="npm.test --filter=web" />
+        <item itemvalue="npm.test:ci" />
+        <item itemvalue="npm.test" />
+        <item itemvalue="Jest.App" />
         <item itemvalue="Jest.App.render with user" />
-        <item itemvalue="Jest.App.render without user" />
       </list>
     </recent_temporary>
   </component>
@@ -407,7 +356,7 @@
       <updated>1659503161183</updated>
       <workItem from="1659503162855" duration="9534000" />
       <workItem from="1659572989687" duration="14957000" />
-      <workItem from="1659966017195" duration="11470000" />
+      <workItem from="1659966017195" duration="14198000" />
     </task>
     <task id="LOCAL-00001" summary="protect jobs and user routes">
       <created>1659543722494</created>
@@ -437,7 +386,21 @@
       <option name="project" value="LOCAL" />
       <updated>1659874638373</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="implement create job form, move common model code into lib package">
+      <created>1659980510883</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1659980510883</updated>
+    </task>
+    <task id="LOCAL-00006" summary="implement create job form, move common model code into lib package">
+      <created>1659980600343</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1659980600343</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -470,17 +433,12 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/apps/api/src/__tests__/server.test.ts</url>
-          <line>38</line>
+          <line>39</line>
           <option name="timeStamp" value="39" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/apps/api/src/__tests__/server.test.ts</url>
-          <line>35</line>
-          <option name="timeStamp" value="40" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/apps/api/src/__tests__/server.test.ts</url>
-          <line>39</line>
+          <line>40</line>
           <option name="timeStamp" value="41" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
@@ -500,7 +458,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/apps/web/src/context/appContext.tsx</url>
-          <line>102</line>
+          <line>96</line>
           <option name="timeStamp" value="47" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
@@ -518,12 +476,6 @@
           <line>9</line>
           <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="69" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/apps/web/src/pages/ProtectedRoute.tsx</url>
-          <line>5</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="70" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -1,13 +1,12 @@
 import { RequestHandler } from 'express'
 import { APIError } from '../errors/APIError'
-import { IUser } from '../models/User'
+import {LoginUser, RegisterUser} from 'lib'
 import { TypedRequestBody } from '../types'
 import * as userService from '../services/user'
 import { StatusCodes } from 'http-status-codes'
 
-type RegisterRequest = Omit<IUser, 'passwordHash'> & { password: string }
 export const registerHandler: RequestHandler = async (
-  req: TypedRequestBody<RegisterRequest>,
+  req: TypedRequestBody<RegisterUser>,
   res
 ) => {
   const { firstName, lastName, location, email, password } = req.body
@@ -18,12 +17,11 @@ export const registerHandler: RequestHandler = async (
     email,
     password
   )
-  res.status(StatusCodes.CREATED).json(user)
+  res.status(StatusCodes.CREATED).json({user})
 }
 
-type LoginRequest = Pick<IUser, 'email'> & { password: string }
 export const loginHandler: RequestHandler = async (
-  req: TypedRequestBody<LoginRequest>,
+  req: TypedRequestBody<LoginUser>,
   res
 ) => {
   const { email, password } = req.body
@@ -31,7 +29,9 @@ export const loginHandler: RequestHandler = async (
   if (!(await user.authenticate(password)))
     throw new APIError('invalid credentials', StatusCodes.UNAUTHORIZED)
   res.json({
-    ...user.toJSON(),
-    token: await user.getToken(),
+    user: {
+      ...user.toJSON(),
+      token: await user.getToken(),
+    }
   })
 }

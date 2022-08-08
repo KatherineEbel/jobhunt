@@ -24,9 +24,9 @@ function App({initialContext}: AppProps) {
         return options
       },
       response: async ({response}) => {
-        if (response.data && response.data.token) {
+        if (response.data && response.data.user) {
           console.log('got user response', {data: response.data})
-          setUser(response.data)
+          setUser(response.data.user)
         }
         return response
       }
