@@ -6,22 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="b6d8152f-e918-46a7-a4e9-34c64c7b909e" name="Changes" comment="get jobs for current user">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/src/controllers/jobs.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/controllers/jobs.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/src/controllers/users.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/controllers/users.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/src/middleware/requireAuthMiddleware.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/middleware/requireAuthMiddleware.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/src/models/User.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/models/User.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/src/routes/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/routes/user.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api/src/__tests__/server.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/__tests__/server.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api/src/controllers/users.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/controllers/profile.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api/src/routes/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/routes/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api/src/routes/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/routes/profile.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/api/src/server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/server.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/src/services/job.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/services/job.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/src/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/App.test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/App.test.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/web/src/context/appContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/context/appContext.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/context/appReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/context/appReducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/hooks/useJobs.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/hooks/useJobs.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/pages/Dashboard/Jobs.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/pages/Dashboard/Jobs.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/pages/Dashboard/Stats.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/pages/Dashboard/Stats.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/lib/src/job/model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/lib/src/job/model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/ui/src/utils/links.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/ui/src/utils/links.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +101,6 @@
       <command value="yarn run build --filter=jobs" />
       <command value="yarn test" />
       <command value="yarn" />
-      <command value="yarn run test --filter=api" />
       <command value="yarn test --filter=web" />
       <command value="yarn run dev --filter=lib" />
       <command value="yarn run clean --filter=lib" />
@@ -123,6 +112,7 @@
       <command value="yarn run test:ci" />
       <command value="yarn run test --filter=web" />
       <command value="yarn run dev" />
+      <command value="yarn run test --filter=api" />
     </option>
   </component>
   <component name="RunManager" selected="Jest.App.with user.stats screen rendered">
@@ -313,12 +303,13 @@
     <configuration name="DebugClient" type="JavascriptDebugType" uri="http://localhost:3000" useFirstLineBreakpoints="true">
       <method v="2" />
     </configuration>
-    <configuration name="dev (1)" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+    <configuration name="test --filter=api" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
       <scripts>
-        <script value="dev" />
+        <script value="test" />
       </scripts>
+      <arguments value="--filter=api" />
       <node-interpreter value="project" />
       <envs />
       <method v="2" />
@@ -349,16 +340,16 @@
       <item itemvalue="Jest.App" />
       <item itemvalue="Jest.App.with user" />
       <item itemvalue="Jest.App.with user.stats screen rendered" />
-      <item itemvalue="npm.dev (1)" />
+      <item itemvalue="npm.test --filter=api" />
       <item itemvalue="npm.test --filter=web" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.test --filter=api" />
         <item itemvalue="Jest.App.with user.stats screen rendered" />
         <item itemvalue="Jest.App.with user" />
         <item itemvalue="Jest.App" />
         <item itemvalue="npm.test --filter=web" />
-        <item itemvalue="npm.dev (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -372,7 +363,7 @@
       <updated>1659503161183</updated>
       <workItem from="1659503162855" duration="9534000" />
       <workItem from="1659572989687" duration="14957000" />
-      <workItem from="1659966017195" duration="26174000" />
+      <workItem from="1659966017195" duration="26522000" />
     </task>
     <task id="LOCAL-00001" summary="protect jobs and user routes">
       <created>1659543722494</created>
@@ -423,7 +414,14 @@
       <option name="project" value="LOCAL" />
       <updated>1659983271537</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="get jobs for current user">
+      <created>1660001935304</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1660001935304</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

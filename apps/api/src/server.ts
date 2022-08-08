@@ -5,7 +5,7 @@ import morgan from 'morgan'
 import {requireAuth} from './middleware/requireAuthMiddleware'
 import { connect } from './config'
 import { errorMiddleware, notFoundMiddleware } from './middleware'
-import { authRoutes, userRoutes, jobRoutes } from './routes'
+import { authRoutes, profileRoutes, jobRoutes } from './routes'
 import { log } from 'logger'
 
 export const createServer = async () => {
@@ -24,7 +24,7 @@ export const createServer = async () => {
     .use(express.urlencoded({ extended: true }))
     .use(cors())
     .use('/api/v1/auth', authRoutes)
-    .use('/api/v1/users', requireAuth, userRoutes)
+    .use('/api/v1/profile', requireAuth, profileRoutes)
     .use('/api/v1/jobs', requireAuth, jobRoutes)
     .get('/message/:name', (req, res) => {
       return res.json({ message: `hello ${req.params.name}` })

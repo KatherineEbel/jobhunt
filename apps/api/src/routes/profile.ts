@@ -1,9 +1,9 @@
 import { Router } from 'express'
 import {validate} from '../middleware/validatorMiddleware'
-import { updateProfile } from '../controllers/users'
+import { updateProfile } from '../controllers/profile'
 import * as yup from 'yup'
 
-export const userRoutes = Router()
+export const profileRoutes = Router()
 
 const profileSchema = yup.object().shape({
   firstName: yup.string().min(2, 'minimum length is 2'),
@@ -11,4 +11,4 @@ const profileSchema = yup.object().shape({
   email: yup.string().email('please provide a valid email'),
 })
 
-userRoutes.patch('/:id', validate(profileSchema), updateProfile)
+profileRoutes.patch('/:id', validate(profileSchema), updateProfile)

@@ -100,7 +100,7 @@ const AppProvider = ({children, value}: AppProviderProps) => {
 
   const updateUser = async (user: UpdateUser) => {
     dispatch({type: AppActionType.AuthUserStart,})
-    const data = await patch(`/users/${state.user?.id}`, user)
+    const data = await patch(`/profile/${state.user?.id}`, user)
     if (response.ok) {
       dispatch({
         type: AppActionType.AuthUserUpdateSuccess,
