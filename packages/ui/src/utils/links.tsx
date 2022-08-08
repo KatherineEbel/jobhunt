@@ -9,8 +9,8 @@ export const sidebarLinks = [
   },
   {
     id: 2,
-    text: 'all job',
-    to: 'job',
+    text: 'all jobs',
+    to: 'jobs',
     icon: <MdQueryStats />,
   },
   {

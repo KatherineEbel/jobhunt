@@ -1,6 +1,5 @@
 import { Router } from 'express'
 import {validate} from '../middleware/validatorMiddleware'
-import {requireAuth} from '../middleware/requireAuthMiddleware'
 import { updateProfile } from '../controllers/users'
 import * as yup from 'yup'
 
@@ -12,4 +11,4 @@ const profileSchema = yup.object().shape({
   email: yup.string().email('please provide a valid email'),
 })
 
-userRoutes.patch('/:id', requireAuth, validate(profileSchema), updateProfile)
+userRoutes.patch('/:id', validate(profileSchema), updateProfile)

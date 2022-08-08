@@ -21,6 +21,7 @@ export interface Job {
   contract: ContractType
   location: string
   createdBy: string
+  id?: string
 }
 
 export type CreateJobRequest = Omit<Job, 'createdBy'>

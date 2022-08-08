@@ -10,7 +10,7 @@ import useLocalStorageState from 'use-local-storage-state'
 
 
 export interface AppContextType {
-  jobs: Job[],
+  jobs: Job[] | null,
   user: AuthUser | null
   addJob: (request: CreateJobRequest) => Promise<boolean>
   alert: {
@@ -36,9 +36,15 @@ const BASE_URL = process.env.REACT_APP_API_URL
 const AppProvider = ({children, value}: AppProviderProps) => {
   const [localUser, setLocalUser] = useLocalStorageState<AuthUser | null>('jhUser', { defaultValue: value ? value.user : null})
   const [state, dispatch] = useReducer(appReducer, value ? { user: value.user, jobs: value.jobs, alert: value.alert} : {...initialState, user: localUser}, undefined)
-  const {jobs, addJob} = useJobs()
+  const {jobs, addJob, error: jobActionError} = useJobs(localUser, value?.jobs || null)
   const {patch, post, response, error} = useFetch<{user: AuthUser}>(BASE_URL)
   const navigate = useNavigate()
+
+  useEffect(() => {
+    if (jobActionError) displayAlert({
+      type: 'success', message: jobActionError
+    })
+  }, [jobActionError])
 
   useEffect(() => {
     if (state.alert === null) return

@@ -1,10 +1,12 @@
 import { Express } from 'express'
-import {AuthRequest} from './middleware/requireAuthMiddleware'
+import {AppJwtPayload} from './middleware/requireAuthMiddleware'
+// import {AuthRequest} from './middleware/requireAuthMiddleware'
 
 export interface TypedRequestBody<T> extends Express.Request {
   body: T
 }
 
-export interface TypedAuthRequestBody<T> extends AuthRequest {
+export interface TypedAuthRequestBody<T> extends Express.Request {
   body: T
+  user: AppJwtPayload
 }

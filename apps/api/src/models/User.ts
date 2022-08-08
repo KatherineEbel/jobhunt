@@ -73,7 +73,7 @@ UserSchema.method('authenticate', async function (password: string) {
 })
 
 UserSchema.method('getToken', async function () {
-  return jwt.sign({ user_id: this._id }, appEnvironment.jwtSecret, {
+  return jwt.sign({ userId: this._id }, appEnvironment.jwtSecret, {
     expiresIn: '1d',
   })
 })

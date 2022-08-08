@@ -10,3 +10,11 @@ export async function createJob(
 ) {
   return Job.create(request)
 }
+
+/**
+ * @params userId {string}
+ * @returns Job[]
+ */
+export async function getAll(userId: string) {
+  return Job.find({createdBy: userId})
+}

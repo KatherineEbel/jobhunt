@@ -3,9 +3,12 @@
 // import { useNavigate } from 'react-router-dom'
 
 import {useAppContext} from 'context/appContext'
+import {Loader} from 'ui'
 
 const Stats = () => {
-  const { user } = useAppContext()
+  const { user, jobs } = useAppContext()
+
+  if (!jobs) return <Loader/>
 
   return (
     <div>

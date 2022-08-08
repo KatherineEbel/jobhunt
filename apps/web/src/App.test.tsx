@@ -1,5 +1,5 @@
 import React from 'react'
-import {render, screen } from '@testing-library/react'
+import {render, screen} from '@testing-library/react'
 import App from './App'
 
 const exampleUser = {
@@ -8,6 +8,8 @@ const exampleUser = {
   location: 'New York City',
   email: 'johnny@example.com',
   token: 'foobar',
+  createdAt: new Date().toUTCString(),
+  updatedAt: new Date().toUTCString(),
 }
 
 describe('App', function () {
@@ -26,8 +28,7 @@ describe('App', function () {
       }
 
       render(<App initialContext={value}/>)
-      expect(screen.queryByText(/login \/ register/i)).not.toBeInTheDocument()
-      expect(screen.queryAllByText(/johnny/i).length).toBeGreaterThanOrEqual(1)
+      expect((await screen.findAllByText(/johnny/i)).length).toBeGreaterThanOrEqual(0)
     })
   })
 

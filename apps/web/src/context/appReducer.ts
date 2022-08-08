@@ -49,7 +49,7 @@ export interface Alert {
 
 export interface AppState {
   user: AuthUser | null
-  jobs: Job[]
+  jobs: Job[] | null
   alert: Alert | null
 }
 

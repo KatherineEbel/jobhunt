@@ -1,9 +1,5 @@
-import { RequestHandler } from 'express'
-import {StatusCodes} from 'http-status-codes'
-import {CreateJobRequest} from 'lib'
-import {APIError} from '../errors/APIError'
-import {TypedAuthRequestBody} from '../types'
-import {AuthHandler} from '../middleware/requireAuthMiddleware'
+import {RequestHandler, Response} from 'express'
+import {AuthHandler, AuthRequest} from '../middleware/requireAuthMiddleware'
 import * as jobService from '../services/job'
 
 
@@ -12,10 +8,10 @@ import * as jobService from '../services/job'
  * @param req
  * @param res
  */
-export const create: AuthHandler = async (req: TypedAuthRequestBody<CreateJobRequest>, res) => {
-  const createdBy = req.user?.user_id
-  if (!createdBy) throw new APIError("Please log in first", StatusCodes.UNAUTHORIZED)
-  const job = await jobService.createJob(req.body)
+export const create: AuthHandler = async (req, res) => {
+  const createdBy = req.user?.userId
+  const jobRequest = {...req.body, createdBy}
+  const job = await jobService.createJob(jobRequest)
   res.status(201).json({ job })
 }
 /**
@@ -23,17 +19,21 @@ export const create: AuthHandler = async (req: TypedAuthRequestBody<CreateJobReq
  * @param req
  * @param res
  */
-export const deleteOne: RequestHandler = async (req, res) => {
+export const deleteOne: AuthHandler = async (req, res) => {
   res.sendStatus(200)
 }
 
 /**
  * Get all Jobs
- * @param req
- * @param res
+ * @param req {AuthRequest}
+ * @param res { Response}
  */
-export const getAll: RequestHandler = async (req, res) => {
-  res.sendStatus(200)
+export const getAll = async (req: AuthRequest, res: Response) => {
+  const userId = req.user?.userId
+  console.log({userId})
+  const jobs = await jobService.getAll(userId || '')
+  console.log(jobs)
+  res.json(jobs)
 }
 
 /**

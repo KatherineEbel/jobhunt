@@ -4,7 +4,7 @@ import jwt, {JwtPayload, TokenExpiredError} from 'jsonwebtoken'
 import {appEnvironment} from '../config'
 import {APIError} from '../errors/APIError'
 
-type AppJwtPayload = JwtPayload & { user_id: string }
+export type AppJwtPayload = JwtPayload & { userId: string }
 export interface AuthRequest extends Request {
   user?: AppJwtPayload
 }
