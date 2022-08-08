@@ -1,10 +1,10 @@
 import { NextFunction, Request, Response } from 'express'
-import * as yup from 'yup'
+import { validateSchema, ObjectSchema} from 'lib'
 
-export function validate(schema: yup.ObjectSchema<any>) {
+export function validate(schema: ObjectSchema) {
   return async (req: Request, res: Response, next: NextFunction) => {
     try {
-      await schema.validate(req.body)
+      await validateSchema(schema, req.body)
       return next()
     } catch (err: unknown) {
       next(err)

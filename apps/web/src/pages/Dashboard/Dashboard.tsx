@@ -2,7 +2,7 @@ import {useAppContext} from 'context/appContext'
 import { useToggle } from 'hooks/useToggle'
 import { Nav } from 'Nav'
 import React from 'react'
-import { Outlet } from 'react-router-dom'
+import {Outlet} from 'react-router-dom'
 import { SharedLayout, SmallSidebar, LargeSidebar } from 'ui'
 import {Alert} from 'ui'
 

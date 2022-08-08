@@ -1,13 +1,18 @@
 import {Alert, AppActionType, appReducer, initialState,} from 'context/appReducer'
 import {createCtx} from 'context/createCtx'
+import {useJobs} from 'hooks/useJobs'
+import {CreateJobRequest, Job} from 'lib'
 import {ReactNode, useEffect, useReducer} from 'react'
 import {useNavigate} from 'react-router-dom'
-import {LoginUser, RegisterUser, UpdateUser, AuthUser} from 'services/auth'
+import {AuthUser, LoginUser, RegisterUser, UpdateUser} from 'lib'
 import {useFetch} from 'use-http'
+import useLocalStorageState from 'use-local-storage-state'
+
 
 export interface AppContextType {
-  authenticate: () => Promise<boolean>
+  jobs: Job[],
   user: AuthUser | null
+  addJob: (request: CreateJobRequest) => Promise<boolean>
   alert: {
     message: string
     type: 'success' | 'danger'
@@ -29,7 +34,9 @@ interface AppProviderProps {
 const BASE_URL = process.env.REACT_APP_API_URL
 
 const AppProvider = ({children, value}: AppProviderProps) => {
-  const [state, dispatch] = useReducer(appReducer, initialState, undefined)
+  const [localUser] = useLocalStorageState<AuthUser | null>('jhUser', { defaultValue: value ? value.user : null})
+  const [state, dispatch] = useReducer(appReducer, value ? { user: value.user, jobs: value.jobs, alert: value.alert} : initialState, undefined)
+  const {jobs, addJob} = useJobs()
   const {patch, post, response, error} = useFetch(BASE_URL)
   const navigate = useNavigate()
 
@@ -41,21 +48,10 @@ const AppProvider = ({children, value}: AppProviderProps) => {
   }, [state.alert])
 
   useEffect(() => {
-    const localUser = localStorage.getItem('jhUser')
     if (localUser) {
-      dispatch({type: AppActionType.AuthInit, payload: JSON.parse(localUser)})
+      dispatch({type: AppActionType.AuthInit, payload: localUser})
     }
   }, [])
-
-  const authenticate = async () => {
-    if (state.user && state.user.token) return true
-    const localUser = localStorage.getItem('jhUser')
-    if (localUser) {
-      dispatch({type: AppActionType.AuthInit, payload: JSON.parse(localUser)})
-      return Promise.resolve(true)
-    }
-    return false
-  }
 
   const displayAlert = (alert: Alert) => {
     dispatch({type: AppActionType.SetAlert, payload: alert})
@@ -122,7 +118,16 @@ const AppProvider = ({children, value}: AppProviderProps) => {
   return (
     <AppContextProvider
       value={
-        value || {...state, authenticate: authenticate, displayAlert, logout, loginUser, registerUser, updateUser}
+        value || {
+          ...state,
+          addJob,
+          displayAlert,
+          logout,
+          loginUser,
+          jobs,
+          registerUser,
+          updateUser
+        }
       }
     >
       {children}

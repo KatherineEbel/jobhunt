@@ -26,10 +26,11 @@
     "@types/styled-components": "^5.1.25",
     "eslint": "^8.4.1",
     "eslint-config-custom-react": "*",
+    "lib": "*",
     "react-icons": "^4.4.0",
     "tsconfig": "*",
     "jest-presets": "*",
-    "tsup": "^5.10.1",
+    "tsup": "^6.2.1",
     "typescript": "^4.5.3"
   },
   "peerDependencies": {

@@ -1,3 +1,4 @@
+import {AuthUser} from 'lib'
 import {IncomingOptions, Provider as HTTPProvider} from 'use-http'
 import {AppContextType, AppProvider} from 'context/appContext'
 import { Error, Landing, ProtectedRoute, Register } from 'pages'
@@ -11,9 +12,7 @@ interface AppProps {
 }
 
 function App({initialContext}: AppProps) {
-  const [user, setUser] = useLocalStorageState('jhUser', {defaultValue: {
-    token: null
-    }})
+  const [user, setUser] = useLocalStorageState<AuthUser | null>('jhUser', {defaultValue: initialContext?.user || null})
   const options: IncomingOptions = {
     interceptors: {
       request: async ({ options}) => {

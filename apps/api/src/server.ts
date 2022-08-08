@@ -25,7 +25,7 @@ export const createServer = async () => {
     .use(cors())
     .use('/api/v1/auth', authRoutes)
     .use('/api/v1/users', userRoutes)
-    .use('/api/v1/jobs', requireAuth, jobRoutes)
+    .use('/api/v1/lib', requireAuth, jobRoutes)
     .get('/message/:name', (req, res) => {
       return res.json({ message: `hello ${req.params.name}` })
     })

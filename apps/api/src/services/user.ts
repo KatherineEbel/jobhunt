@@ -7,16 +7,18 @@ import {IUser, User, UserDoc} from '../models/User'
  * Insert user into database
  * @param firstName
  * @param lastName
+ * @param location
  * @param email
  * @param password
  */
 export async function createUser(
   firstName: string,
   lastName: string,
+  location: string,
   email: string,
   password: string
 ) {
-  const user = new User({ firstName, lastName, email })
+  const user = new User({ firstName, lastName, location, email })
   await user.hashPassword(password)
   return await user.save()
 }

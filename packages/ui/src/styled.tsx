@@ -8,7 +8,7 @@ export const button = css`
   border: transparent;
   border-radius: var(--borderRadius);
   letter-spacing: var(--letterSpacing);
-  padding: 0.375rem 0.75rem;
+  padding: 0.7rem 1rem;
   box-shadow: var(--shadow-2);
   transition: var(--transition);
   text-transform: capitalize;

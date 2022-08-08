@@ -44,6 +44,7 @@ describe('RegisterForm', () => {
       await userEvent.type(screen.getByLabelText(/first name/i), 'John')
       await userEvent.type(screen.getByLabelText(/last name/i), 'Smith')
       await userEvent.type(screen.getByLabelText(/email/i), 'john@example.com')
+      await userEvent.type(screen.getByLabelText(/location/i), 'San Francisco')
       await userEvent.type(screen.getByLabelText(/password/i), 'secret')
       await userEvent.click(submit)
       expect(submit).toBeDisabled()
@@ -52,6 +53,7 @@ describe('RegisterForm', () => {
           firstName: 'John',
           lastName: 'Smith',
           email: 'john@example.com',
+          location: 'San Francisco',
           password: 'secret',
         })
       )

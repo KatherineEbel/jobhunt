@@ -13,11 +13,12 @@ describe('ProfileForm', () => {
   })
 
   test('user field filled in when user provided', () => {
-    props.user = {firstName: 'John', lastName: 'Smith', email: 'john@example.com'}
+    props.user = {firstName: 'John', lastName: 'Smith', email: 'john@example.com', location: 'San Francisco'}
     render(<ProfileForm {...props}/>)
     expect(screen.getByLabelText(/first name/i)).toHaveValue('John')
     expect(screen.getByLabelText(/last name/i)).toHaveValue('Smith')
     expect(screen.getByLabelText(/email/i)).toHaveValue('john@example.com')
+    expect(screen.getByLabelText(/location/i)).toHaveValue('San Francisco')
   })
 
   test('form submitted with correct values', async () => {
@@ -26,6 +27,7 @@ describe('ProfileForm', () => {
     await userEvent.type(screen.getByLabelText(/first name/i), 'Johnny')
     await userEvent.type(screen.getByLabelText(/last name/i), 'Appleseed')
     await userEvent.type(screen.getByLabelText(/email/i), 'johnny@apple.com')
+    await userEvent.type(screen.getByLabelText(/location/i), 'San Francisco')
     await userEvent.click(submit)
     expect(submit).toBeDisabled()
     await waitFor(() =>
@@ -33,6 +35,7 @@ describe('ProfileForm', () => {
         firstName: 'Johnny',
         lastName: 'Appleseed',
         email: 'johnny@apple.com',
+        location: 'San Francisco'
       })
     )
   })

@@ -1,4 +1,5 @@
-import { AuthUser } from 'services/auth'
+import {Job} from 'lib'
+import { AuthUser } from 'lib'
 
 export enum AppActionType {
   AuthInit = 'app/authInit',
@@ -48,11 +49,13 @@ export interface Alert {
 
 export interface AppState {
   user: AuthUser | null
+  jobs: Job[]
   alert: Alert | null
 }
 
 export const initialState: AppState = {
   user: null,
+  jobs: [],
   alert: null,
 }
 

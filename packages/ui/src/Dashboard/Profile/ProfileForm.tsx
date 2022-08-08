@@ -15,6 +15,7 @@ const profileSchema = yup.object().shape({
 export interface ProfileValues {
   firstName: string
   lastName: string
+  location: string
   email: string
 }
 
@@ -48,6 +49,7 @@ export const ProfileForm = ({onSubmit, user}:ProfileFormProps) => {
     <Formik initialValues={{
       firstName: '',
       lastName: '',
+      location: '',
       email: '',
       ...user,
     }} onSubmit={handleSubmit}
@@ -61,10 +63,11 @@ export const ProfileForm = ({onSubmit, user}:ProfileFormProps) => {
           </FormGroup>
           <FormGroup>
             <Input label="Email" type="text" name="email" />
-            <ButtonBlock type="submit" disabled={isSubmitting}>
-              save changes
-            </ButtonBlock>
+            <Input label="Location" type="text" name="location" />
           </FormGroup>
+          <ButtonBlock type="submit" disabled={isSubmitting}>
+            save changes
+          </ButtonBlock>
         </Form>
         )}
     </Formik>

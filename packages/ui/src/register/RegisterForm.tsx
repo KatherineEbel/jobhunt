@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import * as React from 'react'
 import styled from 'styled-components'
 import { Form, Formik, FormikHelpers, FormikState } from 'formik'
-import * as Yup from 'yup'
+import * as yup from 'yup'
 import { ButtonBlock } from 'styled'
 
 const SignInButton = styled(ButtonBlock)`
@@ -32,12 +32,13 @@ const Wrapper = styled(Form)`
   padding: 2rem;
   max-width: 90vw;
   width: 400px;
-  max-height: 650px;
+  max-height: 720px;
 `
 
 export interface Values {
   firstName: string
   lastName: string
+  location: string
   email: string
   password: string
 }
@@ -74,23 +75,27 @@ export const RegisterForm = ({
 
   return (
     <Formik
-      initialValues={{ firstName: '', lastName: '', email: '', password: '' }}
-      validationSchema={Yup.object({
-        isMember: Yup.boolean().default(isMember),
-        firstName: Yup.string().when('isMember', {
+      initialValues={{ firstName: '', lastName: '', location: '', email: '', password: '' }}
+      validationSchema={yup.object({
+        isMember: yup.boolean().default(isMember),
+        firstName: yup.string().when('isMember', {
           is: false,
-          then: Yup.string().required('first name is required'),
+          then: yup.string().required('first name is required'),
         }),
-        lastName: Yup.string().when('isMember', {
+        lastName: yup.string().when('isMember', {
           is: false,
-          then: Yup.string().required('last name is required'),
+          then: yup.string().required('last name is required'),
         }),
-        email: Yup.string()
+        location: yup.string().when('isMember', {
+          is: false,
+          then: yup.string().required('location is required')
+        }),
+        email: yup.string()
           .email('Please provide a valid email')
           .required('Email is required'),
-        password: Yup.string().when('isMember', {
+        password: yup.string().when('isMember', {
           is: false,
-          then: Yup.string().required('Password is required'),
+          then: yup.string().required('Password is required'),
         }),
       })}
       onSubmit={handleSubmit}
@@ -103,6 +108,7 @@ export const RegisterForm = ({
             <>
               <Input label="First Name" type="text" name="firstName" />
               <Input label="Last Name" type="text" name="lastName" />
+              <Input label="Location" type="text" name="location" />
             </>
           )}
           <Input label="Email" type="text" name="email" />

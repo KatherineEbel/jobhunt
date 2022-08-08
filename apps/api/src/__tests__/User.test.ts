@@ -9,7 +9,7 @@ describe('UserModel', function () {
     const result = user.validateSync()
     expect(result).not.toBeNull()
     expect(Object.keys(result?.errors || {})).toEqual(
-      expect.arrayContaining(['email', 'lastName', 'firstName'])
+      expect.arrayContaining(['email', 'lastName', 'firstName', 'location'])
     )
   })
 
@@ -42,6 +42,7 @@ describe('UserModel', function () {
         firstName: 'John',
         lastName: 'Doe',
         email: 'john@example.com',
+        location: 'New York City'
       })
       expect.assertions(1)
       try {

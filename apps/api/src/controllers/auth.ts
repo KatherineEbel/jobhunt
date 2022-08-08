@@ -10,10 +10,11 @@ export const registerHandler: RequestHandler = async (
   req: TypedRequestBody<RegisterRequest>,
   res
 ) => {
-  const { firstName, lastName, email, password } = req.body
+  const { firstName, lastName, location, email, password } = req.body
   const user = await userService.createUser(
     firstName,
     lastName,
+    location,
     email,
     password
   )

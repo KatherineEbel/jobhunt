@@ -1,20 +1,12 @@
 import { compare, genSalt, hash } from 'bcryptjs'
+import {JHUser } from 'lib/src'
 import { Document, Model, model, Schema, Types } from 'mongoose'
 import { DBError } from '../errors/DBError'
 import { appEnvironment } from '../config'
 import validator from 'validator'
 import jwt from 'jsonwebtoken'
 
-export interface IUser {
-  firstName: string
-  lastName: string
-  email: string
-  passwordHash: string
-}
-
-export type PublicUser = Omit<IUser, 'passwordHash'>
-
-export interface IUserMethods {
+export interface JHUserMethods {
   fullName(): string
   // eslint-disable-next-line no-unused-vars
   hashPassword(password: string): void
@@ -23,10 +15,20 @@ export interface IUserMethods {
   authenticate(password: string): Promise<boolean>
 }
 
-export type UserModel = Model<IUser, {}, IUserMethods>
+export type UserModel = Model<JHUser, {}, JHUserMethods>
 
-const UserSchema = new Schema<IUser>(
+const UserSchema = new Schema<JHUser>(
   {
+    email: {
+      type: String,
+      required: [true, 'Email is required'],
+      trim: true,
+      unique: true,
+      validate: {
+        validator: (field: string) => validator.isEmail(field),
+        message: 'Please provide a valid email',
+      },
+    },
     firstName: {
       type: String,
       required: [true, 'first name is required'],
@@ -37,15 +39,10 @@ const UserSchema = new Schema<IUser>(
       required: [true, 'first name is required'],
       trim: true,
     },
-    email: {
+    location: {
       type: String,
-      required: [true, 'Email is required'],
+      required: [true, 'location is required'],
       trim: true,
-      unique: true,
-      validate: {
-        validator: (field: string) => validator.isEmail(field),
-        message: 'Please provide a valid email',
-      },
     },
     passwordHash: {
       type: String,
@@ -93,6 +90,6 @@ UserSchema.method('fullName', function fullName() {
   return `${this.firstName} ${this.lastName}`
 })
 
-export type UserDoc = Document<unknown, any, IUser> &
-  IUser & { _id: Types.ObjectId } & IUserMethods
-export const User = model<IUser, UserModel>('User', UserSchema)
+export type UserDoc = Document<unknown, any, JHUser> &
+  JHUser & { _id: Types.ObjectId } & JHUserMethods
+export const User = model<JHUser, UserModel>('User', UserSchema)

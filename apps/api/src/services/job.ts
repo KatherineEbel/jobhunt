@@ -1,15 +1,12 @@
+import {CreateJobRequest} from 'lib'
 import Job from '../models/Job'
 
 /**
  * Insert job into database
- * @param position
- * @param company
- * @param userId,
+ * @param {CreateJobRequest} request
  */
 export async function createJob(
-  position: string,
-  company: string,
-  userId: string
+  request: CreateJobRequest,
 ) {
-  return Job.create({position, company, createdBy: userId})
+  return Job.create(request)
 }

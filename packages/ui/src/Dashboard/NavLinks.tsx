@@ -1,5 +1,5 @@
 import {NavLink} from 'react-router-dom'
-import {sidebarLinks} from '../utils/links'
+import {sidebarLinks} from 'utils/links'
 
 interface NavLinkProps {
   onClose?: () => void
