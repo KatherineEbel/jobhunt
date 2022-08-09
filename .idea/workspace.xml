@@ -4,14 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b6d8152f-e918-46a7-a4e9-34c64c7b909e" name="Changes" comment="get jobs for current user">
+    <list default="true" id="b6d8152f-e918-46a7-a4e9-34c64c7b909e" name="Changes" comment="change user route to profile">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/api/src/__tests__/server.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/__tests__/server.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/src/controllers/users.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/controllers/profile.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/src/routes/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/routes/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/src/routes/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/routes/profile.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/src/server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/server.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api/src/controllers/jobs.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/controllers/jobs.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api/src/routes/jobs.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/routes/jobs.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api/src/services/job.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/services/job.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/App.test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/App.test.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/web/src/context/appContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/context/appContext.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/hooks/useJobs.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/hooks/useJobs.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/pages/Dashboard/Dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/pages/Dashboard/Dashboard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/pages/Dashboard/Stats.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/pages/Dashboard/Stats.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/lib/src/job/model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/lib/src/job/model.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +103,6 @@
       <command value="yarn workspace jobs add typescript --dev" />
       <command value="yarn run clean --filter=jobs" />
       <command value="yarn run build --filter=jobs" />
-      <command value="yarn test" />
       <command value="yarn" />
       <command value="yarn test --filter=web" />
       <command value="yarn run dev --filter=lib" />
@@ -110,12 +113,13 @@
       <command value="yarn test --filter=ui" />
       <command value="yarn run test" />
       <command value="yarn run test:ci" />
-      <command value="yarn run test --filter=web" />
       <command value="yarn run dev" />
       <command value="yarn run test --filter=api" />
+      <command value="yarn test" />
+      <command value="yarn run test --filter=web" />
     </option>
   </component>
-  <component name="RunManager" selected="Jest.App.with user.stats screen rendered">
+  <component name="RunManager" selected="JavaScript Debug.DebugClient">
     <configuration name="Alert.render" type="JavaScriptTestRunnerJest" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
@@ -197,6 +201,21 @@
         <test-name value="App" />
         <test-name value="with user" />
         <test-name value="stats screen rendered" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="App.without user.landing screen rendered" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
+      <working-dir value="$PROJECT_DIR$/apps/web" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/apps/web/src/App.test.tsx" />
+      <test-names>
+        <test-name value="App" />
+        <test-name value="without user" />
+        <test-name value="landing screen rendered" />
       </test-names>
       <method v="2" />
     </configuration>
@@ -303,17 +322,6 @@
     <configuration name="DebugClient" type="JavascriptDebugType" uri="http://localhost:3000" useFirstLineBreakpoints="true">
       <method v="2" />
     </configuration>
-    <configuration name="test --filter=api" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="test" />
-      </scripts>
-      <arguments value="--filter=api" />
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
     <configuration name="test --filter=web" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -340,15 +348,15 @@
       <item itemvalue="Jest.App" />
       <item itemvalue="Jest.App.with user" />
       <item itemvalue="Jest.App.with user.stats screen rendered" />
-      <item itemvalue="npm.test --filter=api" />
+      <item itemvalue="Jest.App.without user.landing screen rendered" />
       <item itemvalue="npm.test --filter=web" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.test --filter=api" />
-        <item itemvalue="Jest.App.with user.stats screen rendered" />
-        <item itemvalue="Jest.App.with user" />
         <item itemvalue="Jest.App" />
+        <item itemvalue="Jest.App.with user.stats screen rendered" />
+        <item itemvalue="Jest.App.without user.landing screen rendered" />
+        <item itemvalue="Jest.App.with user" />
         <item itemvalue="npm.test --filter=web" />
       </list>
     </recent_temporary>
@@ -363,7 +371,7 @@
       <updated>1659503161183</updated>
       <workItem from="1659503162855" duration="9534000" />
       <workItem from="1659572989687" duration="14957000" />
-      <workItem from="1659966017195" duration="26522000" />
+      <workItem from="1659966017195" duration="32751000" />
     </task>
     <task id="LOCAL-00001" summary="protect jobs and user routes">
       <created>1659543722494</created>
@@ -421,7 +429,14 @@
       <option name="project" value="LOCAL" />
       <updated>1660001935304</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="change user route to profile">
+      <created>1660002218443</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1660002218443</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -449,7 +464,8 @@
     <MESSAGE value="implement create job form, move common model code into lib package" />
     <MESSAGE value="update AuthUser type. use local user by default for appContext" />
     <MESSAGE value="get jobs for current user" />
-    <option name="LAST_COMMIT_MESSAGE" value="get jobs for current user" />
+    <MESSAGE value="change user route to profile" />
+    <option name="LAST_COMMIT_MESSAGE" value="change user route to profile" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -481,14 +497,8 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/apps/web/src/context/appContext.tsx</url>
-          <line>102</line>
+          <line>106</line>
           <option name="timeStamp" value="47" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/apps/web/src/hooks/useJobs.ts</url>
-          <line>30</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="74" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/apps/web/src/pages/Dashboard/AddJob.tsx</url>
@@ -507,12 +517,6 @@
           <line>31</line>
           <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="78" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/apps/web/src/hooks/useJobs.ts</url>
-          <line>12</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="82" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

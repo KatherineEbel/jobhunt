@@ -4,11 +4,13 @@ import { Nav } from 'Nav'
 import React from 'react'
 import {Outlet} from 'react-router-dom'
 import { SharedLayout, SmallSidebar, LargeSidebar } from 'ui'
-import {Alert} from 'ui'
+import {Alert, Loader} from 'ui'
 
 const Dashboard = () => {
-  const {alert} = useAppContext()
+  const {alert, loading} = useAppContext()
   const { open, toggleOpen } = useToggle()
+
+  if (loading) return <Loader/>
 
   return (
     <SharedLayout>

@@ -1,30 +1,22 @@
-import {AuthUser, CreateJobRequest, CreateJobResponse, Job} from 'lib'
+import {CreateJobRequest, CreateJobResponse, Job, UserJobsResponse} from 'lib'
 import {useCallback, useEffect, useState} from 'react'
 import {useFetch} from 'use-http'
 const BASE_URL = process.env.REACT_APP_API_URL
 
-export function useJobs(user: AuthUser | null, initialJobs: Job[] | null) {
-  const [jobs, setJobs] = useState<Job[] | null>(initialJobs)
+export function useJobs() {
+  const [jobs, setJobs] = useState<Job[]>([])
   const [fetchError, setFetchError] = useState<string | null>(null)
   const {post, response, error} = useFetch<CreateJobResponse>(BASE_URL)
-  const fetch = useFetch(BASE_URL)
+  const {data, error: getAllJobsErr, loading} = useFetch<UserJobsResponse>(`${BASE_URL}/jobs`, {}, [])
 
   useEffect(() => {
-    if (!user || jobs) return
-    (async () => {
-      const dbJobs = await fetch.get('/jobs')
-      if (fetch.error) {
-        setFetchError(fetch.error.message)
-        setJobs([])
-        return
-      }
-      if (dbJobs && dbJobs.error) {
-        setFetchError(dbJobs.error)
-        return
-      }
-      setJobs(dbJobs)
-    })()
-  }, [user])
+    if (data) {
+      setJobs(data.jobs)
+    }
+    if (error) {
+      setFetchError(error.message)
+    }
+  }, [data, getAllJobsErr, loading])
 
   const addJob = useCallback(
     async (request: CreateJobRequest): Promise<boolean> => {
@@ -38,5 +30,5 @@ export function useJobs(user: AuthUser | null, initialJobs: Job[] | null) {
     }, []
   )
 
-  return { addJob, jobs, error: fetchError || null }
+  return { addJob, jobs, error: fetchError || null, loading }
 }

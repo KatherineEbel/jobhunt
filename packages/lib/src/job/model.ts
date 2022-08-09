@@ -24,6 +24,12 @@ export interface Job {
   id?: string
 }
 
+export interface UserJobsResponse {
+  jobs: Job[]
+  count: number
+  pages: number
+}
+
 export type CreateJobRequest = Omit<Job, 'createdBy'>
 
 export type CreateJobResponse = { job: Job}

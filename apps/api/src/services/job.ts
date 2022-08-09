@@ -15,6 +15,7 @@ export async function createJob(
  * @params userId {string}
  * @returns Job[]
  */
-export async function getAll(userId: string) {
-  return Job.find({createdBy: userId})
+export async function getPaginatedResults(userId: string) {
+  const jobs = await Job.find({createdBy: userId})
+  return { jobs, count: jobs.length, pages: 1}
 }

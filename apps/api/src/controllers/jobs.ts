@@ -24,16 +24,14 @@ export const deleteOne: AuthHandler = async (req, res) => {
 }
 
 /**
- * Get all Jobs
+ * Get paginated jobs for current user
  * @param req {AuthRequest}
  * @param res { Response}
  */
-export const getAll = async (req: AuthRequest, res: Response) => {
+export const getAllPaginated = async (req: AuthRequest, res: Response) => {
   const userId = req.user?.userId
-  console.log({userId})
-  const jobs = await jobService.getAll(userId || '')
-  console.log(jobs)
-  res.json(jobs)
+  const result = await jobService.getPaginatedResults(userId || '')
+  res.json(result)
 }
 
 /**

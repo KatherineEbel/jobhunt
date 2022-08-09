@@ -1,15 +1,15 @@
 import {Alert, AppActionType, appReducer, initialState,} from 'context/appReducer'
 import {createCtx} from 'context/createCtx'
-import {useJobs} from 'hooks/useJobs'
-import {CreateJobRequest, Job} from 'lib'
+import { useJobs } from 'hooks/useJobs'
+import {AuthUser, CreateJobRequest, Job, LoginUser, RegisterUser, UpdateUser} from 'lib'
 import {ReactNode, useEffect, useReducer} from 'react'
 import {useNavigate} from 'react-router-dom'
-import {AuthUser, LoginUser, RegisterUser, UpdateUser} from 'lib'
 import {useFetch} from 'use-http'
 import useLocalStorageState from 'use-local-storage-state'
 
 
 export interface AppContextType {
+  loading: boolean,
   jobs: Job[] | null,
   user: AuthUser | null
   addJob: (request: CreateJobRequest) => Promise<boolean>
@@ -34,10 +34,14 @@ interface AppProviderProps {
 const BASE_URL = process.env.REACT_APP_API_URL
 
 const AppProvider = ({children, value}: AppProviderProps) => {
-  const [localUser, setLocalUser] = useLocalStorageState<AuthUser | null>('jhUser', { defaultValue: value ? value.user : null})
-  const [state, dispatch] = useReducer(appReducer, value ? { user: value.user, jobs: value.jobs, alert: value.alert} : {...initialState, user: localUser}, undefined)
-  const {jobs, addJob, error: jobActionError} = useJobs(localUser, value?.jobs || null)
-  const {patch, post, response, error} = useFetch<{user: AuthUser}>(BASE_URL)
+  const [localUser, setLocalUser] = useLocalStorageState<AuthUser | null>('jhUser', {defaultValue: value ? value.user : null})
+  const [state, dispatch] = useReducer(appReducer, value ? {
+    user: value.user,
+    jobs: value.jobs,
+    alert: value.alert
+  } : {...initialState, user: localUser}, undefined)
+  const {jobs, addJob, error: jobActionError, loading} = useJobs()
+  const {patch, post, response, error} = useFetch<{ user: AuthUser }>(BASE_URL)
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -122,6 +126,7 @@ const AppProvider = ({children, value}: AppProviderProps) => {
           ...state,
           addJob,
           displayAlert,
+          loading,
           logout,
           loginUser,
           jobs,

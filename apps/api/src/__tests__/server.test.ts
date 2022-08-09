@@ -267,15 +267,20 @@ describe('server', () => {
       })
     })
 
-    describe.skip('job routes', () => {
+    describe('job routes', () => {
       describe('when logged in', () => {
-        const baseUrl = '/api/v1/lib'
+        const baseUrl = '/api/v1/jobs'
 
         test('get "/" returns 200', async () => {
           expect(authUser).toBeDefined()
           await supertest(app).get(baseUrl)
             .set('Authorization', `Bearer ${authUser.token}`)
             .expect(200)
+            .expect(res => {
+              expect(res.body.jobs).toHaveLength(0)
+              expect(res.body.count).toBe(0)
+              expect(res.body.pages).toBe(1)
+            })
         })
 
         test('post with valid values returns 201', async () => {
@@ -283,6 +288,7 @@ describe('server', () => {
             .send({
               position: 'Software Engineer',
               company: 'Mozilla',
+              location: 'San Francisco'
             })
             .set('Authorization', `Bearer ${authUser.token}`)
             .expect(201)
@@ -303,6 +309,7 @@ describe('server', () => {
             .send({
               position: 'Software Engineer',
               company: 'Mozilla',
+              location: 'San Francisco'
             })
             .expect(401)
             .expect(async res => {
@@ -325,13 +332,13 @@ describe('server', () => {
 
 
 
-        test.skip('patch returns 200', async () => {
+        test('patch returns 200', async () => {
           await supertest(app).patch(`${baseUrl}/1`)
             .set('Authorization', `Bearer ${authUser.token}`)
             .expect(200)
         })
 
-        test.skip('delete returns 200', async () => {
+        test('delete returns 200', async () => {
           await supertest(app).delete(`${baseUrl}/1`)
             .set('Authorization', `Bearer ${authUser.token}`)
             .expect(200)
