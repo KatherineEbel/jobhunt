@@ -1,4 +1,4 @@
-import { expect, describe, it, afterEach } from '@jest/globals'
+import { afterAll, beforeAll, expect, describe, it, afterEach } from '@jest/globals'
 import { User } from '../models/User'
 import * as db from '../config/testDb'
 

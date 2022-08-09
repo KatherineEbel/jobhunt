@@ -4,11 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b6d8152f-e918-46a7-a4e9-34c64c7b909e" name="Changes" comment="implement update job client and api">
+    <list default="true" id="b6d8152f-e918-46a7-a4e9-34c64c7b909e" name="Changes" comment="relocate test in api">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/src/__tests__/server.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/__tests__/server.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/src/controllers/jobs.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/controllers/jobs.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/src/services/job.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/services/job.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api/src/__tests__/Job.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/models/Job.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api/src/__tests__/User.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/models/User.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api/src/__tests__/server.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/server.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api/src/__tests__/tsconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/tsconfig.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,11 +79,11 @@
       <recent name="$PROJECT_DIR$/packages/jest-presets/jest" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/apps/api/src/models" />
+      <recent name="$PROJECT_DIR$/apps/api/src" />
       <recent name="$PROJECT_DIR$/packages/lib/src/job" />
       <recent name="$PROJECT_DIR$/packages/ui/src/Register" />
       <recent name="$PROJECT_DIR$/packages/ui/src/Dashboard/Profile" />
-      <recent name="$PROJECT_DIR$/packages/ui/src" />
-      <recent name="$PROJECT_DIR$/packages/ui/src/__tests__" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -431,7 +433,7 @@
       <updated>1659503161183</updated>
       <workItem from="1659503162855" duration="9534000" />
       <workItem from="1659572989687" duration="14957000" />
-      <workItem from="1659966017195" duration="58494000" />
+      <workItem from="1659966017195" duration="60079000" />
     </task>
     <task id="LOCAL-00001" summary="protect jobs and user routes">
       <created>1659543722494</created>
@@ -517,7 +519,14 @@
       <option name="project" value="LOCAL" />
       <updated>1660056196882</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="make sure only job owner can update a job">
+      <created>1660057818153</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1660057818153</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -549,7 +558,9 @@
     <MESSAGE value="handle ui when loading jobs" />
     <MESSAGE value="display user jobs client" />
     <MESSAGE value="implement update job client and api" />
-    <option name="LAST_COMMIT_MESSAGE" value="implement update job client and api" />
+    <MESSAGE value="make sure only job owner can update a job" />
+    <MESSAGE value="relocate test in api" />
+    <option name="LAST_COMMIT_MESSAGE" value="relocate test in api" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -576,7 +587,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/apps/api/src/controllers/jobs.ts</url>
-          <line>34</line>
+          <line>33</line>
           <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="78" />
         </line-breakpoint>
@@ -588,7 +599,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/apps/api/src/controllers/jobs.ts</url>
-          <line>45</line>
+          <line>44</line>
           <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="100" />
         </line-breakpoint>

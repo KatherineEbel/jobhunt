@@ -1,11 +1,11 @@
 import {faker} from '@faker-js/faker'
-import {afterEach, beforeEach, describe, expect, it, test,} from '@jest/globals'
+import {afterAll, afterEach, beforeEach, beforeAll, describe, expect, it, test,} from '@jest/globals'
 import {Express} from 'express'
 import {ApplicationStatus, AuthUser, ContractType, CreateJobRequest, CreateJobResponse} from 'lib'
 import mongoose from 'mongoose'
 import supertest from 'supertest'
-import {db} from '../config'
-import {createServer} from '../server'
+import {db} from './config'
+import {createServer} from './server'
 
 const BASE_URL = `/api/v1`
 
