@@ -27,6 +27,7 @@ describe('App', function () {
     test('stats screen rendered', async () => {
       const value = {
         addJob: jest.fn(),
+        editJob: jest.fn(),
         jobs: [],
         loading: false,
         loginUser: jest.fn(),
@@ -48,6 +49,7 @@ describe('App', function () {
     test('landing screen rendered', async () => {
       const value = {
         addJob: jest.fn(),
+        editJob: jest.fn(),
         jobs: [],
         loginUser: jest.fn(),
         loading: false,

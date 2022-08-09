@@ -1,12 +1,14 @@
+import {faker} from '@faker-js/faker'
 import {afterEach, beforeEach, describe, expect, it, test,} from '@jest/globals'
 import {Express} from 'express'
+import {ApplicationStatus, AuthUser, ContractType, CreateJobRequest, CreateJobResponse} from 'lib'
+import mongoose from 'mongoose'
 import supertest from 'supertest'
 import {db} from '../config'
 import {createServer} from '../server'
 
 const BASE_URL = `/api/v1`
 
-type AuthUser = { token: string, id: string }
 
 const validUser = {
   firstName: 'John',
@@ -19,25 +21,30 @@ const validUser = {
 
 async function registerValidUser(app: Express) {
   const url = `${BASE_URL}/auth/register`
-  await supertest(app)
+  return await supertest(app)
     .post(url)
     .send(validUser)
     .expect(201)
+    .then(res => res.body.user as AuthUser)
 }
 
 async function loginUser(app: Express, user: typeof validUser): Promise<AuthUser> {
   const {email, password} = user
-  let authUser = {token: '', id: ''}
-  await supertest(app)
+  return await supertest(app)
     .post(`${BASE_URL}/auth/login`)
     .send({email, password})
     .expect(200)
     .then(res => {
-      const {user} = res.body
-      authUser = user
+      return res.body.user as AuthUser
     })
-  expect(Object.values(authUser).every(Boolean)).toBe(true)
-  return authUser
+}
+
+async function insertJob(app: Express, user: AuthUser, job: CreateJobRequest) {
+  return await supertest(app).post(`/api/v1/jobs`)
+    .send(job)
+    .set('Authorization', `Bearer ${user.token}`)
+    .expect(201)
+    .then(res => res.body as CreateJobResponse)
 }
 
 describe('server', () => {
@@ -239,7 +246,7 @@ describe('server', () => {
     })
   })
 
-  describe('auth routes', () => {
+  describe('require auth routes', () => {
     let authUser: AuthUser
     beforeAll(async () => {
       app = await createServer()
@@ -251,7 +258,7 @@ describe('server', () => {
       await db.connection.close()
     })
 
-    describe('user routes', () => {
+    describe('profile routes', () => {
       describe('when logged in', () => {
         test('updateUser route returns 200', async function () {
           await supertest(app).patch(`/api/v1/profile/${authUser.id}`)
@@ -332,12 +339,58 @@ describe('server', () => {
 
 
 
-        test('patch returns 200', async () => {
-          await supertest(app).patch(`${baseUrl}/1`)
+        test('patch returns 200 and returns updated job', async () => {
+          const job = {
+            contract: ContractType.fullTime,
+            status: ApplicationStatus.pending,
+            company: faker.company.name(),
+            location: faker.address.city(),
+            position: faker.word.noun(),
+          }
+          const {job: newJob} = await insertJob(app, authUser, job)
+          const location = faker.address.city()
+          const company = faker.company.name()
+          await supertest(app).patch(`${baseUrl}/${newJob.id}`)
+            .send({...job, company, location})
             .set('Authorization', `Bearer ${authUser.token}`)
             .expect(200)
+            .then(res => {
+              expect(res.body).toHaveProperty('job')
+              expect(res.body.job.company).toBe(company)
+              expect(res.body.job.location).toBe(location)
+            })
         })
 
+        test('patch returns 401 when request not authorized', async () => {
+          const job = {
+            contract: ContractType.fullTime,
+            status: ApplicationStatus.pending,
+            company: faker.company.name(),
+            location: faker.address.city(),
+            position: faker.word.noun(),
+          }
+          const {job: newJob} = await insertJob(app, authUser, job)
+          const location = faker.address.city()
+          const company = faker.company.name()
+          await supertest(app).patch(`${baseUrl}/${newJob.id}`)
+            .send({...job, company, location})
+            .expect(401)
+            .then(res => expect(res.body).toHaveProperty('error'))
+        })
+
+        test('patch returns 404 when job doesn\'t exist', async () => {
+          await supertest(app).patch(`${baseUrl}/${new mongoose.Types.ObjectId().toString()}`)
+            .set('Authorization', `Bearer ${authUser.token}`)
+            .send({
+              contract: ContractType.fullTime,
+              status: ApplicationStatus.pending,
+              company: faker.company.name(),
+              location: faker.address.city(),
+              position: faker.word.noun(),
+            })
+            .expect(404)
+            .then(res => expect(res.body).toHaveProperty('error'))
+        })
         test('delete returns 200', async () => {
           await supertest(app).delete(`${baseUrl}/1`)
             .set('Authorization', `Bearer ${authUser.token}`)

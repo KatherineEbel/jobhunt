@@ -7,7 +7,7 @@ export function useJobs() {
   const [pageData, setPageData] = useState<PageData>()
   const [page] = useState(1)
 
-  const {post, response, error} = useFetch<CreateJobResponse>('/jobs')
+  const {patch, post, response, error} = useFetch<CreateJobResponse>('/jobs')
   const {error: getAllJobsErr, loading} = useFetch<UserJobsResponse>('/jobs', {
     onNewData: (currJobs: UserJobsResponse, newJobs: UserJobsResponse) => {
       const {jobs: nJ, ...pageData} = newJobs
@@ -26,15 +26,26 @@ export function useJobs() {
 
   const addJob = useCallback(
     async (request: CreateJobRequest): Promise<boolean> => {
-      const {job } = await post(request)
+      const {job} = await post(request)
       if (response.ok) {
         setJobs(jobs ? [...jobs, job] : [job])
         return true
+      } else {
+        console.log('NOT OK response', response.status)
       }
-      // if (error) setFetchError(error.message)
       return false
     }, []
   )
 
-  return { addJob, jobs, error: jobError || null, loading, pageData }
+  const editJob = useCallback(
+    async (jobId: string, request: CreateJobRequest): Promise<boolean> => {
+      const {job} = await patch(`/${jobId}`, request)
+      if (response.ok) {
+        setJobs(jobs.map(j => j.id === jobId ? job : j))
+        return true
+      }
+      return false
+    }, [])
+
+  return {addJob, editJob, jobs, error: jobError || null, loading, pageData}
 }

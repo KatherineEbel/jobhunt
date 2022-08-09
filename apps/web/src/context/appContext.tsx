@@ -13,6 +13,7 @@ export interface AppContextType {
   jobs: JobResponse[],
   user: AuthUser | null
   addJob: (request: CreateJobRequest) => Promise<boolean>
+  editJob: (jobId: string, request: CreateJobRequest) => Promise<boolean>
   alert: {
     message: string
     type: 'success' | 'danger'
@@ -38,7 +39,7 @@ const AppProvider = ({children, value}: AppProviderProps) => {
     jobs: value.jobs,
     alert: value.alert
   } : {...initialState, user: localUser}, undefined)
-  const {jobs, addJob, error: jobActionError, loading } = useJobs()
+  const {jobs, addJob, editJob, error: jobActionError, loading } = useJobs()
   const {patch, post, response, error} = useFetch<{ user: AuthUser }>()
   const navigate = useNavigate()
 
@@ -125,6 +126,12 @@ const AppProvider = ({children, value}: AppProviderProps) => {
           addJob: async (request: CreateJobRequest) => {
             const success = await addJob(request)
             if (success) displayAlert({type: 'success', message: 'Job Added'})
+            return success
+          },
+          editJob: async (jobId, request) => {
+            const success = await editJob(jobId, request)
+            if (success) displayAlert({type: 'success', message: 'Job Update Successful'})
+            if (!success) displayAlert({type: 'danger', message: 'Unable to update job'})
             return success
           },
           displayAlert,

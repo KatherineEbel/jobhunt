@@ -176,7 +176,7 @@ export const JobListItem = ({ job}: JobListItemProps) => {
         </div>
         <footer>
           <div className='actions'>
-            <EditButton to={`add-job?jobId=${id}`}>Edit</EditButton>
+            <EditButton to={`/add-job?jobId=${id}`}>Edit</EditButton>
             <DeleteButton onClick={() => console.log(`Delete ${id}`)}>Delete</DeleteButton>
           </div>
         </footer>

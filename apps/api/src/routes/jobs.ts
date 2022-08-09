@@ -12,4 +12,4 @@ jobRoutes.post('/', validate(createJobSchema), create)
 jobRoutes.get('/stats', stats)
 
 jobRoutes.delete('/:id', deleteOne)
-jobRoutes.patch('/:id', update)
+jobRoutes.patch('/:id', validate(createJobSchema), update)

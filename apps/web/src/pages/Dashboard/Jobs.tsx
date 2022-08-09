@@ -5,6 +5,7 @@ const Jobs = () => {
   const onSubmit = (values: SearchFormValues) => {
     console.log(values)
   }
+
   const { jobs } = useAppContext()
   return <>
     <SearchForm onSubmit={onSubmit}/>

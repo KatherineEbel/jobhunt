@@ -30,7 +30,7 @@ const ButtonReset = styled(ButtonBlock)`
 `
 
 export interface JobFormProps {
-  job?: Job
+  job?: Omit<Job, 'createdBy' | 'id'>
   onSubmit: (values: CreateJobRequest) => Promise<boolean>
 }
 
@@ -58,7 +58,6 @@ export const JobForm = ({onSubmit, job}: JobFormProps) => {
     const success = await onSubmit(values)
     if (success) resetForm()
   }
-
 
   return (
     <Formik

@@ -1,7 +1,8 @@
 import { StatusCodes } from 'http-status-codes'
 import {DBError} from '../errors/DBError'
 import { APIError } from '../errors/APIError'
-import {IUser, User, UserDoc} from '../models/User'
+import {User, UserDoc} from '../models/User'
+import { JHUser} from 'lib'
 
 /**
  * Insert user into database
@@ -45,7 +46,7 @@ export const findById = async (id: string): Promise<UserDoc> => {
   return user
 }
 
-export const updateUser = async (userId: string, attrs: Partial<IUser>): Promise<UserDoc> => {
+export const updateUser = async (userId: string, attrs: Partial<JHUser>): Promise<UserDoc> => {
   const user = await findById(userId)
   Object.assign(user, attrs)
   try {
