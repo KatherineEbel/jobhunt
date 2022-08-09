@@ -1,6 +1,4 @@
-import {StatusCodes} from 'http-status-codes'
 import {CreateJobRequest} from 'lib'
-import {APIError} from '../errors/APIError'
 import Job from '../models/Job'
 
 /**
@@ -23,10 +21,16 @@ export async function getPaginatedResults(userId: string) {
   return { jobs, count: jobs.length, pages: 1}
 }
 
+/**
+ * Update a Job
+ * @param jobId
+ * @param createdBy
+ * @param attrs
+ */
 export async function updateOne(jobId: string, createdBy: string, attrs: CreateJobRequest) {
-  const job = await Job.findById(jobId).exec()
-  if (!job) throw new APIError('Not Found', StatusCodes.NOT_FOUND)
-  if (job.createdBy.toString() !== createdBy) throw new APIError('Forbidden', StatusCodes.FORBIDDEN)
-  Object.assign(job, attrs)
-  return job.save()
+  return Job.findOneAndUpdate({_id: jobId, createdBy}, attrs, { new: true})
+}
+
+export async function deleteOne(jobId: string, createdBy: string) {
+  return Job.findOneAndDelete({_id: jobId, createdBy})
 }

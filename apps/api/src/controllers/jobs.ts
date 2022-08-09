@@ -22,7 +22,12 @@ export const create: AuthHandler = async (req, res) => {
  * @param res
  */
 export const deleteOne: AuthHandler = async (req, res) => {
-  res.sendStatus(200)
+  const { id } = (req.params)
+  const userId = req.user?.userId
+  if (!userId) throw new APIError("Unauthorized", StatusCodes.UNAUTHORIZED)
+  const doc = await jobService.deleteOne(id, userId)
+  if (!doc) throw new APIError('Forbidden', StatusCodes.FORBIDDEN)
+  res.status(StatusCodes.OK).json({id: doc._id})
 }
 
 /**
@@ -46,6 +51,7 @@ export const update: AuthHandler = async (req, res) => {
   const userId = req.user?.userId
   if (!userId) throw new APIError('Unauthorized', StatusCodes.UNAUTHORIZED)
   const job = await jobService.updateOne(id, userId, req.body)
+  if (!job) throw new APIError('Forbidden', StatusCodes.FORBIDDEN)
   res.json({job})
 }
 

@@ -1,7 +1,7 @@
 import {faker} from '@faker-js/faker'
-import {afterAll, afterEach, beforeEach, beforeAll, describe, expect, it, test,} from '@jest/globals'
+import {afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, test,} from '@jest/globals'
 import {Express} from 'express'
-import {ApplicationStatus, AuthUser, ContractType, CreateJobRequest, CreateJobResponse} from 'lib'
+import {ApplicationStatus, AuthUser, ContractType, CreateJobRequest, CreateJobResponse, JobResponse} from 'lib'
 import mongoose from 'mongoose'
 import supertest from 'supertest'
 import {db} from './config'
@@ -423,14 +423,50 @@ describe('server', () => {
               location: faker.address.city(),
               position: faker.word.noun(),
             })
-            .expect(404)
+            .expect(403)
             .then(res => expect(res.body).toHaveProperty('error'))
         })
-        test('delete returns 200', async () => {
-          await supertest(app).delete(`${baseUrl}/1`)
+        test('delete returns 200 when authenticated', async () => {
+          const {job} = await insertJob(app, authUser, {
+            company: faker.company.name(),
+            location: faker.address.cityName(),
+            position: faker.hacker.adjective(),
+            status: ApplicationStatus.pending,
+            contract: ContractType.fullTime,
+          })
+          await supertest(app).delete(`${baseUrl}/${job.id}`)
             .set('Authorization', `Bearer ${authUser.token}`)
             .expect(200)
+          await supertest(app).get(`${baseUrl}`)
+            .set('Authorization', `Bearer ${authUser.token}`)
+            .expect(200)
+            .then(res => {
+              expect(res.body.jobs).toBeDefined()
+              expect(res.body.jobs.find((j: JobResponse) => j.id === job.id)).not.toBeDefined()
+            })
         })
+
+        test('delete returns 403 when not authorized', async () => {
+          const otherAuthUser = await loginUser(app, otherUser)
+          const {job} = await insertJob(app, authUser, {
+            company: faker.company.name(),
+            location: faker.address.cityName(),
+            position: faker.hacker.adjective(),
+            status: ApplicationStatus.pending,
+            contract: ContractType.fullTime,
+          })
+          await supertest(app).delete(`${baseUrl}/${job.id}`)
+            .set('Authorization', `Bearer ${otherAuthUser.token}`)
+            .expect(403)
+          await supertest(app).get(`${baseUrl}`)
+            .set('Authorization', `Bearer ${authUser.token}`)
+            .expect(200)
+            .then(res => {
+              expect(res.body.jobs).toBeDefined()
+              expect(res.body.jobs.find((j: JobResponse) => j.id === job.id)).toBeDefined()
+            })
+        })
+
       })
     })
   })
