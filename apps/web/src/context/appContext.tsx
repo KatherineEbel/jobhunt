@@ -1,7 +1,7 @@
 import {Alert, AppActionType, appReducer, initialState,} from 'context/appReducer'
 import {createCtx} from 'context/createCtx'
 import { useJobs } from 'hooks/useJobs'
-import {AuthUser, CreateJobRequest, Job, LoginUser, RegisterUser, UpdateUser} from 'lib'
+import {AuthUser, CreateJobRequest, JobResponse, LoginUser, RegisterUser, UpdateUser} from 'lib'
 import {ReactNode, useEffect, useReducer} from 'react'
 import {useNavigate} from 'react-router-dom'
 import {useFetch} from 'use-http'
@@ -10,7 +10,7 @@ import useLocalStorageState from 'use-local-storage-state'
 
 export interface AppContextType {
   loading: boolean,
-  jobs: Job[] | null,
+  jobs: JobResponse[],
   user: AuthUser | null
   addJob: (request: CreateJobRequest) => Promise<boolean>
   alert: {
@@ -31,8 +31,6 @@ interface AppProviderProps {
   children: ReactNode
 }
 
-const BASE_URL = process.env.REACT_APP_API_URL
-
 const AppProvider = ({children, value}: AppProviderProps) => {
   const [localUser, setLocalUser] = useLocalStorageState<AuthUser | null>('jhUser', {defaultValue: value ? value.user : null})
   const [state, dispatch] = useReducer(appReducer, value ? {
@@ -40,13 +38,13 @@ const AppProvider = ({children, value}: AppProviderProps) => {
     jobs: value.jobs,
     alert: value.alert
   } : {...initialState, user: localUser}, undefined)
-  const {jobs, addJob, error: jobActionError, loading} = useJobs()
-  const {patch, post, response, error} = useFetch<{ user: AuthUser }>(BASE_URL)
+  const {jobs, addJob, error: jobActionError, loading } = useJobs()
+  const {patch, post, response, error} = useFetch<{ user: AuthUser }>()
   const navigate = useNavigate()
 
   useEffect(() => {
     if (jobActionError) displayAlert({
-      type: 'success', message: jobActionError
+      type: 'danger', message: jobActionError
     })
   }, [jobActionError])
 
@@ -124,7 +122,11 @@ const AppProvider = ({children, value}: AppProviderProps) => {
       value={
         value || {
           ...state,
-          addJob,
+          addJob: async (request: CreateJobRequest) => {
+            const success = await addJob(request)
+            if (success) displayAlert({type: 'success', message: 'Job Added'})
+            return success
+          },
           displayAlert,
           loading,
           logout,

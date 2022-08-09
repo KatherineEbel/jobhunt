@@ -12,6 +12,10 @@ export const createJobSchema = yup.object().shape({
   contract: yup.mixed<ContractType>().oneOf(Object.values(ContractType)),
 })
 
+export const searchFormSchema = yup.object().shape({
+  query: yup.string()
+})
+
 export async function validateSchema(schema: yup.ObjectSchema<any>, request: CreateJobRequest) {
   return await schema.validate(request)
 }

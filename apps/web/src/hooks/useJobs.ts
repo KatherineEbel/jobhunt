@@ -1,34 +1,40 @@
-import {CreateJobRequest, CreateJobResponse, Job, UserJobsResponse} from 'lib'
-import {useCallback, useEffect, useState} from 'react'
+import {CreateJobRequest, CreateJobResponse, JobResponse, PageData, UserJobsResponse} from 'lib'
+import {useCallback, useMemo, useState} from 'react'
 import {useFetch} from 'use-http'
-const BASE_URL = process.env.REACT_APP_API_URL
 
 export function useJobs() {
-  const [jobs, setJobs] = useState<Job[]>([])
-  const [fetchError, setFetchError] = useState<string | null>(null)
-  const {post, response, error} = useFetch<CreateJobResponse>(BASE_URL)
-  const {data, error: getAllJobsErr, loading} = useFetch<UserJobsResponse>(`${BASE_URL}/jobs`, {}, [])
+  const [jobs, setJobs] = useState<JobResponse[]>([])
+  const [pageData, setPageData] = useState<PageData>()
+  const [page] = useState(1)
 
-  useEffect(() => {
-    if (data) {
-      setJobs(data.jobs)
-    }
-    if (error) {
-      setFetchError(error.message)
-    }
-  }, [data, getAllJobsErr, loading])
+  const {post, response, error} = useFetch<CreateJobResponse>('/jobs')
+  const {error: getAllJobsErr, loading} = useFetch<UserJobsResponse>('/jobs', {
+    onNewData: (currJobs: UserJobsResponse, newJobs: UserJobsResponse) => {
+      const {jobs: nJ, ...pageData} = newJobs
+      setJobs([...jobs, ...nJ])
+      setPageData(pageData)
+      return [...jobs, ...nJ]
+    },
+    perPage: 6,
+  }, [page])
+
+  const jobError = useMemo(() => {
+    if (error) return error.message
+    if (getAllJobsErr) return getAllJobsErr.message
+  }, [error, getAllJobsErr])
+
 
   const addJob = useCallback(
     async (request: CreateJobRequest): Promise<boolean> => {
-      const {job } = await post('/jobs', request)
+      const {job } = await post(request)
       if (response.ok) {
         setJobs(jobs ? [...jobs, job] : [job])
         return true
       }
-      if (error) setFetchError(error.message)
+      // if (error) setFetchError(error.message)
       return false
     }, []
   )
 
-  return { addJob, jobs, error: fetchError || null, loading }
+  return { addJob, jobs, error: jobError || null, loading, pageData }
 }

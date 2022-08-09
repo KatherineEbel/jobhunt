@@ -24,12 +24,20 @@ export interface Job {
   id?: string
 }
 
-export interface UserJobsResponse {
-  jobs: Job[]
+export interface PageData {
   count: number
   pages: number
 }
 
+export type JobResponse = Job & {
+  createdAt: string
+  updatedAt: string
+}
+
+export type UserJobsResponse = PageData & {
+  jobs: JobResponse[]
+}
+
 export type CreateJobRequest = Omit<Job, 'createdBy'>
 
-export type CreateJobResponse = { job: Job}
+export type CreateJobResponse = { job: JobResponse}

@@ -35,7 +35,7 @@ function App({initialContext}: AppProps) {
 
   return (
     <BrowserRouter>
-      <HTTPProvider options={options}>
+      <HTTPProvider url={process.env.REACT_APP_API_URL} options={options}>
         <AppProvider value={initialContext}>
           <Routes>
             <Route

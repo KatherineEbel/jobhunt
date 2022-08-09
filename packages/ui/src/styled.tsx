@@ -2,21 +2,23 @@ import { Link } from 'react-router-dom'
 import styled, { css } from 'styled-components'
 
 export const button = css`
-  cursor: pointer;
-  color: var(--white);
   background: var(--primary-500);
   border: transparent;
   border-radius: var(--borderRadius);
+  box-shadow: var(--shadow-2);
+  cursor: pointer;
+  color: var(--white);
+  display: inline-block;
+  font-weight: 600;
   letter-spacing: var(--letterSpacing);
   padding: 0.7rem 1rem;
-  box-shadow: var(--shadow-2);
   transition: var(--transition);
   text-transform: capitalize;
-  display: inline-block;
 
   &:hover {
     background: var(--primary-700);
     box-shadow: var(--shadow-3);
+    color: var(--white)
   }
 `
 
@@ -40,7 +42,6 @@ export const ButtonBlock = styled(Button)`
 
 export const hero = css`
   font-size: 1.25rem;
-  padding: 0.5rem 1.25rem;
 `
 export const ButtonHero = styled(Button)`
   ${hero}
@@ -48,7 +49,6 @@ export const ButtonHero = styled(Button)`
 
 export const ButtonLink = styled(Link)`
   ${button}
-  ${hero}
 `
 
 export const ButtonDanger = styled(Button)`
