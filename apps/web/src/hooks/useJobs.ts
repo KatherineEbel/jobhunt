@@ -1,34 +1,30 @@
-import {CreateJobRequest, CreateJobResponse, JobResponse, PageData, UserJobsResponse} from 'lib'
-import {useCallback, useMemo, useState} from 'react'
+import {CreateJobRequest, CreateJobResponse, UserJobsResponse} from 'lib'
+import {useCallback, useEffect, useMemo, useState} from 'react'
 import {useFetch} from 'use-http'
 
-export function useJobs() {
-  const [jobs, setJobs] = useState<JobResponse[]>([])
-  const [pageData, setPageData] = useState<PageData>()
-  const [page] = useState(1)
+export function useJobs(authenticated = false) {
+  const [jobData, setJobData] = useState<UserJobsResponse>({jobs: [], count: 0, pages: 1})
+  const {get, loading, error: getJobsError} = useFetch<UserJobsResponse>('/jobs')
 
-  const {patch, post, response, error} = useFetch<CreateJobResponse>('/jobs')
-  const {error: getAllJobsErr, loading} = useFetch<UserJobsResponse>('/jobs', {
-    onNewData: (currJobs: UserJobsResponse, newJobs: UserJobsResponse) => {
-      const {jobs: nJ, ...pageData} = newJobs
-      setJobs([...jobs, ...nJ])
-      setPageData(pageData)
-      return [...jobs, ...nJ]
-    },
-    perPage: 6,
-  }, [page])
+  useEffect(() => {
+    if (!authenticated) return setJobData({jobs: [], count: 0, pages: 1})
+    ;(async () => {
+      const data = await get()
+      setJobData(data)
+    })()
+  }, [authenticated])
 
+  const {del, patch, post, response, error} = useFetch<CreateJobResponse>('/jobs')
   const jobError = useMemo(() => {
     if (error) return error.message
-    if (getAllJobsErr) return getAllJobsErr.message
-  }, [error, getAllJobsErr])
-
+    if (getJobsError) return getJobsError.message
+  }, [error, getJobsError])
 
   const addJob = useCallback(
     async (request: CreateJobRequest): Promise<boolean> => {
       const {job} = await post(request)
       if (response.ok) {
-        setJobs(jobs ? [...jobs, job] : [job])
+        setJobData({...jobData, jobs: [...jobData.jobs, job]})
         return true
       } else {
         console.log('NOT OK response', response.status)
@@ -41,11 +37,22 @@ export function useJobs() {
     async (jobId: string, request: CreateJobRequest): Promise<boolean> => {
       const {job} = await patch(`/${jobId}`, request)
       if (response.ok) {
-        setJobs(jobs.map(j => j.id === jobId ? job : j))
+        setJobData({...jobData, jobs: jobData.jobs.map(j => j.id === jobId ? job : j)})
         return true
       }
       return false
     }, [])
 
-  return {addJob, editJob, jobs, error: jobError || null, loading, pageData}
+  const deleteJob = useCallback(
+    async (jobId: string) => {
+      await del(`/${jobId}`)
+      if (response.ok) {
+        const updatedJobs = jobData.jobs.filter(j => j.id !== jobId)
+        setJobData({...jobData, jobs: updatedJobs})
+        return true
+      }
+      return false
+    }, [])
+
+  return {addJob, deleteJob, editJob, ...jobData, error: jobError || null, loading}
 }

@@ -1,6 +1,6 @@
 import {Alert, AppActionType, appReducer, initialState,} from 'context/appReducer'
 import {createCtx} from 'context/createCtx'
-import { useJobs } from 'hooks/useJobs'
+import {useJobs} from 'hooks/useJobs'
 import {AuthUser, CreateJobRequest, JobResponse, LoginUser, RegisterUser, UpdateUser} from 'lib'
 import {ReactNode, useEffect, useReducer} from 'react'
 import {useNavigate} from 'react-router-dom'
@@ -13,6 +13,7 @@ export interface AppContextType {
   jobs: JobResponse[],
   user: AuthUser | null
   addJob: (request: CreateJobRequest) => Promise<boolean>
+  deleteJob: (jobId: string) => Promise<boolean>
   editJob: (jobId: string, request: CreateJobRequest) => Promise<boolean>
   alert: {
     message: string
@@ -39,7 +40,7 @@ const AppProvider = ({children, value}: AppProviderProps) => {
     jobs: value.jobs,
     alert: value.alert
   } : {...initialState, user: localUser}, undefined)
-  const {jobs, addJob, editJob, error: jobActionError, loading } = useJobs()
+  const {jobs, addJob, deleteJob, editJob, error: jobActionError, loading} = useJobs(!!localUser)
   const {patch, post, response, error} = useFetch<{ user: AuthUser }>()
   const navigate = useNavigate()
 
@@ -126,6 +127,12 @@ const AppProvider = ({children, value}: AppProviderProps) => {
           addJob: async (request: CreateJobRequest) => {
             const success = await addJob(request)
             if (success) displayAlert({type: 'success', message: 'Job Added'})
+            return success
+          },
+          deleteJob: async (jobId: string) => {
+            const success = await deleteJob(jobId)
+            if (success) displayAlert({type: 'success', message: 'Job deleted'})
+            if (!success) displayAlert({type: 'danger', message: 'Unable to delete job'})
             return success
           },
           editJob: async (jobId, request) => {

@@ -2,14 +2,14 @@ import {JobList, SearchForm, SearchFormValues} from 'ui'
 import {useAppContext} from 'context/appContext'
 
 const Jobs = () => {
+  const { deleteJob, jobs } = useAppContext()
+
   const onSubmit = (values: SearchFormValues) => {
     console.log(values)
   }
-
-  const { jobs } = useAppContext()
   return <>
     <SearchForm onSubmit={onSubmit}/>
-    <JobList jobs={jobs}/>
+    <JobList jobs={jobs}  onDeleteJob={deleteJob}/>
   </>
 }
 

@@ -1,10 +1,11 @@
 import {render, screen} from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import {ApplicationStatus, ContractType, JobResponse} from 'lib'
 import {BrowserRouter} from 'react-router-dom'
 import {JobListItem} from './JobListItem'
 
 describe('JobListItem', () => {
-  test('job properties rendered', () => {
+  test('job properties rendered', async () => {
     const job: JobResponse = {
       status: ApplicationStatus.pending,
       location: 'New York City',
@@ -16,8 +17,8 @@ describe('JobListItem', () => {
       id: '12345',
       createdBy: '12345'
     }
-
-    render(<JobListItem job={job}/>, { wrapper: BrowserRouter})
+    const onDelete = jest.fn()
+    render(<JobListItem job={job} onDelete={onDelete}/>, { wrapper: BrowserRouter})
     Object.keys(job).forEach(key => {
       if (key === 'updatedAt' || key === 'createdBy') return
       if (key === 'id') {
@@ -31,5 +32,7 @@ describe('JobListItem', () => {
       const value = job[key as keyof JobResponse] || 'foo'
       expect(screen.getByText(value)).toBeInTheDocument()
     })
+    await userEvent.click(screen.getByRole('button', { name: /delete/i}))
+    expect(onDelete).toHaveBeenCalledWith(job.id)
   })
 })

@@ -152,11 +152,17 @@ const JobDetail = ({icon, text}: {icon: ReactElement, text: string}) => {
 }
 
 export interface JobListItemProps {
+  onDelete: (jobId: string) => void
   job: JobResponse
 }
 
-export const JobListItem = ({ job}: JobListItemProps) => {
+export const JobListItem = ({ onDelete, job}: JobListItemProps) => {
   const { company, createdAt, id, position, location, contract, status } = job
+  if (!id) throw new Error('job id required')
+
+  const handleDelete = (jobId: string) => {
+    onDelete(jobId)
+  }
   return (
     <Wrapper>
       <header>
@@ -177,7 +183,7 @@ export const JobListItem = ({ job}: JobListItemProps) => {
         <footer>
           <div className='actions'>
             <EditButton to={`/add-job?jobId=${id}`}>Edit</EditButton>
-            <DeleteButton onClick={() => console.log(`Delete ${id}`)}>Delete</DeleteButton>
+            <DeleteButton onClick={() => handleDelete(id)}>Delete</DeleteButton>
           </div>
         </footer>
       </div>

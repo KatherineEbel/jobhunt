@@ -27,7 +27,7 @@ export const deleteOne: AuthHandler = async (req, res) => {
   if (!userId) throw new APIError("Unauthorized", StatusCodes.UNAUTHORIZED)
   const doc = await jobService.deleteOne(id, userId)
   if (!doc) throw new APIError('Forbidden', StatusCodes.FORBIDDEN)
-  res.status(StatusCodes.OK).json({id: doc._id})
+  res.status(StatusCodes.OK).json({job: doc.toJSON()})
 }
 
 /**
