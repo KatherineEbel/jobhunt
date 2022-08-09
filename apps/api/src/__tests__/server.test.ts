@@ -11,21 +11,36 @@ const BASE_URL = `/api/v1`
 
 
 const validUser = {
-  firstName: 'John',
-  lastName: 'Snow',
-  location: 'New York City',
-  email: 'john@example.com',
-  password: 'password',
+  firstName: faker.name.firstName(),
+  lastName: faker.name.lastName(),
+  location: faker.address.cityName(),
+  email: faker.internet.email(),
+  password: faker.internet.password(6),
 }
 
+const otherUser = {
+  firstName: faker.name.firstName(),
+  lastName: faker.name.lastName(),
+  location: faker.address.cityName(),
+  email: faker.internet.email(),
+  password: faker.internet.password(6),
+}
 
-async function registerValidUser(app: Express) {
+async function registerUser(app: Express, user: typeof otherUser) {
   const url = `${BASE_URL}/auth/register`
   return await supertest(app)
     .post(url)
-    .send(validUser)
+    .send(user)
     .expect(201)
-    .then(res => res.body.user as AuthUser)
+    .then(res => res.body.user as Omit<AuthUser, 'token'>)
+}
+
+async function registerValidUser(app: Express) {
+  return registerUser(app, validUser)
+}
+
+async function registerOtherUser(app: Express) {
+  return registerUser(app, otherUser)
 }
 
 async function loginUser(app: Express, user: typeof validUser): Promise<AuthUser> {
@@ -337,7 +352,27 @@ describe('server', () => {
             })
         })
 
-
+        test('patch returns forbidden if not job user', async () => {
+          await registerOtherUser(app)
+          const authOther = await loginUser(app, otherUser)
+          const job = {
+            contract: ContractType.fullTime,
+            status: ApplicationStatus.pending,
+            company: faker.company.name(),
+            location: faker.address.city(),
+            position: faker.word.noun(),
+          }
+          const {job: newJob} = await insertJob(app, authUser, job)
+          const location = faker.address.city()
+          const company = faker.company.name()
+          await supertest(app).patch(`${baseUrl}/${newJob.id}`)
+            .send({...job, company, location})
+            .set('Authorization', `Bearer ${authOther.token}`)
+            .expect(403)
+            .then(res => {
+              expect(res.body).toHaveProperty('error')
+            })
+        })
 
         test('patch returns 200 and returns updated job', async () => {
           const job = {

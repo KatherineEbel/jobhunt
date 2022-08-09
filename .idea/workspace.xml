@@ -4,23 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b6d8152f-e918-46a7-a4e9-34c64c7b909e" name="Changes" comment="display user jobs client">
+    <list default="true" id="b6d8152f-e918-46a7-a4e9-34c64c7b909e" name="Changes" comment="implement update job client and api">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/api/src/__tests__/server.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/__tests__/server.test.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/api/src/controllers/jobs.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/controllers/jobs.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/src/errors/DBError.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/errors/DBError.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/src/routes/jobs.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/routes/jobs.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/api/src/services/job.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/services/job.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/src/services/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/services/user.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/App.test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/App.test.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/context/appContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/context/appContext.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/hooks/useJobs.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/hooks/useJobs.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/pages/Dashboard/AddJob.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/pages/Dashboard/AddJob.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/pages/Dashboard/Jobs.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/pages/Dashboard/Jobs.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/ui/src/Dashboard/AddJob/JobForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/ui/src/Dashboard/AddJob/JobForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/ui/src/Dashboard/AllJobs/JobListItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/ui/src/Dashboard/AllJobs/JobListItem.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,7 +115,7 @@
       <command value="yarn workspace api add @faker-js/faker --dev" />
     </option>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.DebugClient">
+  <component name="RunManager" selected="Jest.server.require auth routes.job routes.when logged in.patch returns 200 and returns updated job">
     <configuration name="Alert.render" type="JavaScriptTestRunnerJest" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
@@ -354,6 +342,23 @@
       </test-names>
       <method v="2" />
     </configuration>
+    <configuration name="server.require auth routes.job routes.when logged in.patch returns 200 and returns updated job" type="JavaScriptTestRunnerJest" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$/apps/api" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/apps/api/src/__tests__/server.test.ts" />
+      <test-names>
+        <test-name value="server" />
+        <test-name value="require auth routes" />
+        <test-name value="job routes" />
+        <test-name value="when logged in" />
+        <test-name value="patch returns 200 and returns updated job" />
+      </test-names>
+      <method v="2" />
+    </configuration>
     <configuration name="server.require auth routes.job routes.when logged in.patch returns 404 when job doesn't exist" type="JavaScriptTestRunnerJest" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
@@ -390,6 +395,7 @@
       <item itemvalue="Jest.JobForm.valid input.onSubmit called" />
       <item itemvalue="Jest.JobListItem.job properties rendered" />
       <item itemvalue="Jest.formatDateString" />
+      <item itemvalue="Jest.server.require auth routes.job routes.when logged in.patch returns 200 and returns updated job" />
       <item itemvalue="Jest.server.require auth routes.job routes.when logged in.patch returns 404 when job doesn't exist" />
       <item itemvalue="Jest.App.renders correct heading" />
       <item itemvalue="Jest.ProfileForm.form submitted with correct values" />
@@ -425,7 +431,7 @@
       <updated>1659503161183</updated>
       <workItem from="1659503162855" duration="9534000" />
       <workItem from="1659572989687" duration="14957000" />
-      <workItem from="1659966017195" duration="56097000" />
+      <workItem from="1659966017195" duration="58494000" />
     </task>
     <task id="LOCAL-00001" summary="protect jobs and user routes">
       <created>1659543722494</created>
@@ -504,7 +510,14 @@
       <option name="project" value="LOCAL" />
       <updated>1660024954338</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="implement update job client and api">
+      <created>1660056196881</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1660056196882</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -535,7 +548,8 @@
     <MESSAGE value="change user route to profile" />
     <MESSAGE value="handle ui when loading jobs" />
     <MESSAGE value="display user jobs client" />
-    <option name="LAST_COMMIT_MESSAGE" value="display user jobs client" />
+    <MESSAGE value="implement update job client and api" />
+    <option name="LAST_COMMIT_MESSAGE" value="implement update job client and api" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -585,14 +599,8 @@
           <option name="timeStamp" value="101" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/apps/api/src/controllers/jobs.ts</url>
-          <line>52</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="102" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/apps/api/src/services/job.ts</url>
-          <line>25</line>
+          <line>26</line>
           <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="103" />
         </line-breakpoint>
