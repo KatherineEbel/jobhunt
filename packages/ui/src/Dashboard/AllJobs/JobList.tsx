@@ -37,7 +37,7 @@ export const JobList = ({onDeleteJob, jobs}: JobListProps) => {
   return (
     <Wrapper>
       <h5>{jobs.length} job{jobs.length > 1 && 's'} found</h5>
-      {jobs.length ? (
+      {jobs && jobs.length ? (
         <div className='jobs'>
           {jobs.map((job: JobResponse) => (<JobListItem key={job.id} job={job} onDelete={onDeleteJob}/>))}
         </div>

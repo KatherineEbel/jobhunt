@@ -11,7 +11,7 @@ export enum ApplicationStatus {
   declined = 'declined',
   interview = 'interview',
   pending = 'pending',
-  accepted = 'accepted',
+  offer = 'offer',
 }
 
 export interface Job {
@@ -41,3 +41,13 @@ export type UserJobsResponse = PageData & {
 export type CreateJobRequest = Omit<Job, 'createdBy'>
 
 export type CreateJobResponse = { job: JobResponse}
+
+export type ApplicationStats = {
+  [key in ApplicationStatus]: number
+}
+
+export type ApplicationStatusStats = {
+  stats: ApplicationStats & {
+    monthlyTotal: number
+  }
+}

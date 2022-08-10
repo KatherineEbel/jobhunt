@@ -1,16 +1,24 @@
-// import { useAppContext } from 'context/appContext'
-// import { useEffect } from 'react'
-// import { useNavigate } from 'react-router-dom'
-
 import {useAppContext} from 'context/appContext'
+import {useStats} from 'hooks/useStats'
+import {useEffect} from 'react'
+import {Loader} from 'ui'
+import {StatList} from 'ui'
 
 const Stats = () => {
-  const { user} = useAppContext()
+  const { displayAlert} = useAppContext()
+  const { stats, loading, error} = useStats()
+
+  useEffect(() => {
+    if (error) {
+      displayAlert({type: 'danger', message: error.message})
+    }
+  }, [error])
+
+  if (loading || !stats) return <Loader/>
 
   return (
     <div>
-      <h1>Stats</h1>
-      <p>Welcome back {user?.firstName}</p>
+      <StatList stats={stats}/>
     </div>
   )
 }

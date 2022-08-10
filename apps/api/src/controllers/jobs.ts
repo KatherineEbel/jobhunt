@@ -1,9 +1,14 @@
-import {RequestHandler, Response} from 'express'
+import {Response} from 'express'
 import {StatusCodes} from 'http-status-codes'
 import {APIError} from '../errors/APIError'
 import {AuthHandler, AuthRequest} from '../middleware/requireAuthMiddleware'
 import * as jobService from '../services/job'
 
+function ensureUser(req: AuthRequest) {
+  const userId = req.user?.userId
+  if (!userId) throw new APIError("Unauthorized", StatusCodes.UNAUTHORIZED)
+  return userId
+}
 
 /**
  * create a job
@@ -23,8 +28,7 @@ export const create: AuthHandler = async (req, res) => {
  */
 export const deleteOne: AuthHandler = async (req, res) => {
   const { id } = (req.params)
-  const userId = req.user?.userId
-  if (!userId) throw new APIError("Unauthorized", StatusCodes.UNAUTHORIZED)
+  const userId = ensureUser(req)
   const doc = await jobService.deleteOne(id, userId)
   if (!doc) throw new APIError('Forbidden', StatusCodes.FORBIDDEN)
   res.status(StatusCodes.OK).json({job: doc.toJSON()})
@@ -36,8 +40,8 @@ export const deleteOne: AuthHandler = async (req, res) => {
  * @param res { Response}
  */
 export const getAllPaginated = async (req: AuthRequest, res: Response) => {
-  const userId = req.user?.userId
-  const result = await jobService.getPaginatedResults(userId || '')
+  const userId = ensureUser(req)
+  const result = await jobService.getPaginatedResults(userId)
   res.json(result)
 }
 
@@ -48,8 +52,7 @@ export const getAllPaginated = async (req: AuthRequest, res: Response) => {
  */
 export const update: AuthHandler = async (req, res) => {
   const { id } = req.params
-  const userId = req.user?.userId
-  if (!userId) throw new APIError('Unauthorized', StatusCodes.UNAUTHORIZED)
+  const userId = ensureUser(req)
   const job = await jobService.updateOne(id, userId, req.body)
   if (!job) throw new APIError('Forbidden', StatusCodes.FORBIDDEN)
   res.json({job})
@@ -60,6 +63,8 @@ export const update: AuthHandler = async (req, res) => {
  * @param req
  * @param res
  */
-export const stats: RequestHandler = async (req, res) => {
-  res.sendStatus(200)
+export const stats: AuthHandler = async (req, res) => {
+  const userId = ensureUser(req)
+  const stats = await jobService.groupByStatus(userId)
+  res.status(StatusCodes.OK).json({stats})
 }

@@ -12,6 +12,7 @@
     "dev": "turbo run dev --parallel",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "lint": "turbo run lint",
+    "seed": "turbo run seed --filter=api",
     "test": "turbo run test",
     "test:ci": "turbo run test:ci",
     "prepare": "husky install"

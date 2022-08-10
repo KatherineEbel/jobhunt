@@ -6,6 +6,7 @@ import mongoose from 'mongoose'
 import supertest from 'supertest'
 import {db} from './config'
 import {createServer} from './server'
+import Job from './models/Job'
 
 const BASE_URL = `/api/v1`
 
@@ -24,6 +25,17 @@ const otherUser = {
   location: faker.address.cityName(),
   email: faker.internet.email(),
   password: faker.internet.password(6),
+}
+
+const generateJob = (): CreateJobRequest => {
+  const status = Object.values(ApplicationStatus)[Math.floor(Math.random() * 4)]
+  return {
+    company: faker.company.name(),
+    location: faker.address.city(),
+    position: faker.hacker.noun(),
+    status,
+    contract: ContractType.fullTime
+  }
 }
 
 async function registerUser(app: Express, user: typeof otherUser) {
@@ -464,6 +476,34 @@ describe('server', () => {
             .then(res => {
               expect(res.body.jobs).toBeDefined()
               expect(res.body.jobs.find((j: JobResponse) => j.id === job.id)).toBeDefined()
+            })
+        })
+
+        test('default stats returns when no jobs for user', async() => {
+          await Job.deleteMany()
+          await supertest(app).get(`${baseUrl}/stats`)
+            .set('Authorization', `Bearer ${authUser.token}`)
+            .expect(200)
+            .then(res => {
+              const {stats} = res.body
+              expect(Object.keys(stats)).toEqual(Object.values(ApplicationStatus))
+              expect(Object.values(stats)).toEqual([0, 0, 0, 0])
+            })
+        })
+
+        test('stats returns 200 when authenticated', async() => {
+          await Job.deleteMany()
+          const jobs = []
+          for (let i = 0; i < 10; i++) {
+            jobs.push(insertJob(app, authUser, generateJob()))
+          }
+          console.log('Num jobs', jobs.length)
+          await Promise.all(jobs)
+          await supertest(app).get(`${baseUrl}/stats`)
+            .set('Authorization', `Bearer ${authUser.token}`)
+            .expect(200)
+            .then(res => {
+              console.log(res.body)
             })
         })
 

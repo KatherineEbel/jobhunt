@@ -1,1 +1,1 @@
-export { FaLocationArrow, FaBriefcase, FaCalendarAlt } from 'react-icons/fa'
+export { FaLocationArrow, FaBriefcase, FaCalendarAlt, FaSuitcaseRolling, FaCalendarCheck, FaBug} from 'react-icons/fa'
