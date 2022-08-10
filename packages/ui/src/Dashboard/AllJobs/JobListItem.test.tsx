@@ -10,7 +10,7 @@ describe('JobListItem', () => {
       status: ApplicationStatus.pending,
       location: 'New York City',
       position: 'Software Engineer',
-      contract: ContractType.fullTime,
+      contract: ContractType.fulltime,
       createdAt: new Date('08/25/2022').toISOString(),
       updatedAt: new Date('08/25/2022').toISOString(),
       company: 'Google',

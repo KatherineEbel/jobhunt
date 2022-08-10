@@ -5,8 +5,8 @@ import {ApplicationStatus, AuthUser, ContractType, CreateJobRequest, CreateJobRe
 import mongoose from 'mongoose'
 import supertest from 'supertest'
 import {db} from './config'
-import {createServer} from './server'
 import Job from './models/Job'
+import {createServer} from './server'
 
 const BASE_URL = `/api/v1`
 
@@ -27,14 +27,13 @@ const otherUser = {
   password: faker.internet.password(6),
 }
 
-const generateJob = (): CreateJobRequest => {
-  const status = Object.values(ApplicationStatus)[Math.floor(Math.random() * 4)]
+const generateJob = (status= ApplicationStatus.pending, contract = ContractType.fulltime): CreateJobRequest => {
   return {
     company: faker.company.name(),
     location: faker.address.city(),
     position: faker.hacker.noun(),
     status,
-    contract: ContractType.fullTime
+    contract,
   }
 }
 
@@ -317,6 +316,51 @@ describe('server', () => {
             })
         })
 
+        test("query jobs by status and contract works", async () => {
+          // pending fulltime
+          await insertJob(app, authUser, generateJob())
+          await insertJob(app, authUser, generateJob())
+          await supertest(app).get(baseUrl)
+            .query({status: 'interview', contract: 'parttime'})
+            .set('Authorization', `Bearer ${authUser.token}`)
+            .expect(200)
+            .expect(res => {
+              expect(res.body.jobs).toHaveLength(0)
+            })
+          await supertest(app).get(baseUrl)
+            .query({status: 'pending', contract: 'fulltime'})
+            .set('Authorization', `Bearer ${authUser.token}`)
+            .expect(200)
+            .expect(res => {
+              expect(res.body.jobs).toHaveLength(2)
+            })
+        })
+
+        test("query jobs by position works", async () => {
+          // pending fulltime
+          const job1 = generateJob()
+          const job2 = generateJob()
+          job1.position = 'Test'
+          job2.position = 'Test 2'
+          await insertJob(app, authUser, job1)
+          await insertJob(app, authUser, job2)
+          await supertest(app).get(baseUrl)
+            .query({position: 'test'})
+            .set('Authorization', `Bearer ${authUser.token}`)
+            .expect(200)
+            .expect(res => {
+              expect(res.body.jobs).toHaveLength(2)
+            })
+          await supertest(app).get(baseUrl)
+            .query({position: 'test 2'})
+            .set('Authorization', `Bearer ${authUser.token}`)
+            .expect(200)
+            .expect(res => {
+              expect(res.body.jobs).toHaveLength(1)
+            })
+        })
+
+
         test('post with valid values returns 201', async () => {
           await supertest(app).post(baseUrl)
             .send({
@@ -368,7 +412,7 @@ describe('server', () => {
           await registerOtherUser(app)
           const authOther = await loginUser(app, otherUser)
           const job = {
-            contract: ContractType.fullTime,
+            contract: ContractType.fulltime,
             status: ApplicationStatus.pending,
             company: faker.company.name(),
             location: faker.address.city(),
@@ -388,7 +432,7 @@ describe('server', () => {
 
         test('patch returns 200 and returns updated job', async () => {
           const job = {
-            contract: ContractType.fullTime,
+            contract: ContractType.fulltime,
             status: ApplicationStatus.pending,
             company: faker.company.name(),
             location: faker.address.city(),
@@ -410,7 +454,7 @@ describe('server', () => {
 
         test('patch returns 401 when request not authorized', async () => {
           const job = {
-            contract: ContractType.fullTime,
+            contract: ContractType.fulltime,
             status: ApplicationStatus.pending,
             company: faker.company.name(),
             location: faker.address.city(),
@@ -429,7 +473,7 @@ describe('server', () => {
           await supertest(app).patch(`${baseUrl}/${new mongoose.Types.ObjectId().toString()}`)
             .set('Authorization', `Bearer ${authUser.token}`)
             .send({
-              contract: ContractType.fullTime,
+              contract: ContractType.fulltime,
               status: ApplicationStatus.pending,
               company: faker.company.name(),
               location: faker.address.city(),
@@ -444,7 +488,7 @@ describe('server', () => {
             location: faker.address.cityName(),
             position: faker.hacker.adjective(),
             status: ApplicationStatus.pending,
-            contract: ContractType.fullTime,
+            contract: ContractType.fulltime,
           })
           await supertest(app).delete(`${baseUrl}/${job.id}`)
             .set('Authorization', `Bearer ${authUser.token}`)
@@ -465,7 +509,7 @@ describe('server', () => {
             location: faker.address.cityName(),
             position: faker.hacker.adjective(),
             status: ApplicationStatus.pending,
-            contract: ContractType.fullTime,
+            contract: ContractType.fulltime,
           })
           await supertest(app).delete(`${baseUrl}/${job.id}`)
             .set('Authorization', `Bearer ${otherAuthUser.token}`)

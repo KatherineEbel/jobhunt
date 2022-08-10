@@ -62,7 +62,7 @@ export const JobForm = ({onSubmit, job}: JobFormProps) => {
   return (
     <Formik
       initialValues={{position: '', company: '', location: 'my location',
-        status: ApplicationStatus.pending, contract: ContractType.fullTime,
+        status: ApplicationStatus.pending, contract: ContractType.fulltime,
         ...job}}
       validationSchema={createJobSchema}
       onSubmit={handleSubmit}

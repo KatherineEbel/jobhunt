@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
 
 export enum ContractType {
-  fullTime = 'full-time',
-  partTime = 'part-time',
+  fulltime = 'full-time',
+  parttime = 'part-time',
   remote = 'remote',
   internship = 'internship',
 }

@@ -1,7 +1,9 @@
 import {Response} from 'express'
 import {StatusCodes} from 'http-status-codes'
+import {ApplicationStatus, ContractType, Job} from 'lib'
 import {APIError} from '../errors/APIError'
 import {AuthHandler, AuthRequest} from '../middleware/requireAuthMiddleware'
+import { FilterQuery} from 'mongoose'
 import * as jobService from '../services/job'
 
 function ensureUser(req: AuthRequest) {
@@ -40,8 +42,22 @@ export const deleteOne: AuthHandler = async (req, res) => {
  * @param res { Response}
  */
 export const getAllPaginated = async (req: AuthRequest, res: Response) => {
-  const userId = ensureUser(req)
-  const result = await jobService.getPaginatedResults(userId)
+  // sort latest, oldest, a-z z-a
+  const createdBy = ensureUser(req)
+  const { status, contract, position, sort } = req.query
+  const query: FilterQuery<Job>= {
+    createdBy
+  }
+  if (typeof status === 'string' && status in ApplicationStatus) {
+    query.status = status as ApplicationStatus
+  }
+  if (typeof contract === 'string' && contract in ContractType) {
+    query.contract = contract.replace('time', '-time')
+  }
+  if (typeof position === 'string') {
+    query.position = { $regex: position, $options: 'i'}
+  }
+  const result = await jobService.getPaginatedResults(query, sort as string)
   res.json(result)
 }
 

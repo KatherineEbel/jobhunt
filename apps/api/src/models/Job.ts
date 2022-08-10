@@ -20,7 +20,7 @@ const JobSchema = new mongoose.Schema({
   contract: {
     type: String,
     enum: ContractType,
-    default: ContractType.fullTime,
+    default: ContractType.fulltime,
   },
   location: {
     type: String,

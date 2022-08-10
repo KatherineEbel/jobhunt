@@ -1,7 +1,16 @@
-import {ApplicationStats, ApplicationStatus, CreateJobRequest, formatMonthYear} from 'lib'
-import mongoose from 'mongoose'
+import {ApplicationStats, ApplicationStatus, ContractType, CreateJobRequest, formatMonthYear} from 'lib'
+import mongoose, {FilterQuery} from 'mongoose'
 import { Job as JHJob } from 'lib'
 import Job from '../models/Job'
+
+export interface JobQuery {
+  status: ApplicationStatus
+  contract: ContractType
+  createdBy: string
+  sort: string
+  search: string
+}
+
 
 const defaultStats = () => {
   return Object.values(ApplicationStatus).reduce((acc, value) => {
@@ -21,13 +30,25 @@ export async function createJob(
   return Job.create(request)
 }
 
+const sortMap: {[key: string] : string} = {
+  latest: '-createdAt',
+  oldest: 'createdAt',
+  'a-z': 'position',
+  'z-a': '-position'
+}
+
+
 /**
- * Get jobs by userId with pagination results
- * @params userId {string}
- * @returns Job[]
+ * Get jobs by query with pagination results
+ * @params query {FilterQuery<JHJob>}
+ * @returns {}
  */
-export async function getPaginatedResults(userId: string) {
-  const jobs = await Job.find({createdBy: userId})
+export async function getPaginatedResults(query: FilterQuery<JHJob>, sort: string) {
+  const jobQuery = Job.find(query)
+  if ((sortMap[sort])) {
+    jobQuery.sort(sort)
+  }
+  const jobs = await jobQuery
   return {jobs, count: jobs.length, pages: 1}
 }
 
