@@ -1,8 +1,7 @@
 import {useAppContext} from 'context/appContext'
 import {useStats} from 'hooks/useStats'
 import {useEffect} from 'react'
-import {Loader} from 'ui'
-import {StatList} from 'ui'
+import {Chart, Loader, StatList} from 'ui'
 
 const Stats = () => {
   const { displayAlert} = useAppContext()
@@ -14,11 +13,18 @@ const Stats = () => {
     }
   }, [error])
 
-  if (loading || !stats) return <Loader/>
+  useEffect(() => {
+    console.log(loading)
+  }, [loading])
+
+
+
+  if (loading) return <Loader/>
 
   return (
     <div>
       <StatList stats={stats}/>
+      {stats?.applications && <Chart totals={stats.applications}/>}
     </div>
   )
 }

@@ -46,8 +46,13 @@ export type ApplicationStats = {
   [key in ApplicationStatus]: number
 }
 
+type MonthlyTotal = {
+  date: string
+  count: number
+}
+
 export type ApplicationStatusStats = {
   stats: ApplicationStats & {
-    monthlyTotal: number
+    applications: MonthlyTotal[]
   }
 }

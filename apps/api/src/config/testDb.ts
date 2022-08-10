@@ -7,7 +7,6 @@ export const connect = async () => {
   mongoServer = await MongoMemoryServer.create()
   const mongoUri = mongoServer.getUri()
   await mongoose.connect(mongoUri)
-  console.log('mongodb connected using', mongoUri)
 }
 
 export const dropDatabase = async () => {

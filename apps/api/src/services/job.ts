@@ -1,18 +1,15 @@
-import {ApplicationStatus, CreateJobRequest} from 'lib'
+import {ApplicationStats, ApplicationStatus, CreateJobRequest, formatMonthYear} from 'lib'
 import mongoose from 'mongoose'
+import { Job as JHJob } from 'lib'
 import Job from '../models/Job'
-
-type Stats = {
-  // eslint-disable-next-line no-unused-vars
-  [key in ApplicationStatus] : number
-}
 
 const defaultStats = () => {
   return Object.values(ApplicationStatus).reduce((acc, value) => {
     acc[value] = 0
     return acc
-  }, {} as Partial<Stats>)
+  }, {} as Partial<ApplicationStats>)
 }
+
 
 /**
  * Insert job into database
@@ -54,10 +51,43 @@ export async function deleteOne(jobId: string, createdBy: string) {
   return Job.findOneAndDelete({_id: jobId, createdBy})
 }
 
-export async function groupByStatus(userId: string) {
-  const stats = await Job.aggregate()
+const groupBy = async (userId: string, prop: keyof JHJob) => {
+  return Job.aggregate()
     .match({createdBy: new mongoose.Types.ObjectId(userId)})
-    .group({_id: '$status', count: {$sum: 1}})
+    .group({_id: `$${prop}`, count: {$sum: 1}})
+}
+
+const monthlyApplications = async (userId: string) => {
+  const applications = await Job.aggregate<{_id: {year: number, month: number}, count: number}>()
+    .match({createdBy: new mongoose.Types.ObjectId(userId)})
+    .group({
+      _id: {
+        year: {
+          $year: '$createdAt',
+        },
+        month: {
+          $month: '$createdAt',
+        },
+      },
+      count: { $sum: 1},
+    })
+    .sort({ '_id.year': -1, '_id.month': -1})
+    .limit(6)
+
+  return applications.map(({_id: { year, month}, count}) => {
+    return {
+      date: formatMonthYear(month, year),
+      count,
+    }
+  }).reverse()
+}
+
+/**
+ * Group jobs by Application status
+ * @param userId
+ */
+export async function groupByStatus(userId: string) {
+  const stats = await groupBy(userId, 'status')
   if (stats.length === 0) {
     return defaultStats()
   }
@@ -67,6 +97,6 @@ export async function groupByStatus(userId: string) {
       acc[title] = count
       return acc
     }, {}),
-    monthlyTotal: [],
+    applications: await monthlyApplications(userId),
   }
 }

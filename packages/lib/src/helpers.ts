@@ -6,3 +6,10 @@ export const formatDateString = (date: string) => {
   return format(parsedDate, 'MMM do, yyyy')
 }
 
+export const formatMonthYear = (month: number, year: number): string => {
+  const date = new Date()
+  date.setMonth(month - 1)
+  date.setFullYear(year)
+  return format(date, 'MMM Y')
+}
+

@@ -6,3 +6,8 @@ test('formatDateString', () => {
   expect(actual).toBe('Aug 2nd, 2022')
 })
 
+test('formatMonthYear', () => {
+  const actual = helpers.formatMonthYear(8, 2022)
+  expect(actual).toBe('Aug 2022')
+})
+

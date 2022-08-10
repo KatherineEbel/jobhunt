@@ -16,10 +16,11 @@ const Wrapper = styled.section`
 `
 
 interface StatListProps {
-  stats: ApplicationStats
+  stats?: ApplicationStats
 }
 
 export const StatList = ({stats}: StatListProps) => {
+  if (!stats) return null
   const defaultStats = [
     {
       title: 'pending applications',

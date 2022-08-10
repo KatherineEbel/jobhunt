@@ -497,14 +497,10 @@ describe('server', () => {
           for (let i = 0; i < 10; i++) {
             jobs.push(insertJob(app, authUser, generateJob()))
           }
-          console.log('Num jobs', jobs.length)
           await Promise.all(jobs)
           await supertest(app).get(`${baseUrl}/stats`)
             .set('Authorization', `Bearer ${authUser.token}`)
             .expect(200)
-            .then(res => {
-              console.log(res.body)
-            })
         })
 
       })
