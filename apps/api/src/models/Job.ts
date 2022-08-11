@@ -1,5 +1,5 @@
+import {Contract, Status} from 'lib'
 import mongoose from 'mongoose'
-import {ContractType, ApplicationStatus} from 'lib'
 
 const JobSchema = new mongoose.Schema({
   company: {
@@ -14,13 +14,13 @@ const JobSchema = new mongoose.Schema({
   },
   status: {
     type: String,
-    enum: ApplicationStatus,
-    default: ApplicationStatus.pending
+    enum: Status,
+    default: 'pending'
   },
   contract: {
     type: String,
-    enum: ContractType,
-    default: ContractType.fulltime,
+    enum: Contract,
+    default: 'full-time',
   },
   location: {
     type: String,

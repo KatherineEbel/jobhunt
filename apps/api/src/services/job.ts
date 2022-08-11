@@ -1,10 +1,10 @@
-import {ApplicationStats, ApplicationStatus, CreateJobRequest, formatMonthYear} from 'lib'
+import {ApplicationStats, Status, CreateJobRequest, formatMonthYear} from 'lib'
 import mongoose, {FilterQuery} from 'mongoose'
 import { Job as JHJob } from 'lib'
 import Job from '../models/Job'
 
 const defaultStats = () => {
-  return Object.values(ApplicationStatus).reduce((acc, value) => {
+  return Status.reduce((acc, value) => {
     acc[value] = 0
     return acc
   }, {} as Partial<ApplicationStats>)
@@ -37,7 +37,8 @@ const sortMap: {[key: string] : string} = {
 export async function getPaginatedResults(query: FilterQuery<JHJob>, sort: string) {
   const jobQuery = Job.find(query)
   if ((sortMap[sort])) {
-    jobQuery.sort(sort)
+    console.log(sortMap[sort])
+    jobQuery.sort(sortMap[sort])
   }
   const jobs = await jobQuery
   return {jobs, count: jobs.length, pages: 1}

@@ -1,18 +1,10 @@
 /* eslint-disable no-unused-vars */
 
-export enum ContractType {
-  fulltime = 'full-time',
-  parttime = 'part-time',
-  remote = 'remote',
-  internship = 'internship',
-}
+export const Contract = ['full-time', 'part-time', 'remote', 'internship'] as const
+export type ContractType = typeof Contract[number]
 
-export enum ApplicationStatus {
-  declined = 'declined',
-  interview = 'interview',
-  pending = 'pending',
-  offer = 'offer',
-}
+export const Status = ['declined', 'interview', 'pending', 'offer'] as const
+export type ApplicationStatus = typeof Status[number]
 
 export interface Job {
   company: string
@@ -72,3 +64,13 @@ export interface JobQuery {
   sort: JobSortDescriptor
   position: string
 }
+
+export interface ListResponse<T> {
+  page: number
+  perPage: number
+  total: number
+  totalPages: number
+  data: T[]
+}
+
+export type JobListResponse = ListResponse<JobResponse>

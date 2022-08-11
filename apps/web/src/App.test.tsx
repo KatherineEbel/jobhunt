@@ -11,7 +11,7 @@ const exampleUser = {
   lastName: 'Smith',
   location: 'New York City',
   email: 'johnny@example.com',
-  token: 'foobar',
+  token: '62e9b9de742aed9193d4e23f',
   createdAt: new Date().toUTCString(),
   updatedAt: new Date().toUTCString(),
 }

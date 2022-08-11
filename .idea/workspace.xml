@@ -4,51 +4,35 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b6d8152f-e918-46a7-a4e9-34c64c7b909e" name="Changes" comment="refactor web app using redux-toolkit">
-      <change afterPath="$PROJECT_DIR$/apps/web/src/app/store.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/features/alert/alertSlice.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/features/auth/authSlice.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/features/jobs/jobsSlice.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/hooks/store.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/mocks/handlers.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/mocks/server.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/services/jobHuntApi.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/lib/src/alert.ts" afterDir="false" />
+    <list default="true" id="b6d8152f-e918-46a7-a4e9-34c64c7b909e" name="Changes" comment="filter jobs on frontend">
+      <change afterPath="$PROJECT_DIR$/apps/web/src/pages/Dashboard/Jobs.test.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/pages/Dashboard/Stats.test.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/web/src/pages/Dashboard/__snapshots__/Stats.test.tsx.snap" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/lib/src/job/mocks/mock-data.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/lib/src/job/mocks/user-1-mock-jobs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/lib/src/job/mocks/user-2-mock-jobs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/ui/src/Dashboard/AllJobs/Charts/Chart.test.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/ui/src/Dashboard/AllJobs/Charts/__snapshots__/Chart.test.tsx.snap" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/src/controllers/auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/controllers/auth.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/src/routes/profile.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/routes/profile.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api/src/controllers/jobs.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/controllers/jobs.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api/src/models/Job.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/models/Job.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/api/src/server.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/server.test.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/api/src/services/job.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/services/job.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/web/src/App.test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/App.test.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/Nav.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/Nav.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/context/appContext.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/context/appReducer.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/context/createCtx.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/links.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/links.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/pages/Dashboard/AddJob.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/pages/Dashboard/AddJob.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/pages/Dashboard/Dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/pages/Dashboard/Dashboard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/mocks/handlers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/mocks/handlers.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/web/src/pages/Dashboard/Jobs.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/pages/Dashboard/Jobs.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/pages/Dashboard/Profile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/pages/Dashboard/Profile.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/pages/Dashboard/Stats.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/pages/Dashboard/Stats.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/pages/Error.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/pages/Error.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/pages/ProtectedRoute.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/pages/ProtectedRoute.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/pages/Register.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/pages/Register.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/setupTests.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/setupTests.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/testUtils.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/testUtils.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/lib/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/lib/src/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/services/jobHuntApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/services/jobHuntApi.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/lib/src/job/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/lib/src/job/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/lib/src/job/model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/lib/src/job/model.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/lib/src/job/schema.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/lib/src/job/schema.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/lib/src/user/model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/lib/src/user/model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/lib/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/lib/tsconfig.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/ui/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/ui/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/ui/src/Alert.test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/ui/src/Alert.test.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/ui/src/Alert.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/ui/src/Alert.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/ui/src/Dashboard/AddJob/JobForm.test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/ui/src/Dashboard/AddJob/JobForm.test.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/ui/src/Dashboard/AddJob/JobForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/ui/src/Dashboard/AddJob/JobForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/ui/src/Dashboard/AllJobs/JobListItem.test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/ui/src/Dashboard/AllJobs/JobListItem.test.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/ui/src/Dashboard/AllJobs/SearchForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/ui/src/Dashboard/AllJobs/SearchForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/ui/src/Input.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/ui/src/Input.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/ui/src/Loader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/ui/src/Loader.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,9 +45,9 @@
         <option value="HTTP Request" />
         <option value="HTTP Public Environment File" />
         <option value="tsconfig.json" />
-        <option value="TypeScript JSX File" />
         <option value="JavaScript File" />
         <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
@@ -94,12 +78,12 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/katherine/Developer/WebstormProjects/jobhunt/packages/ui/src/Dashboard/AllJobs/Charts",
+    "last_opened_file_path": "/Users/katherine/Developer/WebstormProjects/jobhunt/packages/lib/src/job/mocks",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs.jest.jest_package": "/Users/katherine/Developer/WebstormProjects/jobhunt/node_modules/react-scripts",
+    "nodejs.jest.jest_package": "/Users/katherine/Developer/WebstormProjects/jobhunt/node_modules/jest",
     "nodejs_package_manager_path": "yarn",
     "ts.external.directory.path": "/Users/katherine/Developer/WebstormProjects/jobhunt/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
@@ -115,18 +99,18 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/packages/lib/src/job/mocks" />
       <recent name="$PROJECT_DIR$/packages/ui/src/Dashboard/AllJobs/Charts" />
       <recent name="$PROJECT_DIR$/packages/ui/src" />
       <recent name="$PROJECT_DIR$/apps/api/src/services" />
       <recent name="$PROJECT_DIR$/apps/api/src/__tests__" />
-      <recent name="$PROJECT_DIR$/packages/jest-presets/jest" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/packages/lib/src/job/mocks" />
       <recent name="$PROJECT_DIR$/apps/web/src/app" />
       <recent name="$PROJECT_DIR$/apps/web/src/features" />
       <recent name="$PROJECT_DIR$/apps/api/src/config" />
       <recent name="$PROJECT_DIR$/apps/api/src" />
-      <recent name="$PROJECT_DIR$/apps/api/src/models" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -170,7 +154,7 @@
       <command value="yarn workspace web add msw --dev" />
     </option>
   </component>
-  <component name="RunManager" selected="Jest.App.with user.stats screen rendered">
+  <component name="RunManager" selected="Jest.Chart">
     <configuration name="jobs | /DELETE a job" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/apps/api/jobs.http" index="4" requestIdentifier="/DELETE a job" runType="Run single request">
       <method v="2" />
     </configuration>
@@ -231,6 +215,33 @@
       </test-names>
       <method v="2" />
     </configuration>
+    <configuration name="Chart" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$/packages/ui" />
+      <envs />
+      <scope-kind value="SUITE" />
+      <test-file value="$PROJECT_DIR$/packages/ui/src/Dashboard/AllJobs/Charts/Chart.test.tsx" />
+      <test-names>
+        <test-name value="Chart" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="Chart.it can display stats" type="JavaScriptTestRunnerJest" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$/packages/ui" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/packages/ui/src/Dashboard/AllJobs/Charts/Chart.test.tsx" />
+      <test-names>
+        <test-name value="Chart" />
+        <test-name value="it can display stats" />
+      </test-names>
+      <method v="2" />
+    </configuration>
     <configuration name="JobForm.valid input.onSubmit called" type="JavaScriptTestRunnerJest" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
@@ -257,6 +268,20 @@
       <test-names>
         <test-name value="JobListItem" />
         <test-name value="job properties rendered" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="Jobs Page.renders jobs" type="JavaScriptTestRunnerJest" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
+      <working-dir value="$PROJECT_DIR$/apps/web" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/apps/web/src/pages/Dashboard/Jobs.test.tsx" />
+      <test-names>
+        <test-name value="Jobs Page" />
+        <test-name value="renders jobs" />
       </test-names>
       <method v="2" />
     </configuration>
@@ -314,6 +339,20 @@
       <test-names>
         <test-name value="RegisterForm" />
         <test-name value="toggle isMember" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="Stats Page.render" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
+      <working-dir value="$PROJECT_DIR$/apps/web" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/apps/web/src/pages/Dashboard/Stats.test.tsx" />
+      <test-names>
+        <test-name value="Stats Page" />
+        <test-name value="render" />
       </test-names>
       <method v="2" />
     </configuration>
@@ -446,17 +485,6 @@
     <configuration name="DebugClient" type="JavascriptDebugType" uri="http://localhost:3000" useFirstLineBreakpoints="true">
       <method v="2" />
     </configuration>
-    <configuration name="build --filter=ui" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="build" />
-      </scripts>
-      <arguments value="--filter=ui" />
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
     <configuration name="test" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -478,20 +506,12 @@
       <envs />
       <method v="2" />
     </configuration>
-    <configuration name="test:ci" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="test:ci" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
     <list>
       <item itemvalue="HTTP Request.jobs | /DELETE a job" />
       <item itemvalue="JavaScript Debug.DebugClient" />
       <item itemvalue="Jest.App.with user.stats screen rendered" />
+      <item itemvalue="Jest.Chart.it can display stats" />
+      <item itemvalue="Jest.Jobs Page.renders jobs" />
       <item itemvalue="Jest.App.render lands on stats page and renders user name" />
       <item itemvalue="Jest.JobForm.valid input.onSubmit called" />
       <item itemvalue="Jest.JobListItem.job properties rendered" />
@@ -509,18 +529,18 @@
       <item itemvalue="Jest.RegisterForm.invalid input.invalid email displays error message" />
       <item itemvalue="Jest.RegisterForm.toggle isMember" />
       <item itemvalue="Jest.server.job routes.when logged in" />
-      <item itemvalue="npm.build --filter=ui" />
+      <item itemvalue="Jest.Chart" />
+      <item itemvalue="Jest.Stats Page.render" />
       <item itemvalue="npm.test" />
       <item itemvalue="npm.test:ci --filter=api" />
-      <item itemvalue="npm.test:ci" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="npm.test" />
+        <item itemvalue="Jest.Chart" />
+        <item itemvalue="Jest.Stats Page.render" />
         <item itemvalue="npm.test:ci --filter=api" />
         <item itemvalue="HTTP Request.jobs | /DELETE a job" />
-        <item itemvalue="npm.test:ci" />
-        <item itemvalue="npm.build --filter=ui" />
       </list>
     </recent_temporary>
   </component>
@@ -669,7 +689,21 @@
       <option name="project" value="LOCAL" />
       <updated>1660139846358</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="refactor web app using redux-toolkit">
+      <created>1660224034183</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1660224034183</updated>
+    </task>
+    <task id="LOCAL-00021" summary="refactor web app using redux-toolkit">
+      <created>1660224054949</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1660224054949</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -709,7 +743,8 @@
     <MESSAGE value="display charts for job stats" />
     <MESSAGE value="job filters api" />
     <MESSAGE value="refactor web app using redux-toolkit" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor web app using redux-toolkit" />
+    <MESSAGE value="filter jobs on frontend" />
+    <option name="LAST_COMMIT_MESSAGE" value="filter jobs on frontend" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -736,7 +771,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/apps/api/src/controllers/jobs.ts</url>
-          <line>69</line>
+          <line>72</line>
           <option name="timeStamp" value="100" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
@@ -746,7 +781,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/apps/api/src/services/job.ts</url>
-          <line>52</line>
+          <line>53</line>
           <option name="timeStamp" value="103" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
@@ -771,7 +806,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/apps/api/src/controllers/jobs.ts</url>
-          <line>82</line>
+          <line>85</line>
           <option name="timeStamp" value="129" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
@@ -809,9 +844,15 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/apps/web/src/mocks/handlers.ts</url>
-          <line>4</line>
+          <line>5</line>
           <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="158" />
+          <option name="timeStamp" value="162" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/packages/ui/src/Dashboard/AllJobs/Charts/Chart.tsx</url>
+          <line>27</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="167" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

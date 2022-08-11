@@ -21,7 +21,7 @@ const Wrapper = styled.label`
     background: var(--backgroundColor);
     border: none;
     border-radius: var(--borderRadius);
-    padding: .7rem 1rem;
+    padding: .8rem 1rem;
   }
   
   .input-error {

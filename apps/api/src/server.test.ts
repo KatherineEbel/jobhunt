@@ -1,7 +1,7 @@
 import {faker} from '@faker-js/faker'
 import {afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, test,} from '@jest/globals'
 import {Express} from 'express'
-import {ApplicationStatus, AuthUser, ContractType, CreateJobRequest, CreateJobResponse, JobResponse} from 'lib'
+import {ApplicationStatus, AuthUser, ContractType, CreateJobRequest, CreateJobResponse, JobResponse, Status} from 'lib'
 import mongoose from 'mongoose'
 import supertest from 'supertest'
 import {db} from './config'
@@ -27,7 +27,7 @@ const otherUser = {
   password: faker.internet.password(6),
 }
 
-const generateJob = (status= ApplicationStatus.pending, contract = ContractType.fulltime): CreateJobRequest => {
+const generateJob = (status: ApplicationStatus = 'pending', contract: ContractType = 'full-time'): CreateJobRequest => {
   return {
     company: faker.company.name(),
     location: faker.address.city(),
@@ -216,7 +216,7 @@ describe('server', () => {
         })
         .expect(201)
         .expect((res) => {
-          const { user } = res.body
+          const {user} = res.body
           expect(user.passwordHash).not.toBeDefined()
           expect(user.id).toBeDefined()
         })
@@ -316,7 +316,7 @@ describe('server', () => {
             })
         })
 
-        test("query jobs by status and contract works", async () => {
+        test('query jobs by status and contract works', async () => {
           // pending fulltime
           await insertJob(app, authUser, generateJob())
           await insertJob(app, authUser, generateJob())
@@ -336,7 +336,7 @@ describe('server', () => {
             })
         })
 
-        test("query jobs by position works", async () => {
+        test('query jobs by position works', async () => {
           // pending fulltime
           const job1 = generateJob()
           const job2 = generateJob()
@@ -411,9 +411,9 @@ describe('server', () => {
         test('patch returns forbidden if not job user', async () => {
           await registerOtherUser(app)
           const authOther = await loginUser(app, otherUser)
-          const job = {
-            contract: ContractType.fulltime,
-            status: ApplicationStatus.pending,
+          const job: CreateJobRequest = {
+            contract: 'full-time',
+            status: 'pending',
             company: faker.company.name(),
             location: faker.address.city(),
             position: faker.word.noun(),
@@ -431,9 +431,9 @@ describe('server', () => {
         })
 
         test('patch returns 200 and returns updated job', async () => {
-          const job = {
-            contract: ContractType.fulltime,
-            status: ApplicationStatus.pending,
+          const job: CreateJobRequest = {
+            contract: 'full-time',
+            status: 'pending',
             company: faker.company.name(),
             location: faker.address.city(),
             position: faker.word.noun(),
@@ -453,9 +453,9 @@ describe('server', () => {
         })
 
         test('patch returns 401 when request not authorized', async () => {
-          const job = {
-            contract: ContractType.fulltime,
-            status: ApplicationStatus.pending,
+          const job: CreateJobRequest = {
+            contract: 'full-time',
+            status: 'pending',
             company: faker.company.name(),
             location: faker.address.city(),
             position: faker.word.noun(),
@@ -473,8 +473,8 @@ describe('server', () => {
           await supertest(app).patch(`${baseUrl}/${new mongoose.Types.ObjectId().toString()}`)
             .set('Authorization', `Bearer ${authUser.token}`)
             .send({
-              contract: ContractType.fulltime,
-              status: ApplicationStatus.pending,
+              contract: 'full-time',
+              status: 'pending',
               company: faker.company.name(),
               location: faker.address.city(),
               position: faker.word.noun(),
@@ -487,8 +487,8 @@ describe('server', () => {
             company: faker.company.name(),
             location: faker.address.cityName(),
             position: faker.hacker.adjective(),
-            status: ApplicationStatus.pending,
-            contract: ContractType.fulltime,
+            status: 'pending',
+            contract: 'full-time',
           })
           await supertest(app).delete(`${baseUrl}/${job.id}`)
             .set('Authorization', `Bearer ${authUser.token}`)
@@ -508,8 +508,8 @@ describe('server', () => {
             company: faker.company.name(),
             location: faker.address.cityName(),
             position: faker.hacker.adjective(),
-            status: ApplicationStatus.pending,
-            contract: ContractType.fulltime,
+            status: 'pending',
+            contract: 'full-time',
           })
           await supertest(app).delete(`${baseUrl}/${job.id}`)
             .set('Authorization', `Bearer ${otherAuthUser.token}`)
@@ -523,19 +523,19 @@ describe('server', () => {
             })
         })
 
-        test('default stats returns when no jobs for user', async() => {
+        test('default stats returns when no jobs for user', async () => {
           await Job.deleteMany()
           await supertest(app).get(`${baseUrl}/stats`)
             .set('Authorization', `Bearer ${authUser.token}`)
             .expect(200)
             .then(res => {
               const {stats} = res.body
-              expect(Object.keys(stats)).toEqual(Object.values(ApplicationStatus))
+              expect(Object.keys(stats)).toEqual(Status)
               expect(Object.values(stats)).toEqual([0, 0, 0, 0])
             })
         })
 
-        test('stats returns 200 when authenticated', async() => {
+        test('stats returns 200 when authenticated', async () => {
           await Job.deleteMany()
           const jobs = []
           for (let i = 0; i < 10; i++) {

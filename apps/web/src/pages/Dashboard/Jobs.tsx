@@ -7,8 +7,8 @@ import {JobList, Loader, SearchForm, SearchFormValues} from 'ui'
 
 const Jobs = () => {
   const dispatch = useAppDispatch()
-  const [query] = useState<Partial<JobQuery>>({})
-  const { data, error, isLoading } = useJobsQuery(query)
+  const [query, setQuery] = useState<Partial<JobQuery>>({})
+  const { data, error, isLoading, refetch } = useJobsQuery(query)
   const [deleteJob, {isError}]  = useDeleteJobMutation()
 
   if (error) {
@@ -20,13 +20,25 @@ const Jobs = () => {
     dispatch(createAlert({type: 'danger', message: 'Failed to delete job'}))
   }
 
+  const onSubmit = (values: SearchFormValues) => {
+    const { status, contract} = values
+    setQuery({
+      ...values,
+      status: status === 'all' ? undefined : status,
+      contract: contract === 'all' ? undefined : contract
+    })
+    refetch()
+  }
+
+  const clearFilters = () => {
+    setQuery({})
+    refetch()
+  }
+  
   if (isLoading) return <Loader/>
 
-  const onSubmit = (values: SearchFormValues) => {
-    console.log(values)
-  }
   return <>
-    <SearchForm onSubmit={onSubmit}/>
+    <SearchForm onSubmit={onSubmit} onReset={clearFilters}/>
     <JobList jobs={data?.jobs || []}  onDeleteJob={deleteJob}/>
   </>
 }

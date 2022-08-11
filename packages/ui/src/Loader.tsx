@@ -20,6 +20,7 @@ const Wrapper = styled.div<{ size: number }>`
   font-size: ${({size}) => size}px;
   padding-top: 5rem;
   color: var(--primary-600);
+  z-index: 10;
 }
 
 `

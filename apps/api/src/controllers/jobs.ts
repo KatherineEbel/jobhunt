@@ -1,6 +1,6 @@
 import {Response} from 'express'
 import {StatusCodes} from 'http-status-codes'
-import {ApplicationStatus, ContractType, Job} from 'lib'
+import {Contract, Job, Status} from 'lib'
 import {APIError} from '../errors/APIError'
 import {AuthHandler, AuthRequest} from '../middleware/requireAuthMiddleware'
 import { FilterQuery} from 'mongoose'
@@ -48,11 +48,14 @@ export const getAllPaginated = async (req: AuthRequest, res: Response) => {
   const query: FilterQuery<Job>= {
     createdBy
   }
-  if (typeof status === 'string' && status in ApplicationStatus) {
-    query.status = status as ApplicationStatus
+
+  const queryStatus = Status.find(s => s === status)
+  if (queryStatus) {
+    query.status = queryStatus
   }
-  if (typeof contract === 'string' && contract in ContractType) {
-    query.contract = contract.replace('time', '-time')
+  const queryContract = Contract.find(c => c === contract)
+  if (queryContract) {
+    query.contract = queryContract
   }
   if (typeof position === 'string') {
     query.position = { $regex: position, $options: 'i'}

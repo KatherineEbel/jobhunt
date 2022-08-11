@@ -1,6 +1,6 @@
 import {Field, Form, Formik, FormikHelpers, FormikState} from 'formik'
 import {Input} from 'Input'
-import { ApplicationStatus, ContractType, CreateJobRequest, createJobSchema, Job} from 'lib'
+import {Contract, CreateJobRequest, createJobSchema, Job, Status} from 'lib'
 import * as React from 'react'
 import {ButtonBlock} from 'styled'
 import styled from 'styled-components'
@@ -35,14 +35,14 @@ export interface JobFormProps {
   isSuccess: boolean | undefined
 }
 
-const contractOptions = Object.values(ContractType).map(value => {
+const contractOptions = Contract.map(value => {
   return ({
     label: value,
     value,
   })
 })
 
-const statusOptions = Object.values(ApplicationStatus).map(value => {
+const statusOptions = Status.map(value => {
   return ({
     label: value,
     value,
@@ -68,7 +68,7 @@ export const JobForm = ({onSubmit, job, isSuccess}: JobFormProps) => {
   return (
     <Formik
       initialValues={{position: '', company: '', location: 'my location',
-        status: ApplicationStatus.pending, contract: ContractType.fulltime,
+        status: 'pending', contract: 'full-time',
         ...job}}
       validationSchema={createJobSchema}
       onSubmit={handleSubmit}

@@ -8,12 +8,7 @@ export const jobHuntApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: process.env.REACT_APP_API_URL,
     prepareHeaders: (headers, {getState}) => {
-      // const userJson = localStorage.getItem('jhUser')
-      // let user
-      // if (userJson) {
-      //   user = JSON.parse(userJson)
-      // }
-      const token = (getState() as RootState).auth.user?.token //|| user?.token as string
+      const token = (getState() as RootState).auth.user?.token
       if (token) {
         headers.set('Authorization', `Bearer ${token}`)
       }

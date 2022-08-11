@@ -41,6 +41,9 @@
     "yup": "^0.32.11"
   },
   "jest": {
-    "preset": "jest-presets/jest/react"
+    "preset": "jest-presets/jest/react",
+    "moduleNameMapper": {
+      "^d3-(.*)$": "d3-$1/dist/d3-$1"
+    }
   }
 }

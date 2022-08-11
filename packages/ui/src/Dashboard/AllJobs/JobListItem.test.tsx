@@ -1,16 +1,16 @@
 import {render, screen} from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import {ApplicationStatus, ContractType, JobResponse} from 'lib'
+import {JobResponse} from 'lib'
 import {BrowserRouter} from 'react-router-dom'
 import {JobListItem} from './JobListItem'
 
 describe('JobListItem', () => {
   test('job properties rendered', async () => {
     const job: JobResponse = {
-      status: ApplicationStatus.pending,
+      status: 'pending',
       location: 'New York City',
       position: 'Software Engineer',
-      contract: ContractType.fulltime,
+      contract: 'full-time',
       createdAt: new Date('08/25/2022').toISOString(),
       updatedAt: new Date('08/25/2022').toISOString(),
       company: 'Google',
