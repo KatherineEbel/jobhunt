@@ -1,4 +1,5 @@
-import { useAppContext } from 'context/appContext'
+import {logout, selectCurrentUser} from 'features/auth/authSlice'
+import {useAppDispatch, useTypedSelector} from 'hooks/store'
 import { useOnClickOutside } from 'hooks/useOnClickOutside'
 import { useToggle } from 'hooks/useToggle'
 import React from 'react'
@@ -10,7 +11,9 @@ interface NavProps {
 }
 
 export const Nav = ({ toggleSidebar }: NavProps) => {
-  const { user, logout } = useAppContext()
+  // const { user, logout } = useAppContext()
+  const user = useTypedSelector(selectCurrentUser)
+  const dispatch = useAppDispatch()
   const { open: dropdownOpen, toggleOpen: toggleDropdown } = useToggle()
   const ref = useOnClickOutside(() => {
     if (dropdownOpen) toggleDropdown()
@@ -36,7 +39,7 @@ export const Nav = ({ toggleSidebar }: NavProps) => {
             ref={ref}
             className={`dropdown${dropdownOpen ? ' show-dropdown' : ''}`}
           >
-            <button onClick={logout} className="dropdown-btn">
+            <button onClick={() => dispatch(logout())} className="dropdown-btn">
               logout
             </button>
           </div>

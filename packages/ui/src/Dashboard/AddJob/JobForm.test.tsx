@@ -7,6 +7,7 @@ describe('JobForm', () => {
 
   beforeEach(() => {
     props = {
+      isSuccess: true,
       onSubmit: jest.fn(),
     }
   })

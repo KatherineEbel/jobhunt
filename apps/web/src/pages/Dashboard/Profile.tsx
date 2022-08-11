@@ -1,12 +1,16 @@
-import {useAppContext} from 'context/appContext'
+import {selectCurrentUser} from 'features/auth/authSlice'
+import {useTypedSelector} from 'hooks/store'
+import {useUpdateProfileMutation} from 'services/jobHuntApi'
 import { ProfileForm, ProfileValues, ProfilePageWrapper } from 'ui'
 
 const Profile = () => {
-  const { updateUser, user } = useAppContext()
+  const user = useTypedSelector(selectCurrentUser)
   if (!user) return null
 
+  const [updateProfile] = useUpdateProfileMutation()
+
   const onSubmit = async (values: ProfileValues) => {
-    await updateUser(values)
+    await updateProfile(values)
   }
   return (
     <ProfilePageWrapper>

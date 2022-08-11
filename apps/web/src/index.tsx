@@ -1,6 +1,9 @@
 import 'normalize.css'
+import {setupStore} from 'app/store'
 import React from 'react'
 import { createRoot } from 'react-dom/client'
+import {Provider} from 'react-redux'
+import {BrowserRouter} from 'react-router-dom'
 import App from './App'
 import './index.css'
 import reportWebVitals from './reportWebVitals'
@@ -8,9 +11,15 @@ import reportWebVitals from './reportWebVitals'
 const root = document.getElementById('root')
 if (root === null) throw new Error('root element not found')
 
+const store = setupStore()
+
 createRoot(root).render(
   <React.StrictMode>
-    <App/>
+    <BrowserRouter>
+      <Provider store={store}>
+        <App/>
+      </Provider>
+    </BrowserRouter>
   </React.StrictMode>
 )
 

@@ -1,36 +1,33 @@
-import {useAppContext} from 'context/appContext'
-import {CreateJobRequest} from 'lib'
-import {useMemo} from 'react'
+import {selectJobs} from 'features/jobs/jobsSlice'
+import {useTypedSelector} from 'hooks/store'
+import {CreateJobRequest, JobResponse} from 'lib'
 import {useNavigate, useSearchParams} from 'react-router-dom'
+import {useAddJobMutation, useEditJobMutation} from 'services/jobHuntApi'
 import { JobForm} from 'ui'
 
 const AddJob = () => {
-  const { addJob, editJob, jobs } = useAppContext()
+  const [addJob, {isSuccess: isAddSuccess}] = useAddJobMutation()
+  const [editJob, {isSuccess: isEditSuccess}] = useEditJobMutation()
   const navigate = useNavigate()
 
   const [searchParams] = useSearchParams()
   const jobId = searchParams.get('jobId')
+  const job = useTypedSelector(selectJobs).find((j: JobResponse) => j.id === jobId)
 
-  const job = useMemo(() => {
-    if (!jobId) return undefined
-    const match = jobs.find(j => j.id === jobId)
-    if (match) {
-      const {position, location, company, status, contract} = match
-      return {position, location, company, status, contract}
-    }
-  }, [jobId])
+  if (isAddSuccess || isEditSuccess) {
+    navigate('/jobs')
+  }
 
   const handleSubmit = async (values: CreateJobRequest) => {
-    console.log(values)
-    const success = jobId && job ? await editJob(jobId, values) : await addJob(values)
-    if (success) {
-      navigate('/jobs')
+    if (job && jobId) {
+      editJob({...values, jobId})
+    } else {
+      addJob(values)
     }
-    return success
   }
   return <>
     <h1>{jobId ? 'Edit' : 'Add'} Job</h1>
-    <JobForm onSubmit={handleSubmit} job={job} />
+    <JobForm onSubmit={handleSubmit} job={job} isSuccess={isEditSuccess || isAddSuccess} />
   </>
 }
 

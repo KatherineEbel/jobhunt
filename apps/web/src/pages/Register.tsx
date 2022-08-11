@@ -1,5 +1,7 @@
-import { useAppContext } from 'context/appContext'
+import {selectCurrentUser} from 'features/auth/authSlice'
+import {useTypedSelector} from 'hooks/store'
 import { useNavigate } from 'react-router-dom'
+import {useLoginMutation, useRegisterMutation} from 'services/jobHuntApi'
 import { RegisterForm, Values } from 'ui'
 
 import styled from 'styled-components'
@@ -24,7 +26,11 @@ const Register = () => {
     () => setIsMember((prevState) => !prevState),
     []
   )
-  const { registerUser, loginUser, user } = useAppContext()
+
+  const user = useTypedSelector(selectCurrentUser)
+  const [registerUser] = useRegisterMutation()
+  const [loginUser] = useLoginMutation()
+  // const { registerUser, loginUser, } = useAppContext()
 
   useEffect(() => {
     if (user === null) return

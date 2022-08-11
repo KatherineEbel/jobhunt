@@ -1,16 +1,7 @@
-import {ApplicationStats, ApplicationStatus, ContractType, CreateJobRequest, formatMonthYear} from 'lib'
+import {ApplicationStats, ApplicationStatus, CreateJobRequest, formatMonthYear} from 'lib'
 import mongoose, {FilterQuery} from 'mongoose'
 import { Job as JHJob } from 'lib'
 import Job from '../models/Job'
-
-export interface JobQuery {
-  status: ApplicationStatus
-  contract: ContractType
-  createdBy: string
-  sort: string
-  search: string
-}
-
 
 const defaultStats = () => {
   return Object.values(ApplicationStatus).reduce((acc, value) => {

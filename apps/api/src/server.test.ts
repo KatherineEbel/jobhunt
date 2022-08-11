@@ -287,7 +287,7 @@ describe('server', () => {
     describe('profile routes', () => {
       describe('when logged in', () => {
         test('updateUser route returns 200', async function () {
-          await supertest(app).patch(`/api/v1/profile/${authUser.id}`)
+          await supertest(app).patch(`/api/v1/profile`)
             .set('Authorization', `Bearer ${authUser.token}`)
             .send({email: 'new@example.com', firstName: 'Newname'})
             .expect(200)

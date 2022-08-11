@@ -56,3 +56,19 @@ export type ApplicationStatusStats = {
     applications: MonthlyTotal[]
   }
 }
+
+// export type JobSortDescriptor = 'latest' | 'oldest' | 'a-z' | 'z-a'
+
+export enum JobSortDescriptor {
+  latest = 'latest',
+  oldest = 'oldest',
+  ascending = 'a-z',
+  descending = 'z-a'
+}
+
+export interface JobQuery {
+  status: ApplicationStatus
+  contract: ContractType
+  sort: JobSortDescriptor
+  position: string
+}

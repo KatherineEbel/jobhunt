@@ -13,7 +13,7 @@ export const createJobSchema = yup.object().shape({
 })
 
 export const searchFormSchema = yup.object().shape({
-  query: yup.string()
+  position: yup.string()
 })
 
 export async function validateSchema(schema: yup.ObjectSchema<any>, request: CreateJobRequest) {

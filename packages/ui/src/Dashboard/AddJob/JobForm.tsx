@@ -1,4 +1,4 @@
-import {Form, Formik, FormikHelpers} from 'formik'
+import {Field, Form, Formik, FormikHelpers, FormikState} from 'formik'
 import {Input} from 'Input'
 import { ApplicationStatus, ContractType, CreateJobRequest, createJobSchema, Job} from 'lib'
 import * as React from 'react'
@@ -31,7 +31,8 @@ const ButtonReset = styled(ButtonBlock)`
 
 export interface JobFormProps {
   job?: Omit<Job, 'createdBy' | 'id'>
-  onSubmit: (values: CreateJobRequest) => Promise<boolean>
+  onSubmit: (values: CreateJobRequest) => void
+  isSuccess: boolean | undefined
 }
 
 const contractOptions = Object.values(ContractType).map(value => {
@@ -48,15 +49,20 @@ const statusOptions = Object.values(ApplicationStatus).map(value => {
   })
 })
 
-export const JobForm = ({onSubmit, job}: JobFormProps) => {
+export const JobForm = ({onSubmit, job, isSuccess}: JobFormProps) => {
+  let resetHandle: (nextState?: (Partial<FormikState<CreateJobRequest>> | undefined)) => void = () => undefined
+
+  if(isSuccess) {
+    resetHandle()
+  }
 
   const handleSubmit = async (
     values: CreateJobRequest,
     {setSubmitting, resetForm}: FormikHelpers<CreateJobRequest>
   ) => {
+    resetHandle = resetForm
     setSubmitting(true)
-    const success = await onSubmit(values)
-    if (success) resetForm()
+    onSubmit(values)
   }
 
   return (
@@ -70,6 +76,7 @@ export const JobForm = ({onSubmit, job}: JobFormProps) => {
       {({isSubmitting}) => (
         <StyledForm>
           <Group>
+            <Field type='hidden' name='id' />
             <Input label='Position' type='text' name='position'/>
             <Input label='Company' type='text' name='company'/>
             <Input label='Location' type='text' name='location'/>

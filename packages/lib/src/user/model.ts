@@ -14,10 +14,14 @@ export type AuthUser = Omit<JHUser, 'passwordHash'> & {
   updatedAt: string
 }
 
-export type RegisterUser = Omit<JHUser, 'passwordHash'> & {
+export interface UserResponse {
+  user: AuthUser
+}
+
+export type RegisterRequest = Omit<JHUser, 'passwordHash'> & {
   password: string
 }
 
-export type LoginUser = Pick<RegisterUser, 'email' | 'password'>
+export type LoginRequest = Pick<RegisterRequest, 'email' | 'password'>
 
 export type UpdateUser = Omit<JHUser, 'passwordHash'>

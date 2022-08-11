@@ -1,30 +1,26 @@
-import {useAppContext} from 'context/appContext'
-import {useStats} from 'hooks/useStats'
+import {createAlert} from 'features/alert/alertSlice'
+import {useAppDispatch} from 'hooks/store'
 import {useEffect} from 'react'
+import {useStatsQuery} from 'services/jobHuntApi'
 import {Chart, Loader, StatList} from 'ui'
 
 const Stats = () => {
-  const { displayAlert} = useAppContext()
-  const { stats, loading, error} = useStats()
+  const {data, isLoading, isError, error} = useStatsQuery(undefined)
+  const dispatch = useAppDispatch()
 
   useEffect(() => {
-    if (error) {
-      displayAlert({type: 'danger', message: error.message})
+    if (isError) {
+      dispatch(createAlert({type: 'danger', message: 'Failed to fetch stats'}))
+      console.log('ERROR', error)
     }
-  }, [error])
+  }, [isError])
 
-  useEffect(() => {
-    console.log(loading)
-  }, [loading])
-
-
-
-  if (loading) return <Loader/>
+  if (isLoading) return <Loader/>
 
   return (
     <div>
-      <StatList stats={stats}/>
-      {stats?.applications && <Chart totals={stats.applications}/>}
+      <StatList stats={data?.stats}/>
+      {data?.stats.applications && <Chart totals={data.stats.applications}/>}
     </div>
   )
 }

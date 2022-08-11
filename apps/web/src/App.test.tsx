@@ -1,5 +1,8 @@
-import {render, screen} from '@testing-library/react'
+import {screen} from '@testing-library/react'
+import {setupStore} from 'app/store'
+import {setCredentials} from 'features/auth/authSlice'
 import React from 'react'
+import {renderWithProviders} from 'testUtils'
 import App from './App'
 
 
@@ -13,57 +16,19 @@ const exampleUser = {
   updatedAt: new Date().toUTCString(),
 }
 
-jest.mock('hooks/useJobs', () => ({
-  useJobs: () => ({
-    addJob: jest.fn(),
-      error: null,
-      jobs: [],
-      loading: false,
-  })
-}))
-
 describe('App', function () {
   describe('with user', () => {
     test('stats screen rendered', async () => {
-      const value = {
-        addJob: jest.fn(),
-        deleteJob: jest.fn(),
-        editJob: jest.fn(),
-        jobs: [],
-        loading: false,
-        loginUser: jest.fn(),
-        logout: jest.fn(),
-        registerUser: jest.fn(),
-        displayAlert: jest.fn(),
-        updateUser: jest.fn(),
-        alert: null,
-        user: exampleUser,
-      }
-
-
-      render(<App initialContext={value}/>)
+      const store = setupStore()
+      store.dispatch(setCredentials({user: exampleUser}))
+      renderWithProviders(<App/>, { store })
       expect((await screen.findAllByText(/johnny/i)).length).toBeGreaterThanOrEqual(0)
     })
   })
 
   describe('without user', () => {
     test('landing screen rendered', async () => {
-      const value = {
-        addJob: jest.fn(),
-        deleteJob: jest.fn(),
-        editJob: jest.fn(),
-        jobs: [],
-        loginUser: jest.fn(),
-        loading: false,
-        logout: jest.fn(),
-        registerUser: jest.fn(),
-        displayAlert: jest.fn(),
-        updateUser: jest.fn(),
-        alert: null,
-        user: null,
-      }
-
-      render(<App initialContext={value}/>)
+      renderWithProviders(<App/>)
       expect(screen.getByText(/login \/ register/i)).toBeInTheDocument()
     })
   })

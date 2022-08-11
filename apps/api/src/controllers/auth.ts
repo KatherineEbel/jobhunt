@@ -1,12 +1,12 @@
 import { RequestHandler } from 'express'
 import { APIError } from '../errors/APIError'
-import {LoginUser, RegisterUser} from 'lib'
+import {LoginRequest, RegisterRequest} from 'lib'
 import { TypedRequestBody } from '../types'
 import * as userService from '../services/user'
 import { StatusCodes } from 'http-status-codes'
 
 export const registerHandler: RequestHandler = async (
-  req: TypedRequestBody<RegisterUser>,
+  req: TypedRequestBody<RegisterRequest>,
   res
 ) => {
   const { firstName, lastName, location, email, password } = req.body
@@ -21,7 +21,7 @@ export const registerHandler: RequestHandler = async (
 }
 
 export const loginHandler: RequestHandler = async (
-  req: TypedRequestBody<LoginUser>,
+  req: TypedRequestBody<LoginRequest>,
   res
 ) => {
   const { email, password } = req.body

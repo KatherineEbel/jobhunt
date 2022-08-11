@@ -11,4 +11,4 @@ const profileSchema = yup.object().shape({
   email: yup.string().email('please provide a valid email'),
 })
 
-profileRoutes.patch('/:id', validate(profileSchema), updateProfile)
+profileRoutes.patch('/', validate(profileSchema), updateProfile)

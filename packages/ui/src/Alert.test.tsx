@@ -1,12 +1,11 @@
-import "@testing-library/jest-dom";
-import {render, screen} from '@testing-library/react'
-import React from 'react'
+import '@testing-library/jest-dom'
+import {render} from '@testing-library/react'
 import {Alert} from 'Alert'
+import React from 'react'
 
 describe('Alert', function () {
   test('render', () => {
-    render(<Alert message='Test message' type='success'/>)
-    const alert = screen.getByText('Test message')
-    expect(alert).toBeInTheDocument()
+    const {asFragment} = render(<Alert alerts={[]}/>)
+    expect(asFragment()).toMatchSnapshot()
   })
 })
