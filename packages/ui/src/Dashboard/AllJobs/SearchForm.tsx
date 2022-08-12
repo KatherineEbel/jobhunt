@@ -17,7 +17,6 @@ const ResetButton = styled(Button)`
 `
 
 const Wrapper = styled.section`
-  background: var(--white);
   padding: .5rem;
   margin: .5rem 0;
   .form {
@@ -57,7 +56,7 @@ const Wrapper = styled.section`
   }
 `
 
-export type SearchFormValues = Omit<JobQuery, 'status' | 'contract'> & {
+export type SearchFormValues = Omit<JobQuery, 'status' | 'contract' | 'page'> & {
   status: ApplicationStatus | 'all'
   contract: ContractType | 'all'
 }
@@ -72,7 +71,7 @@ export const SearchForm = ({ onReset = () => undefined, onSubmit}: {onReset: () 
     <Wrapper>
       <h5>Filter Jobs</h5>
       <Formik initialValues={{position: '', contract: 'all', status: 'all', sort: JobSortDescriptor.latest}} onSubmit={handleSubmit}
-              validationSchema={searchFormSchema}
+              validationSchema={searchFormSchema} enableReinitialize={false}
       >
         {({isSubmitting}) => (
           <Form className='form'>

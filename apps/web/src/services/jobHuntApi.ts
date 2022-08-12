@@ -1,5 +1,12 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
-import {ApplicationStatusStats, AuthUser, CreateJobRequest, JHUser, JobResponse, UserJobsResponse} from 'lib'
+import {
+  ApplicationStatusStats,
+  AuthUser,
+  CreateJobRequest,
+  JHUser,
+  JobResponse,
+  ListResponse,
+} from 'lib'
 import {JobQuery, LoginRequest, RegisterRequest, UserResponse} from 'lib/src'
 import { RootState } from 'app/store'
 
@@ -15,12 +22,20 @@ export const jobHuntApi = createApi({
       return headers
     },
   }),
+  tagTypes: ['Jobs'],
   endpoints: (builder) => ({
-    jobs: builder.query<UserJobsResponse, Partial<JobQuery>>({
+    jobs: builder.query<ListResponse<JobResponse>, Partial<JobQuery>>({
       query: (filters) => ({
         url: `jobs`,
         params: filters
-      })
+      }),
+      providesTags: (result) =>
+        result
+          ? [
+            ...result.data.map(({ id }) => ({ type: 'Jobs' as const, id })),
+            { type: 'Jobs', id: 'PARTIAL-LIST' },
+          ]
+          : [{ type: 'Jobs', id: 'PARTIAL-LIST' }],
     }),
     addJob: builder.mutation<JobResponse, CreateJobRequest>({
       query(body) {
@@ -47,7 +62,11 @@ export const jobHuntApi = createApi({
           url: `jobs/${jobId}`,
           method: 'DELETE',
         }
-      }
+      },
+      invalidatesTags: (result, error, id) => [
+        { type: 'Jobs', id },
+        { type: 'Jobs', id: 'PARTIAL_lisT'}
+      ]
     }),
     stats: builder.query<ApplicationStatusStats, undefined>({
       query() {

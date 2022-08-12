@@ -9,7 +9,7 @@ module.exports = {
     'prettier',
   ],
   parser: "@typescript-eslint/parser",
-  plugins: ['react', '@typescript-eslint', 'jest'],
+  plugins: ['react-hooks', 'react', '@typescript-eslint', 'jest'],
   settings: {
     react: {
       pragma: 'React',
@@ -18,6 +18,8 @@ module.exports = {
   },
   'rules': {
     'react/jsx-uses-react': 'off',
-    'react/react-in-jsx-scope': 'off'
+    'react/react-in-jsx-scope': 'off',
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
   }
 };

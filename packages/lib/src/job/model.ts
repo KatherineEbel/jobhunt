@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-
 export const Contract = ['full-time', 'part-time', 'remote', 'internship'] as const
 export type ContractType = typeof Contract[number]
 
@@ -35,6 +33,7 @@ export type CreateJobRequest = Omit<Job, 'createdBy'>
 export type CreateJobResponse = { job: JobResponse}
 
 export type ApplicationStats = {
+  // eslint-disable-next-line no-unused-vars
   [key in ApplicationStatus]: number
 }
 
@@ -49,8 +48,7 @@ export type ApplicationStatusStats = {
   }
 }
 
-// export type JobSortDescriptor = 'latest' | 'oldest' | 'a-z' | 'z-a'
-
+/* eslint-disable no-unused-vars */
 export enum JobSortDescriptor {
   latest = 'latest',
   oldest = 'oldest',
@@ -59,10 +57,11 @@ export enum JobSortDescriptor {
 }
 
 export interface JobQuery {
-  status: ApplicationStatus
   contract: ContractType
-  sort: JobSortDescriptor
+  page: number
   position: string
+  sort: JobSortDescriptor
+  status: ApplicationStatus
 }
 
 export interface ListResponse<T> {

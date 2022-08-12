@@ -24,9 +24,10 @@ const Wrapper = styled.div<{ size: number }>`
 }
 
 `
-export const Loader = () => {
+export const Loader = ({loading = true}: {loading?: boolean}) => {
+  if (!loading) return null
   return (
-    <Wrapper data-testid='loader' size={50}>
+    <Wrapper className='loader' data-testid='loader' size={50}>
       <Rotate/>
     </Wrapper>
   )

@@ -5,24 +5,42 @@ import { RootState } from 'app/store'
 
 type AuthState = {
   user: AuthUser | null
+  registered: boolean
 }
 
+const localStorageKeys = {
+  user: 'jhUser',
+  registered: 'jhUserRegistered'
+}
+
+
 const localUser = () => {
-  const json = localStorage.getItem('jhUser')
+  const json = localStorage.getItem(localStorageKeys.user)
   if (!json) return null
   return JSON.parse(json)
 }
 
-const initialState: AuthState = {user: localUser()}
+const initialState: AuthState = {user: localUser(), registered: !!localStorage.getItem(localStorageKeys.registered)}
 
 const slice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    logout: () => initialState,
+    logout: () => {
+      localStorage.removeItem(localStorageKeys.user)
+      return initialState
+    },
     setCredentials: (state, action: PayloadAction<{ user: AuthUser }>) => {
       state.user = action.payload.user
-    }
+    },
+    toggleRegistered: (state) => {
+      state.registered = !state.registered
+      if (state.registered) {
+        localStorage.setItem(localStorageKeys.registered, 'true')
+      } else {
+        localStorage.removeItem(localStorageKeys.registered)
+      }
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -36,25 +54,18 @@ const slice = createSlice({
       .addMatcher(jobHuntApi.endpoints.login.matchFulfilled, (state, action)=> {
         console.log('login fulfilled', action)
         state.user = action.payload.user
+        localStorage.setItem(localStorageKeys.user, JSON.stringify(state.user))
       })
-      .addMatcher(jobHuntApi.endpoints.login.matchRejected, (state, action)=> {
-        console.log('login rejected', action)
-      })
-      .addMatcher(jobHuntApi.endpoints.register.matchPending, (state, action) => {
-        console.log('register pending', action)
-      })
-      .addMatcher(jobHuntApi.endpoints.register.matchFulfilled, (state, action) => {
-        console.log('register fulfilled', action)
-      })
-      .addMatcher(jobHuntApi.endpoints.register.matchPending, (state, action) => {
-        console.log('register rejected', action)
+      .addMatcher(jobHuntApi.endpoints.register.matchFulfilled, (state) => {
+        state.registered = true
+        localStorage.setItem(localStorageKeys.registered, 'true')
       })
   }
 })
 
-export const {setCredentials, logout} = slice.actions
+export const {logout, toggleRegistered, setCredentials} = slice.actions
 export default slice.reducer
 
-export const selectCurrentUser = (state: RootState) => {
-  return state.auth.user
-}
+export const selectCurrentUser = (state: RootState) => state.auth.user
+
+export const selectIsMember = (state: RootState) => state.auth.registered

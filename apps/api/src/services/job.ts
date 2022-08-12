@@ -28,20 +28,27 @@ const sortMap: {[key: string] : string} = {
   'z-a': '-position'
 }
 
+interface QueryOptions {
+  sort: string
+  limit: number
+  skip: number
+}
 
 /**
  * Get jobs by query with pagination results
- * @params query {FilterQuery<JHJob>}
- * @returns {}
+ * @param query {FilterQuery<JHJob>}
+ * @param options {QueryOptions}
  */
-export async function getPaginatedResults(query: FilterQuery<JHJob>, sort: string) {
+export async function getPaginatedResults(query: FilterQuery<JHJob>, { sort, skip, limit}: QueryOptions) {
   const jobQuery = Job.find(query)
-  if ((sortMap[sort])) {
-    console.log(sortMap[sort])
-    jobQuery.sort(sortMap[sort])
-  }
-  const jobs = await jobQuery
-  return {jobs, count: jobs.length, pages: 1}
+    .sort(sortMap[sort] || 'latest')
+    .skip(skip)
+    .limit(limit)
+
+  const data = await jobQuery
+  const total = await Job.countDocuments(query)
+  const totalPages = Math.ceil(total / limit) || 1
+  return {data, total, perPage: limit, totalPages}
 }
 
 /**

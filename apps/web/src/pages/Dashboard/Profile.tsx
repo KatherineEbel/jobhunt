@@ -5,9 +5,8 @@ import { ProfileForm, ProfileValues, ProfilePageWrapper } from 'ui'
 
 const Profile = () => {
   const user = useTypedSelector(selectCurrentUser)
-  if (!user) return null
-
   const [updateProfile] = useUpdateProfileMutation()
+  if (!user) return null
 
   const onSubmit = async (values: ProfileValues) => {
     await updateProfile(values)

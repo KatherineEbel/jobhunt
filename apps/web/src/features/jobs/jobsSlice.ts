@@ -1,18 +1,33 @@
 import {createSlice} from '@reduxjs/toolkit'
-import {JobResponse} from 'lib'
+import {JobResponse, ListResponse} from 'lib'
 import {jobHuntApi} from 'services/jobHuntApi'
 import {RootState} from 'app/store'
+
+type Pagination = Omit<ListResponse<JobResponse>, 'data'>
+
+export interface JobState {
+  jobs: JobResponse[]
+  pagination: Pagination
+}
 
 export const jobsSlice = createSlice({
   name: 'jobs',
   initialState: {
-    jobs: [] as JobResponse[]
-  },
+    jobs: [] as JobResponse[],
+    pagination: {
+      page: 1,
+      perPage: 6,
+      total: 0,
+      totalPages: 1,
+    }
+  } as JobState,
   reducers: {
   },
   extraReducers: (builder) => {
     builder.addMatcher(jobHuntApi.endpoints.jobs.matchFulfilled, (state, action) => {
-      state.jobs = action.payload.jobs
+      const { data, ...pagination} = action.payload
+      state.jobs = data
+      state.pagination = pagination
     })
     builder.addMatcher(jobHuntApi.endpoints.addJob.matchFulfilled, (state, action) => {
       console.log('job added', action)
@@ -35,3 +50,4 @@ export const jobsSlice = createSlice({
 
 export default jobsSlice.reducer
 export const selectJobs = (state: RootState) => state.jobs.jobs
+export const selectPagination = (state: RootState) => state.jobs.pagination

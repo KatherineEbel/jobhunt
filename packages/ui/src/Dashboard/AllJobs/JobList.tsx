@@ -31,12 +31,13 @@ const Wrapper = styled.section`
 export interface JobListProps {
   onDeleteJob: (jobId: string) => void
   jobs: JobResponse[]
+  total: number
 }
 
-export const JobList = ({onDeleteJob, jobs}: JobListProps) => {
+export const JobList = ({onDeleteJob, jobs, total}: JobListProps) => {
   return (
     <Wrapper>
-      <h5>{jobs.length} job{jobs.length > 1 && 's'} found</h5>
+      <h5>{total} job{total > 1 && 's'} found</h5>
       {jobs && jobs.length ? (
         <div className='jobs'>
           {jobs.map((job: JobResponse) => (<JobListItem key={job.id} job={job} onDelete={onDeleteJob}/>))}

@@ -201,20 +201,22 @@ export const NavbarWrapper = styled.nav`
   }
 
   .dropdown {
+    border-radius: var(--borderRadius);
     position: absolute;
-    top: 40px;
+    top: 30px;
     left: 0;
     width: 100%;
     background: var(--primary-100);
     box-shadow: var(--shadow-2);
     padding: 0.5rem;
     text-align: center;
-    visibility: hidden;
-    border-radius: var(--borderRadius);
+    transform: scaleY(0);
+    transition: transform 300ms ease-in-out;
   }
 
   .show-dropdown {
-    visibility: visible;
+    top: 48px;
+    transform: scaleY(1);
   }
 
   .dropdown-btn {

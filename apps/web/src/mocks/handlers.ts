@@ -3,13 +3,26 @@ import {rest} from 'msw'
 
 export const handlers = [
   rest.get('jobs', (req, res, ctx) => {
+    const page = req.url.searchParams.get('page') || 1
+    const auth = req.headers.get('Authorization')
+    if (!auth || auth.split(' ').length < 2) {
+      return res(
+        ctx.status(401),
+        ctx.json({
+          error: 'please log in first'
+        })
+      )
+    }
+    const body = {
+        page,
+        perPage: 6,
+        total: userOneJobs.length,
+        totalPages: Math.ceil(userOneJobs.length / 6) || 1,
+        data: userOneJobs.slice(+page -1, 6),
+      }
     return res(
       ctx.status(200),
-      ctx.json({
-        jobs: userOneJobs,
-        count: userOneJobs.length,
-        pages: 1,
-      })
+      ctx.json(body)
     )
   }),
   rest.get('jobs/stats', (req, res, ctx) => {

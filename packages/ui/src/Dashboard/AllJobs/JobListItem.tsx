@@ -1,6 +1,6 @@
 import {FaBriefcase, FaCalendarAlt, FaLocationArrow} from 'Dashboard/Icons'
 import {formatDateString, JobResponse} from 'lib'
-import {ReactElement} from 'react'
+import {ReactElement, useCallback} from 'react'
 import styled from 'styled-components'
 import {Button, ButtonLink} from 'styled'
 
@@ -160,9 +160,10 @@ export const JobListItem = ({ onDelete, job}: JobListItemProps) => {
   const { company, createdAt, id, position, location, contract, status } = job
   if (!id) throw new Error('job id required')
 
-  const handleDelete = (jobId: string) => {
+  const handleDelete = useCallback((jobId: string) => {
     onDelete(jobId)
-  }
+  }, [onDelete])
+
   return (
     <Wrapper>
       <header>

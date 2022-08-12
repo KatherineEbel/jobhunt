@@ -60,8 +60,13 @@ export const getAllPaginated = async (req: AuthRequest, res: Response) => {
   if (typeof position === 'string') {
     query.position = { $regex: position, $options: 'i'}
   }
-  const result = await jobService.getPaginatedResults(query, sort as string)
-  res.json(result)
+
+  const page = Number(req.query.page) || 1
+  const limit = Number(req.query.limit) || 6
+  const skip = (page - 1) * limit
+
+  const result = await jobService.getPaginatedResults(query, {limit, sort: sort as string, skip})
+  res.json({...result, page})
 }
 
 /**
