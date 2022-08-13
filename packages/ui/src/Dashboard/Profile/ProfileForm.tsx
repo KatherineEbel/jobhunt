@@ -26,9 +26,14 @@ export interface ProfileFormProps {
 
 const FormGroup = styled.div`
   display: flex;
+  flex-direction: column;
   gap: 1rem;
   justify-content: space-evenly;
   align-items: center;
+  
+  @media (min-width: 668px) {
+    flex-direction: row;
+  }
   
   button {
     height: 2.4rem;

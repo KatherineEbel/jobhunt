@@ -20,20 +20,25 @@ const AlertSuccess = styled(StyledAlert)`
   background: var(--green-light);
   color: var(--green-dark);
 `
+interface AlertProps {
+  alerts: JHAlert[]
+  onDequeueAlert: () => void
+}
 
-export const Alert = ({alerts}: {alerts: JHAlert[]}) => {
+export const Alert = ({alerts, onDequeueAlert}: AlertProps) => {
   const [alert, setAlert] = useState<JHAlert | null>()
   const [show, setShow] = useState(false)
 
   useEffect(() => {
     if (alerts.length > 0) {
-      setAlert(alerts[0])
+      setAlert(alerts.at(-1))
       setShow(true)
       setTimeout(() => {
         setShow(false)
+        onDequeueAlert()
       }, 5000)
     }
-  }, [alerts])
+  }, [alerts, onDequeueAlert])
 
   if (!alert) return null
 

@@ -8,6 +8,7 @@ describe('JobForm', () => {
   beforeEach(() => {
     props = {
       isSuccess: true,
+      location: 'Somewhere',
       onSubmit: jest.fn(),
     }
   })
@@ -19,6 +20,7 @@ describe('JobForm', () => {
       await userEvent.type(screen.getByLabelText(/position/i), 'Software Engineer')
       await userEvent.type(screen.getByLabelText(/company/i), 'Google')
       const location = screen.getByLabelText(/location/i)
+      expect(location).toHaveValue('Somewhere')
       await userEvent.clear(location)
       await userEvent.type(location, 'San Francisco')
       await userEvent.click(submit)

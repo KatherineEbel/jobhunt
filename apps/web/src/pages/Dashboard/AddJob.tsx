@@ -1,9 +1,22 @@
+import {selectCurrentUser} from 'features/auth/authSlice'
 import {selectJobs} from 'features/jobs/jobsSlice'
 import {useTypedSelector} from 'hooks/store'
 import {CreateJobRequest, JobResponse} from 'lib'
 import {useNavigate, useSearchParams} from 'react-router-dom'
 import {useAddJobMutation, useEditJobMutation} from 'services/jobHuntApi'
+import styled from 'styled-components'
 import { JobForm} from 'ui'
+import { ReactComponent as WorkAnywhere} from 'assets/images/undraw_working_from_anywhere.svg'
+
+const StyledWorkAnywhere = styled(WorkAnywhere)`
+  display: none;
+  width: 90%;
+  margin: 2rem auto;
+  
+  @media (min-width: 668px) {
+    display: block;
+  }
+`
 
 const AddJob = () => {
   const [addJob, {isSuccess: isAddSuccess}] = useAddJobMutation()
@@ -13,6 +26,7 @@ const AddJob = () => {
   const [searchParams] = useSearchParams()
   const jobId = searchParams.get('jobId')
   const job = useTypedSelector(selectJobs).find((j: JobResponse) => j.id === jobId)
+  const currentUser = useTypedSelector(selectCurrentUser)
 
   if (isAddSuccess || isEditSuccess) {
     navigate('/jobs')
@@ -26,8 +40,9 @@ const AddJob = () => {
     }
   }
   return <>
-    <h1>{jobId ? 'Edit' : 'Add'} Job</h1>
-    <JobForm onSubmit={handleSubmit} job={job} isSuccess={isEditSuccess || isAddSuccess} />
+    <h1>{jobId ? 'Edit' : 'Add'} Application</h1>
+    <JobForm onSubmit={handleSubmit} location={currentUser?.location} job={job} isSuccess={isEditSuccess || isAddSuccess} />
+    <StyledWorkAnywhere/>
   </>
 }
 

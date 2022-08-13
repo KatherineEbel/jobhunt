@@ -3,6 +3,7 @@ import {useAppDispatch, useTypedSelector} from 'hooks/store'
 import { useOnClickOutside } from 'hooks/useClickOutside'
 import { useToggle } from 'hooks/useToggle'
 import React, {useRef} from 'react'
+import {useNavigate} from 'react-router-dom'
 import { Button, Logo, NavbarWrapper } from 'ui'
 import { FaAlignLeft, FaUserCircle, FaCaretDown } from 'react-icons/fa'
 
@@ -15,6 +16,15 @@ export const Nav = ({ toggleSidebar }: NavProps) => {
   const dispatch = useAppDispatch()
   const { open: dropdownOpen, toggleOpen: toggleDropdown, setOpen } = useToggle()
   const ref = useRef<HTMLDivElement>(null)
+  const navigate = useNavigate()
+  const currentUser = useTypedSelector(selectCurrentUser)
+
+  if (!currentUser) navigate('/landing')
+
+  const handleLogout = () => {
+    dispatch(logout())
+  }
+
   useOnClickOutside(ref, () => setOpen(false))
 
   return (
@@ -39,7 +49,7 @@ export const Nav = ({ toggleSidebar }: NavProps) => {
           <div
             className={`dropdown${dropdownOpen ? ' show-dropdown' : ''}`}
           >
-            <button onClick={() => dispatch(logout())} className="dropdown-btn">
+            <button onClick={handleLogout} className="dropdown-btn">
               logout
             </button>
           </div>

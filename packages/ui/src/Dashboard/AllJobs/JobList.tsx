@@ -6,11 +6,13 @@ const Wrapper = styled.section`
   margin-top: 2rem;
 
   h2 {
+    margin-top: 1rem;
     text-transform: none;
   }
 
-  & > h5 {
-    font-weight: 700;
+  & > h5,
+  & > h2 {
+    margin-bottom: 1rem;
   }
 
   .jobs {
@@ -37,12 +39,12 @@ export interface JobListProps {
 export const JobList = ({onDeleteJob, jobs, total}: JobListProps) => {
   return (
     <Wrapper>
-      <h5>{total} job{total > 1 && 's'} found</h5>
+      <h5>{total} application{(total === 0 || total > 1) && 's'} found</h5>
       {jobs && jobs.length ? (
         <div className='jobs'>
           {jobs.map((job: JobResponse) => (<JobListItem key={job.id} job={job} onDelete={onDeleteJob}/>))}
         </div>
-      ) : (<h2>No jobs to display</h2>)}
+      ) : (<h2>No applications to display</h2>)}
     </Wrapper>
   )
 }

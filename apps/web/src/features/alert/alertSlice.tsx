@@ -13,14 +13,17 @@ const slice = createSlice({
     alerts: []
   } as AlertState,
   reducers: {
-    createAlert: (state, action:PayloadAction<Alert>) => {
-      state.alerts.push(action.payload)
-    }
+    enqueueAlert: (state, action:PayloadAction<Alert>) => {
+      state.alerts.unshift(action.payload)
+    },
+    dequeueAlert: (state) => {
+      state.alerts.pop()
+    },
   },
   extraReducers: (builder) => {
     builder.addMatcher(jobHuntApi.endpoints.login.matchFulfilled, (state, action) => {
       const user = action.payload.user
-      state.alerts.push({type: 'success', message: `Welcome back ${user.firstName}`})
+      state.alerts.push({type: 'success', message: `Welcome ${user.firstName}`})
     })
 
     builder.addMatcher(jobHuntApi.endpoints.login.matchRejected, (state, action) => {
@@ -35,7 +38,7 @@ const slice = createSlice({
   },
 })
 
-export const { createAlert } = slice.actions
+export const { enqueueAlert, dequeueAlert } = slice.actions
 export default slice.reducer
 
 export const selectAlerts = (state: RootState) => state.alerts.alerts

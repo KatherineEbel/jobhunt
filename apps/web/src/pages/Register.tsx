@@ -1,4 +1,4 @@
-import {selectAlerts} from 'features/alert/alertSlice'
+import {dequeueAlert, selectAlerts} from 'features/alert/alertSlice'
 import {selectCurrentUser, selectIsMember, toggleRegistered} from 'features/auth/authSlice'
 import {useAppDispatch, useTypedSelector} from 'hooks/store'
 import { useNavigate } from 'react-router-dom'
@@ -11,6 +11,7 @@ import { useEffect, useState } from 'react'
 const Wrapper = styled.section`
   position: relative;
   display: grid;
+  padding-top: 1rem;
   place-items: center;
   width: 100%;
   min-height: 100vh;
@@ -60,7 +61,7 @@ const Register = () => {
 
   return (
     <Wrapper>
-      <Alert alerts={alerts}/>
+      <Alert alerts={alerts} onDequeueAlert={() => dispatch(dequeueAlert())}/>
       <RegisterForm
         reset={reset}
         onSubmit={onSubmit}

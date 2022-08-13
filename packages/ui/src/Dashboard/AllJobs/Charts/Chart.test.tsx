@@ -17,7 +17,6 @@ jest.mock('recharts', () => {
 
 describe('Chart', () => {
   beforeEach(() => {
-    // delete window.ResizeObserver;
     window.ResizeObserver = jest.fn().mockImplementation(() => ({
       observe: jest.fn(),
       unobserve: jest.fn(),
@@ -25,6 +24,8 @@ describe('Chart', () => {
     }));
   })
     test('it can display stats', () => {
+      // responsive container doesn't display in test unless fixed width
+      console.warn = jest.fn()
       const { asFragment } = render(<Chart totals={[{date: 'Feb 2022', count: 2}, {date: 'Mar 2022', count: 2}, {
         date: 'Apr 2022',
         count: 2

@@ -2,6 +2,9 @@ import cors from 'cors'
 import express from 'express'
 import 'express-async-errors'
 import morgan from 'morgan'
+import helmet from 'helmet'
+import xss from 'xss-clean'
+import mongoSanitize from 'express-mongo-sanitize'
 import {requireAuth} from './middleware/requireAuthMiddleware'
 import { connect } from './config'
 import { errorMiddleware, notFoundMiddleware } from './middleware'
@@ -17,8 +20,12 @@ export const createServer = async () => {
 
   const app = express()
 
+
   app
     .disable('x-powered-by')
+    .use(helmet())
+    .use(xss())
+    .use(mongoSanitize())
     .use(morgan('dev'))
     .use(express.json())
     .use(express.urlencoded({ extended: true }))

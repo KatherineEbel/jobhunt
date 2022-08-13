@@ -10,7 +10,7 @@ describe('Jobs Page', () => {
     const store = setupStore()
     store.dispatch(setCredentials({ user: authUser}))
     renderWithProviders(<Jobs/>, { store })
-    expect(await screen.findByRole('heading', {name: /20 jobs found/i})).toBeInTheDocument()
+    expect(await screen.findByRole('heading', {name: /20 applications found/i})).toBeInTheDocument()
     expect(screen.getAllByRole('article')).toHaveLength(6)
     expect(await screen.findByTestId('pagination')).toBeInTheDocument()
     userEvent.click(screen.getByTestId('last-btn'))

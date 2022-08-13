@@ -16,6 +16,9 @@ COPY --from=builder /app/out/full/ .
 COPY .gitignore .gitignore
 COPY turbo.json turbo.json
 
+ARG URI
+ENV REACT_APP_API_URL=$URI
+
 RUN yarn install
 RUN yarn turbo run build --scope=web...
 

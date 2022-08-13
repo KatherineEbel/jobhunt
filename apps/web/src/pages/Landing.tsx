@@ -1,5 +1,11 @@
-import main from 'assets/images/main.svg'
+import styled from 'styled-components'
 import {ButtonLink, Wrapper, StyledHeading } from 'ui'
+import { ReactComponent as Hero } from 'assets/images/undraw_interview.svg'
+
+const StyledHero = styled(Hero)`
+  width: 600px;
+  max-width: 90%;
+`
 
 const Landing = () => {
   return (
@@ -15,7 +21,7 @@ const Landing = () => {
           </ButtonLink>
         </section>
         <div className='hero-wrapper'>
-          <img className='hero-img' src={main} alt=''/>
+          <StyledHero/>
         </div>
       </main>
     </Wrapper>

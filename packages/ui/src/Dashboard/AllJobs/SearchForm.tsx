@@ -61,12 +61,19 @@ export type SearchFormValues = Omit<JobQuery, 'status' | 'contract' | 'page'> & 
   contract: ContractType | 'all'
 }
 
+interface SearchFormProps {
+  jobCount: number
+  onReset: () => void,
+  onSubmit: (values: SearchFormValues) => void
+}
 
-export const SearchForm = ({ onReset = () => undefined, onSubmit}: {onReset: () => void, onSubmit: (values: SearchFormValues) => void}) => {
+export const SearchForm = ({ onReset = () => undefined, onSubmit, jobCount}: SearchFormProps) => {
   const handleSubmit = async (values: SearchFormValues, { setSubmitting}: FormikHelpers<SearchFormValues>) => {
     setSubmitting(true)
     onSubmit(values)
   }
+
+  if (jobCount < 2) return null
   return (
     <Wrapper>
       <h5>Filter Jobs</h5>

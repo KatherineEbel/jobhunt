@@ -8,8 +8,12 @@ import {Select} from 'Select'
 
 const Group = styled.div`
   align-items: center;
-  display: flex;
+  display: grid;
   gap: 1rem;
+  
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
 `
 
 const ButtonGroup = styled(Group)`
@@ -31,6 +35,7 @@ const ButtonReset = styled(ButtonBlock)`
 
 export interface JobFormProps {
   job?: Omit<Job, 'createdBy' | 'id'>
+  location: string | undefined
   onSubmit: (values: CreateJobRequest) => void
   isSuccess: boolean | undefined
 }
@@ -49,7 +54,7 @@ const statusOptions = Status.map(value => {
   })
 })
 
-export const JobForm = ({onSubmit, job, isSuccess}: JobFormProps) => {
+export const JobForm = ({onSubmit, job, location = '', isSuccess}: JobFormProps) => {
   let resetHandle: (nextState?: (Partial<FormikState<CreateJobRequest>> | undefined)) => void = () => undefined
 
   if(isSuccess) {
@@ -67,7 +72,7 @@ export const JobForm = ({onSubmit, job, isSuccess}: JobFormProps) => {
 
   return (
     <Formik
-      initialValues={{position: '', company: '', location: 'my location',
+      initialValues={{position: '', company: '', location,
         status: 'pending', contract: 'full-time',
         ...job}}
       validationSchema={createJobSchema}
