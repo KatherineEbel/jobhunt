@@ -44,15 +44,11 @@ const slice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addMatcher(jobHuntApi.endpoints.login.matchPending, (state, action) => {
-        console.log('login pending', action)
-      })
       .addMatcher(jobHuntApi.endpoints.updateProfile.matchFulfilled, (state, action) => {
-        console.log('update fulfilled', action)
-        state.user = action.payload
+        state.user = action.payload.user
+        localStorage.setItem(localStorageKeys.user, JSON.stringify(state.user))
       })
       .addMatcher(jobHuntApi.endpoints.login.matchFulfilled, (state, action)=> {
-        console.log('login fulfilled', action)
         state.user = action.payload.user
         localStorage.setItem(localStorageKeys.user, JSON.stringify(state.user))
       })

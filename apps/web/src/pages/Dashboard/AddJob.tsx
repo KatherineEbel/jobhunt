@@ -1,7 +1,8 @@
 import {selectCurrentUser} from 'features/auth/authSlice'
 import {selectJobs} from 'features/jobs/jobsSlice'
-import {useTypedSelector} from 'hooks/store'
+import {useAppDispatch, useTypedSelector} from 'hooks/store'
 import {CreateJobRequest, JobResponse} from 'lib'
+import {useEffect} from 'react'
 import {useNavigate, useSearchParams} from 'react-router-dom'
 import {useAddJobMutation, useEditJobMutation} from 'services/jobHuntApi'
 import styled from 'styled-components'
@@ -19,7 +20,7 @@ const StyledWorkAnywhere = styled(WorkAnywhere)`
 `
 
 const AddJob = () => {
-  const [addJob, {isSuccess: isAddSuccess}] = useAddJobMutation()
+  const [addJob, {isSuccess: isAddSuccess,  }] = useAddJobMutation()
   const [editJob, {isSuccess: isEditSuccess}] = useEditJobMutation()
   const navigate = useNavigate()
 
@@ -27,10 +28,12 @@ const AddJob = () => {
   const jobId = searchParams.get('jobId')
   const job = useTypedSelector(selectJobs).find((j: JobResponse) => j.id === jobId)
   const currentUser = useTypedSelector(selectCurrentUser)
+  const dispatch = useAppDispatch()
 
-  if (isAddSuccess || isEditSuccess) {
+  useEffect(() => {
+    if (!(isAddSuccess || isEditSuccess)) return
     navigate('/jobs')
-  }
+  }, [dispatch, isAddSuccess, isEditSuccess, navigate])
 
   const handleSubmit = async (values: CreateJobRequest) => {
     if (job && jobId) {

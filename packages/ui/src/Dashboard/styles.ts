@@ -162,6 +162,7 @@ export const NavbarWrapper = styled.nav`
   align-items: center;
   justify-content: center;
   box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.1);
+  z-index: 10;
 
   .logo {
     display: flex;

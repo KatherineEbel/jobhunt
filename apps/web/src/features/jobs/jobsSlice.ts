@@ -30,7 +30,6 @@ export const jobsSlice = createSlice({
       state.pagination = pagination
     })
     builder.addMatcher(jobHuntApi.endpoints.addJob.matchFulfilled, (state, action) => {
-      console.log('job added', action)
       state.jobs.push(action.payload)
     })
     builder.addMatcher(jobHuntApi.endpoints.editJob.matchFulfilled, (state, action) => {

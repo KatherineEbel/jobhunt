@@ -99,6 +99,7 @@ const Wrapper = styled.article`
     border-radius: var(--borderRadius);
     text-transform: capitalize;
     letter-spacing: var(--letterSpacing);
+    line-height: 1.75;
     text-align: center;
     width: 100px;
     height: 30px;

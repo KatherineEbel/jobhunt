@@ -7,5 +7,5 @@ export const updateProfile: AuthHandler = async (req, res) => {
   if (!req.user) throw new APIError('please login', StatusCodes.FORBIDDEN)
   const user = await updateUser(req.user.userId, req.body)
   const token = await user.getToken()
-  res.json({...user.toJSON(), token})
+  res.json({user: {...user.toJSON(), token}})
 }

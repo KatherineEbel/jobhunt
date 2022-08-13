@@ -1,7 +1,6 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
 import {
   ApplicationStatusStats,
-  AuthUser,
   CreateJobRequest,
   JHUser,
   JobResponse,
@@ -20,9 +19,9 @@ export const jobHuntApi = createApi({
         headers.set('Authorization', `Bearer ${token}`)
       }
       return headers
-    },
+    }
   }),
-  tagTypes: ['Jobs'],
+  tagTypes: ['Job', 'Stats', 'User'],
   endpoints: (builder) => ({
     jobs: builder.query<ListResponse<JobResponse>, Partial<JobQuery>>({
       query: (filters) => ({
@@ -31,11 +30,8 @@ export const jobHuntApi = createApi({
       }),
       providesTags: (result) =>
         result
-          ? [
-            ...result.data.map(({ id }) => ({ type: 'Jobs' as const, id })),
-            { type: 'Jobs', id: 'PARTIAL-LIST' },
-          ]
-          : [{ type: 'Jobs', id: 'PARTIAL-LIST' }],
+          ? [...result.data.map(({ id }) => ({ type: 'Job' as const, id })), 'Job']
+          : ['Job'],
     }),
     addJob: builder.mutation<JobResponse, CreateJobRequest>({
       query(body) {
@@ -44,7 +40,8 @@ export const jobHuntApi = createApi({
           method: 'POST',
           body,
         }
-      }
+      },
+      invalidatesTags: ['Job', 'Stats'],
     }),
     editJob: builder.mutation<JobResponse, CreateJobRequest & {jobId: string}>({
       query(request) {
@@ -54,7 +51,9 @@ export const jobHuntApi = createApi({
           method: 'PATCH',
           body,
         }
-      }
+      },
+      invalidatesTags: (result, error, arg) =>
+        [{ type: 'Job', id: arg.jobId }, 'Stats'],
     }),
     deleteJob: builder.mutation<JobResponse, string>({
       query(jobId) {
@@ -63,17 +62,16 @@ export const jobHuntApi = createApi({
           method: 'DELETE',
         }
       },
-      invalidatesTags: (result, error, id) => [
-        { type: 'Jobs', id },
-        { type: 'Jobs', id: 'PARTIAL_lisT'}
-      ]
+      invalidatesTags: (result, error, arg) =>
+        [{ type: 'Job', id: arg }, 'Stats'],
     }),
     stats: builder.query<ApplicationStatusStats, undefined>({
       query() {
         return {
           url: 'jobs/stats'
         }
-      }
+      },
+      providesTags: ['Stats']
     }),
     login: builder.mutation<UserResponse, LoginRequest>({
       query: (credentials) => ({
@@ -89,13 +87,14 @@ export const jobHuntApi = createApi({
         body: request,
       }),
     }),
-    updateProfile: builder.mutation<AuthUser, Omit<JHUser, 'email' | 'passwordHash'>>({
+    updateProfile: builder.mutation<UserResponse, Omit<JHUser, 'email' | 'passwordHash'>>({
       query(body) {
         return {
           url: 'profile',
+          method: 'PATCH',
           body
         }
-      }
+      },
     })
   })
 })

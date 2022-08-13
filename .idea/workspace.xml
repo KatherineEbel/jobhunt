@@ -5,54 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b6d8152f-e918-46a7-a4e9-34c64c7b909e" name="Changes" comment="work on css, add more images">
-      <change afterPath="$PROJECT_DIR$/apps/api/xss-clean.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/assets/images/undraw_interview.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/assets/images/undraw_job_offers.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/assets/images/undraw_performance_overview.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/assets/images/undraw_profile_details.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/assets/images/undraw_working_from_anywhere.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker-compose.dev.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/src/routes/auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/routes/auth.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/src/server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/server.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/tsconfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/docs/.eslintrc.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/docs/.storybook/main.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/docs/.storybook/preview.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/docs/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/docs/stories/alert.stories.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/docs/stories/inputs.stories.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/docs/stories/logo.stories.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/docs/stories/registerForm.stories.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/Nav.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/Nav.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api/src/controllers/profile.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/controllers/profile.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api/src/server.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/server.test.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/web/src/features/alert/alertSlice.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/features/alert/alertSlice.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/hooks/useStats.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/features/auth/authSlice.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/features/auth/authSlice.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/features/jobs/jobsSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/features/jobs/jobsSlice.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/web/src/pages/Dashboard/AddJob.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/pages/Dashboard/AddJob.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/pages/Dashboard/Dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/pages/Dashboard/Dashboard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/pages/Dashboard/Jobs.test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/pages/Dashboard/Jobs.test.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/pages/Dashboard/Jobs.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/pages/Dashboard/Jobs.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/pages/Dashboard/Profile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/pages/Dashboard/Profile.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/pages/Dashboard/Stats.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/pages/Dashboard/Stats.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/pages/Landing.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/pages/Landing.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/pages/Register.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/pages/Register.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/ui/src/Alert.test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/ui/src/Alert.test.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/ui/src/Alert.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/ui/src/Alert.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/ui/src/Dashboard/AddJob/JobForm.test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/ui/src/Dashboard/AddJob/JobForm.test.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/ui/src/Dashboard/AddJob/JobForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/ui/src/Dashboard/AddJob/JobForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/ui/src/Dashboard/AllJobs/Charts/Chart.test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/ui/src/Dashboard/AllJobs/Charts/Chart.test.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/ui/src/Dashboard/AllJobs/JobList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/ui/src/Dashboard/AllJobs/JobList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/ui/src/Dashboard/AllJobs/SearchForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/ui/src/Dashboard/AllJobs/SearchForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/ui/src/Dashboard/Profile/ProfileForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/ui/src/Dashboard/Profile/ProfileForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/ui/src/Dashboard/Profile/styles.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/ui/src/Dashboard/Profile/styles.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/ui/src/Landing/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/ui/src/Landing/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/ui/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/ui/src/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/ui/src/register/RegisterForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/ui/src/register/RegisterForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/services/jobHuntApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/services/jobHuntApi.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/ui/src/Dashboard/AllJobs/JobListItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/ui/src/Dashboard/AllJobs/JobListItem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/ui/src/Dashboard/styles.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/ui/src/Dashboard/styles.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -176,8 +138,8 @@
       <command value="yarn workspace api add @types/xss-clean --dev" />
       <command value="yarn" />
       <command value="yarn run build" />
-      <command value="yarn run dev" />
       <command value="yarn run test:ci" />
+      <command value="yarn run dev" />
     </option>
   </component>
   <component name="RunManager" selected="HTTP Request.auth | #2">
@@ -555,8 +517,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.test:ci" />
         <item itemvalue="npm.dev" />
+        <item itemvalue="npm.test:ci" />
         <item itemvalue="HTTP Request.auth | #2" />
         <item itemvalue="npm.build" />
         <item itemvalue="npm.test:ci --filter=api" />
@@ -726,7 +688,14 @@
       <option name="project" value="LOCAL" />
       <updated>1660224054949</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="work on css, add more images">
+      <created>1660392027815</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1660392027815</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -785,11 +754,6 @@
           <option name="timeStamp" value="45" />
         </line-breakpoint>
         <line-breakpoint type="javascript">
-          <url>file://$PROJECT_DIR$/apps/web/src/pages/Dashboard/Profile.tsx</url>
-          <line>19</line>
-          <option name="timeStamp" value="46" />
-        </line-breakpoint>
-        <line-breakpoint type="javascript">
           <url>file://$PROJECT_DIR$/packages/ui/src/Dashboard/AllJobs/JobListItem.test.tsx</url>
           <line>22</line>
           <option name="timeStamp" value="99" />
@@ -811,7 +775,7 @@
         </line-breakpoint>
         <line-breakpoint type="javascript">
           <url>file://$PROJECT_DIR$/apps/api/src/server.test.ts</url>
-          <line>498</line>
+          <line>500</line>
           <option name="timeStamp" value="109" />
         </line-breakpoint>
         <line-breakpoint type="javascript">
@@ -836,7 +800,7 @@
         </line-breakpoint>
         <line-breakpoint type="javascript">
           <url>file://$PROJECT_DIR$/apps/web/src/features/jobs/jobsSlice.ts</url>
-          <line>36</line>
+          <line>35</line>
           <option name="timeStamp" value="151" />
         </line-breakpoint>
         <line-breakpoint type="javascript">
@@ -867,7 +831,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/apps/api/src/server.test.ts</url>
-          <line>519</line>
+          <line>521</line>
           <option name="timeStamp" value="181" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
@@ -879,6 +843,12 @@
           <url>file://$PROJECT_DIR$/apps/api/src/server.test.ts</url>
           <line>53</line>
           <option name="timeStamp" value="184" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/apps/web/src/pages/Dashboard/Profile.tsx</url>
+          <line>19</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="186" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

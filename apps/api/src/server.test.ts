@@ -292,9 +292,11 @@ describe('server', () => {
             .send({email: 'new@example.com', firstName: 'Newname'})
             .expect(200)
             .expect(res => {
-              expect(res.body.email).toBe('new@example.com')
-              expect(res.body.firstName).toBe('Newname')
-              expect(res.body.lastName).toBe(validUser.lastName)
+              expect(res.body).toHaveProperty('user')
+              const { user } = res.body
+              expect(user.email).toBe('new@example.com')
+              expect(user.firstName).toBe('Newname')
+              expect(user.lastName).toBe(validUser.lastName)
             })
         })
       })
