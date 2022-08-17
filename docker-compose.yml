@@ -1,35 +1,49 @@
 version: "3"
 
 services:
-  web:
-    container_name: web
+  nginx-jobhunt:
+    image: nginx
+    build:
+      context: .
+      dockerfile: ./nginx/Dockerfile
+    hostname: nginx-jobhunt
+    networks:
+      - webproxy
+      - jobhunt-app
+    expose:
+      - "80"
+      - "443"
+    environment:
+      VIRTUAL_HOST: jobhunt.kathyebel.dev
+      LETSENCRYPT_HOST: jobhunt.kathyebel.dev
+      LETSENCRYPT_EMAIL: hello@katherineebel.com
+      NODE_ENV: production
+  jobhunt-client:
+    hostname: jobhunt-client
     build:
       context: .
       dockerfile: ./apps/web/Dockerfile
       args:
-        - URI=http://localhost:3001/api/v1
+        - API_URL=jobhunt-api/api/v1
     restart: always
-    ports:
-      - "3000:3000"
     networks:
-      - app_network
+      - jobhunt-app
     env_file:
       - ./apps/web/.env.development
-  api:
-    container_name: api
+  jobhunt-api:
+    hostname: jobhunt-api
     build:
       context: .
       dockerfile: ./apps/api/Dockerfile
     restart: always
-    ports:
-      - "3001:3001"
     networks:
-      - app_network
+      - jobhunt-app
     env_file:
       - ./apps/api/.env.production
 
 # Define a network, which allows containers to communicate
 # with each other, by using their container name as a hostname
 networks:
-  app_network:
+  webproxy:
     external: true
+  jobhunt-app:

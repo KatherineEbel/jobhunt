@@ -36,3 +36,8 @@ yarn-error.log*
 *.http
 **/httpRequests
 **/dataSources*
+
+.idea/deployment.xml
+.idea/sshConfigs.xml
+.idea/webServers.xml
+apps/api/http-client.env.json

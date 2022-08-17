@@ -4,17 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b6d8152f-e918-46a7-a4e9-34c64c7b909e" name="Changes" comment="work on css, add more images">
+    <list default="true" id="b6d8152f-e918-46a7-a4e9-34c64c7b909e" name="Changes" comment="update docker config. Always show search form">
+      <change afterPath="$PROJECT_DIR$/nginx/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx/default.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/src/controllers/profile.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/controllers/profile.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/api/src/server.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/server.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/features/alert/alertSlice.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/features/alert/alertSlice.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/features/auth/authSlice.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/features/auth/authSlice.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/features/jobs/jobsSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/features/jobs/jobsSlice.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/pages/Dashboard/AddJob.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/pages/Dashboard/AddJob.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/services/jobHuntApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/services/jobHuntApi.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/ui/src/Dashboard/AllJobs/JobListItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/ui/src/Dashboard/AllJobs/JobListItem.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/ui/src/Dashboard/styles.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/ui/src/Dashboard/styles.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api/http-client.env.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/pages/Dashboard/Jobs.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/pages/Dashboard/Jobs.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/ui/src/Dashboard/AllJobs/SearchForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/ui/src/Dashboard/AllJobs/SearchForm.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,32 +54,37 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Project.color": "203150",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/katherine/Developer/WebstormProjects/jobhunt",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs.jest.jest_package": "/Users/katherine/Developer/WebstormProjects/jobhunt/node_modules/jest",
-    "nodejs_package_manager_path": "yarn",
-    "settings.editor.selected.configurable": "web.server",
-    "ts.external.directory.path": "/Users/katherine/Developer/WebstormProjects/jobhunt/node_modules/typescript/lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Project.color&quot;: &quot;203150&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.highlight.mappings&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.highlight.symlinks&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.show.date&quot;: &quot;false&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.show.permissions&quot;: &quot;false&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.show.size&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/katherine/Developer/WebstormProjects/jobhunt&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs.jest.jest_package&quot;: &quot;/Users/katherine/Developer/WebstormProjects/jobhunt/node_modules/jest&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;web.server&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/katherine/Developer/WebstormProjects/jobhunt/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mongo"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mongo&quot;
     ],
-    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
-      "TypeScript"
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;TypeScript&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -142,8 +147,11 @@
       <command value="yarn run dev" />
     </option>
   </component>
-  <component name="RunManager" selected="HTTP Request.auth | #2">
+  <component name="RunManager" selected="HTTP Request.jobs | eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmU5YjlkZTc0MmFlZDkxOTNkNGUyM2YiLCJpYXQiOjE2NjAyNDQ0MzAsImV4cCI6MTY2MDMzMDgzMH0.axNKqU9pv7stE7akxbcfpX5BvYyNQwT8yNTinnFPQE4">
     <configuration name="auth | #2" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/apps/api/auth.http" index="2" requestIdentifier="#2" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="jobs | eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmU5YjlkZTc0MmFlZDkxOTNkNGUyM2YiLCJpYXQiOjE2NjAyNDQ0MzAsImV4cCI6MTY2MDMzMDgzMH0.axNKqU9pv7stE7akxbcfpX5BvYyNQwT8yNTinnFPQE4" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/apps/api/jobs.http" index="8" requestIdentifier="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmU5YjlkZTc0MmFlZDkxOTNkNGUyM2YiLCJpYXQiOjE2NjAyNDQ0MzAsImV4cCI6MTY2MDMzMDgzMH0.axNKqU9pv7stE7akxbcfpX5BvYyNQwT8yNTinnFPQE4" runType="Run single request">
       <method v="2" />
     </configuration>
     <configuration name="Alert.render" type="JavaScriptTestRunnerJest" nameIsGenerated="true">
@@ -466,17 +474,6 @@
       <envs />
       <method v="2" />
     </configuration>
-    <configuration name="test:ci --filter=api" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="test:ci" />
-      </scripts>
-      <arguments value="--filter=api" />
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
     <configuration name="test:ci" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -489,6 +486,7 @@
     </configuration>
     <list>
       <item itemvalue="HTTP Request.auth | #2" />
+      <item itemvalue="HTTP Request.jobs | eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmU5YjlkZTc0MmFlZDkxOTNkNGUyM2YiLCJpYXQiOjE2NjAyNDQ0MzAsImV4cCI6MTY2MDMzMDgzMH0.axNKqU9pv7stE7akxbcfpX5BvYyNQwT8yNTinnFPQE4" />
       <item itemvalue="JavaScript Debug.DebugClient" />
       <item itemvalue="Jest.App.with user.stats screen rendered" />
       <item itemvalue="Jest.Chart.it can display stats" />
@@ -513,15 +511,14 @@
       <item itemvalue="npm.build" />
       <item itemvalue="npm.dev" />
       <item itemvalue="npm.test:ci" />
-      <item itemvalue="npm.test:ci --filter=api" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="npm.dev" />
+        <item itemvalue="HTTP Request.jobs | eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmU5YjlkZTc0MmFlZDkxOTNkNGUyM2YiLCJpYXQiOjE2NjAyNDQ0MzAsImV4cCI6MTY2MDMzMDgzMH0.axNKqU9pv7stE7akxbcfpX5BvYyNQwT8yNTinnFPQE4" />
         <item itemvalue="npm.test:ci" />
         <item itemvalue="HTTP Request.auth | #2" />
         <item itemvalue="npm.build" />
-        <item itemvalue="npm.test:ci --filter=api" />
       </list>
     </recent_temporary>
   </component>
@@ -540,6 +537,7 @@
       <workItem from="1660315430208" duration="13462000" />
       <workItem from="1660330054580" duration="1000" />
       <workItem from="1660330279893" duration="288000" />
+      <workItem from="1660738508266" duration="282000" />
     </task>
     <task id="LOCAL-00001" summary="protect jobs and user routes">
       <created>1659543722494</created>
@@ -695,7 +693,14 @@
       <option name="project" value="LOCAL" />
       <updated>1660392027815</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="improve notifications and update api queries when job and profile updates">
+      <created>1660403683785</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1660403683785</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -713,8 +718,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="dashboard sidebars and stub dashboard pages" />
-    <MESSAGE value="protect jobs and user routes" />
     <MESSAGE value="don't close large sidebar when nav link clicked" />
     <MESSAGE value="setup ui package for jest" />
     <MESSAGE value="ui for profile page" />
@@ -738,7 +741,9 @@
     <MESSAGE value="filter jobs on frontend" />
     <MESSAGE value="job pagination" />
     <MESSAGE value="work on css, add more images" />
-    <option name="LAST_COMMIT_MESSAGE" value="work on css, add more images" />
+    <MESSAGE value="improve notifications and update api queries when job and profile updates" />
+    <MESSAGE value="update docker config. Always show search form" />
+    <option name="LAST_COMMIT_MESSAGE" value="update docker config. Always show search form" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -847,7 +852,6 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/apps/web/src/pages/Dashboard/Profile.tsx</url>
           <line>19</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="186" />
         </line-breakpoint>
       </breakpoints>

@@ -1,4 +1,4 @@
-FROM node:alpine AS builder
+FROM node:lts-alpine AS builder
 RUN apk update
 # Set working directory
 WORKDIR /app
@@ -7,7 +7,7 @@ COPY . .
 RUN turbo prune --scope=web --docker
 
 # Add lockfile and package.json's of isolated subworkspace
-FROM node:alpine AS installer
+FROM node:lts-alpine AS installer
 RUN apk update
 WORKDIR /app
 COPY --from=builder /app/out/json/ .
@@ -16,8 +16,8 @@ COPY --from=builder /app/out/full/ .
 COPY .gitignore .gitignore
 COPY turbo.json turbo.json
 
-ARG URI
-ENV REACT_APP_API_URL=$URI
+ARG API_URL
+ENV REACT_APP_API_URL=$API_URL
 
 RUN yarn install
 RUN yarn turbo run build --scope=web...

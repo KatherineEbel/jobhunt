@@ -63,7 +63,7 @@ const Jobs = () => {
   if (jobData === null) return null
 
   return <Wrapper>
-    <SearchForm jobCount={jobData.pageData.total} onSubmit={onSubmit} onReset={clearFilters}/>
+    <SearchForm onSubmit={onSubmit} onReset={clearFilters}/>
     <Loader loading={isFetching}/>
     <Pagination pageData={jobData.pageData} onChangePage={setPage} isFetching={isFetching}/>
     <JobList jobs={jobData.jobs} total={jobData.pageData.total} onDeleteJob={deleteJob}/>
