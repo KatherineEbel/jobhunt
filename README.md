@@ -33,7 +33,7 @@ docker network create app_network
 COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker-compose -f docker-compose.dev.yml build --parallel
 
 # Start prod in detached mode
-docker-compose -f docker-compose.yml up -d
+docker-compose -f docker-compose.dev.yml up -d
 ```
 
 Open http://localhost:3000.
