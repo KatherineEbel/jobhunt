@@ -19,6 +19,10 @@ export const Wrapper = styled.div`
   .info p {
     color: var(--grey-600);
   }
+  
+  .hero-wrapper {
+    overflow: hidden;
+  }
 
   svg {
     float: right;

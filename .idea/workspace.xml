@@ -4,8 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b6d8152f-e918-46a7-a4e9-34c64c7b909e" name="Changes" comment="update docker config. Always show search form">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    <list default="true" id="b6d8152f-e918-46a7-a4e9-34c64c7b909e" name="Changes" comment="update mongo connection">
+      <change afterPath="$PROJECT_DIR$/apps/api/src/config/jobhunt-demo.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api/src/config/db.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/config/db.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api/src/config/seed.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/api/src/config/seed.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/Nav.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/Nav.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/ui/src/Landing/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/ui/src/Landing/index.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,11 +91,11 @@
       <recent name="$PROJECT_DIR$/packages/ui/src" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/apps/api/src/config" />
       <recent name="$PROJECT_DIR$/apps/web/src/assets/images" />
       <recent name="$PROJECT_DIR$/packages/ui/src/hooks" />
       <recent name="$PROJECT_DIR$/packages/ui" />
       <recent name="$PROJECT_DIR$/packages/lib/src/job/mocks" />
-      <recent name="$PROJECT_DIR$/apps/web/src/app" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -136,9 +142,10 @@
       <command value="yarn run build" />
       <command value="yarn run test:ci" />
       <command value="yarn run dev" />
+      <command value="yarn dev" />
     </option>
   </component>
-  <component name="RunManager" selected="HTTP Request.jobs | eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmU5YjlkZTc0MmFlZDkxOTNkNGUyM2YiLCJpYXQiOjE2NjAyNDQ0MzAsImV4cCI6MTY2MDMzMDgzMH0.axNKqU9pv7stE7akxbcfpX5BvYyNQwT8yNTinnFPQE4">
+  <component name="RunManager" selected="npm.test:ci">
     <configuration name="auth | #2" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/apps/api/auth.http" index="2" requestIdentifier="#2" runType="Run single request">
       <method v="2" />
     </configuration>
@@ -445,21 +452,21 @@
     <configuration name="DebugClient" type="JavascriptDebugType" uri="http://localhost:3000" useFirstLineBreakpoints="true">
       <method v="2" />
     </configuration>
-    <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="build" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
     <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
       <scripts>
         <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="test" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="test" />
       </scripts>
       <node-interpreter value="project" />
       <envs />
@@ -499,17 +506,17 @@
       <item itemvalue="Jest.RegisterForm.invalid input.invalid email displays error message" />
       <item itemvalue="Jest.RegisterForm.toggle isMember" />
       <item itemvalue="Jest.server.job routes.when logged in" />
-      <item itemvalue="npm.build" />
+      <item itemvalue="npm.test" />
       <item itemvalue="npm.dev" />
       <item itemvalue="npm.test:ci" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.test:ci" />
+        <item itemvalue="npm.test" />
         <item itemvalue="npm.dev" />
         <item itemvalue="HTTP Request.jobs | eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmU5YjlkZTc0MmFlZDkxOTNkNGUyM2YiLCJpYXQiOjE2NjAyNDQ0MzAsImV4cCI6MTY2MDMzMDgzMH0.axNKqU9pv7stE7akxbcfpX5BvYyNQwT8yNTinnFPQE4" />
-        <item itemvalue="npm.test:ci" />
         <item itemvalue="HTTP Request.auth | #2" />
-        <item itemvalue="npm.build" />
       </list>
     </recent_temporary>
   </component>
@@ -528,7 +535,11 @@
       <workItem from="1660315430208" duration="13462000" />
       <workItem from="1660330054580" duration="1000" />
       <workItem from="1660330279893" duration="288000" />
-      <workItem from="1660738508266" duration="713000" />
+      <workItem from="1660738508266" duration="2674000" />
+      <workItem from="1660763102765" duration="2469000" />
+      <workItem from="1661126192523" duration="63000" />
+      <workItem from="1661169384705" duration="819000" />
+      <workItem from="1662395269248" duration="12151000" />
     </task>
     <task id="LOCAL-00001" summary="protect jobs and user routes">
       <created>1659543722494</created>
@@ -691,7 +702,14 @@
       <option name="project" value="LOCAL" />
       <updated>1660403683785</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="add non-sensitive .env files. Update README.md">
+      <created>1660739792282</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1660739792282</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -709,8 +727,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="don't close large sidebar when nav link clicked" />
-    <MESSAGE value="setup ui package for jest" />
     <MESSAGE value="ui for profile page" />
     <MESSAGE value="implement update user profile" />
     <MESSAGE value="implement create job in api" />
@@ -734,7 +750,9 @@
     <MESSAGE value="work on css, add more images" />
     <MESSAGE value="improve notifications and update api queries when job and profile updates" />
     <MESSAGE value="update docker config. Always show search form" />
-    <option name="LAST_COMMIT_MESSAGE" value="update docker config. Always show search form" />
+    <MESSAGE value="add non-sensitive .env files. Update README.md" />
+    <MESSAGE value="update mongo connection" />
+    <option name="LAST_COMMIT_MESSAGE" value="update mongo connection" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

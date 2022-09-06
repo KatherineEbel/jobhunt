@@ -38,12 +38,16 @@ services:
     restart: always
     networks:
       - jobhunt-app
+      - webservices
     env_file:
       - ./apps/api/.env.production
+
 
 # Define a network, which allows containers to communicate
 # with each other, by using their container name as a hostname
 networks:
   webproxy:
+    external: true
+  webservices:
     external: true
   jobhunt-app:

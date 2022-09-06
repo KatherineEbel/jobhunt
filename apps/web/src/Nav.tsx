@@ -19,13 +19,16 @@ export const Nav = ({ toggleSidebar }: NavProps) => {
   const navigate = useNavigate()
   const currentUser = useTypedSelector(selectCurrentUser)
 
-  if (!currentUser) navigate('/landing')
-
   const handleLogout = () => {
     dispatch(logout())
+    navigate('/landing')
   }
 
   useOnClickOutside(ref, () => setOpen(false))
+
+  if (!currentUser) {
+    handleLogout()
+  }
 
   return (
     <NavbarWrapper>
