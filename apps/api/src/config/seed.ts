@@ -1,7 +1,8 @@
 import mongoose from 'mongoose'
 import Job from '../models/Job'
 import {connect} from './db'
-import mockData from './mock-data.json'
+// import mockData from './mock-data.json'
+import mockData from './jobhunt-demo.json'
 
 (async () => {
   try {

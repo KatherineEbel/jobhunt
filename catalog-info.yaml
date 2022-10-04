@@ -1,0 +1,14 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: jobhunt
+  description: Track your Job Hunt
+  labels:
+    jobhunt.com/custom: custom_label_value
+  tags:
+    - TypeScript
+spec:
+  type: website
+  lifecycle: production
+  owner: KatherineEbel
+  system: public-websites
